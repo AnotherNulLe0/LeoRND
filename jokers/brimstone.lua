@@ -17,7 +17,7 @@ local joker = {
 				e_mult = card.ability.extra.e_mult
 			}
 		end
-		if context.end_of_round and context.game_over == false and not context.blueprint and not context.retrigger_joker and not context.repetition and G.GAME.blind:get_type() == 'Boss' then
+		if context.end_of_round and context.game_over == false and context.beat_boss and not context.blueprint and not context.retrigger_joker and not context.repetition then
 			card.ability.extra.e_mult = card.ability.extra.e_mult + card.ability.extra.e_mult_gain
 			return {
 				remove_default_message = true,

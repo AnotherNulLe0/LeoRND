@@ -2,7 +2,8 @@ local joker = {
 	key = 'sour_glass',
 	config = { extra = { extra_card = 1, chips_mult = 2.5, odds = 100 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.extra_card, card.ability.extra.chips_mult, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		local base, odds = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'leornd_j_sour_glass')
+		return { vars = { card.ability.extra.extra_card, card.ability.extra.chips_mult, base, odds } }
 	end,
 	rarity = 3,
 	atlas = 'leornd_j',
@@ -30,7 +31,7 @@ local joker = {
 		end
 
 		if context.end_of_round and not context.repetition and not context.retrigger_joker and context.game_over == false and not context.blueprint then
-			if pseudorandom('tboiglass') < G.GAME.probabilities.normal / card.ability.extra.odds then
+			if SMODS.pseudorandom_probability(card, 'sour_glass', card.ability.extra.base, card.ability.extra.odds, 'leornd_j_sour_glass')then
 				-- This part plays the animation.
 				G.E_MANAGER:add_event(Event({
 					func = event_destroy_card(card)
