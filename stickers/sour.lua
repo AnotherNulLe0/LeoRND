@@ -1,6 +1,6 @@
 local sticker = {
     key = "sour",
-    badge_colour = HEX '4f5da1',
+    badge_colour = HEX '272e38',
     pos = { x = 0, y = 0 },
     atlas = "stickers",
     should_apply = false,
