@@ -1,5 +1,4 @@
 local config = {
-	debug_mode = false,
 	jokers = {
 		"tboi_glass",
 		"sour_glass",
