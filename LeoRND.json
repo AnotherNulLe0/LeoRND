@@ -4,7 +4,7 @@
     "author": ["NulLe0 (a.k.a. Natrium HCO3)"],
     "description": "Adds some fun and almost balanced jokers (with some reference)",
     "prefix": "leornd",
-    "main_file": "LeoRandColl.lua",
+    "main_file": "LeoRND.lua",
     "badge_colour": "c7638f",
     "dependencies": [
         "Steamodded (>=1.0.0~BETA-0711a)",
