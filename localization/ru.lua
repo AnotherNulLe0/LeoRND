@@ -36,7 +36,7 @@ return {
             j_leornd_a_grade = {
                 name = 'Анархия',
 		        text = {
-                    "{C:inactive,s:0.7}мать порядка{}",
+                    "{C:inactive,s:0.85}— мать порядка{}",
 		        	"Получает {C:mult}+#1#{} множ.",
 		        	"когда итоговый счёт превышает",
 		        	"{C:attention}#3#x{} размер блайнда.",
@@ -52,7 +52,7 @@ return {
 					"Шанс увеличивается на {C:attention}#4#{}",
 					"с каждой рукой.",
 					"Шанс сбрасывается когда выдаётся множ.",
-					"{C:inactive,s:0.7}Случайные криты честные и сбалансированые{}"
+					"{C:inactive,s:0.85}Случайные криты честные и сбалансированые{}"
 				}
 			},
 			j_leornd_abszero = {
@@ -60,17 +60,17 @@ return {
 				text = {
 					"Даёт",
 					"{C:mult}+#1#{} множ.",
-					"{X:chips,C:white}x#2#{} фишек",
+					"{X:chips,C:white}X#2#{} фишек",
 					"если сыграть {C:attention}сет{}",
 					"с 1 неразыгранной картой",
-					"{C:inactive,s:0.7}\"Man\" is a four-letter word{}"
+					"{C:inactive,s:0.85}\"Man\" is a four-letter word{}"
 				}
 			},
 			j_leornd_placeholder = {
 				name = "placeholder",
 				text = {
-					"placeholder",
-					"{C:inactive}Случайные эффекты{}",
+					"Перезапуск всех",
+					"не {C:legendary}легендарных{} джокеров",
 				}
 			}
         }

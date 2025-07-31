@@ -58,7 +58,7 @@ return {
 				name = "Absolute zero",
 				text = {
 					"{C:mult}+#1#{} Mult",
-					"{X:chips,C:white}x#2#{} Chips",
+					"{X:chips,C:white}X#2#{} Chips",
 					"when playing a {C:attention}three of a kind{}",
 					"with 1 unscored card",
 					"{C:inactive,s:0.7}\"Man\" is a four-letter word{}"
@@ -67,8 +67,8 @@ return {
 			j_leornd_placeholder = {
 				name = "placeholder",
 				text = {
-					"placeholder",
-					"{C:inactive}Random effects{}",
+					"Retrigger every",
+					"non-{C:legendary}legendary{} joker",
 				}
 			}
         }
