@@ -1,14 +1,13 @@
 {
     "id": "leornd",
     "name": "The LeoRND",
-    "author": ["NulLe0", "Natrium HCO3"],
+    "author": ["NulLe0 (a.k.a. Natrium HCO3)"],
     "description": "Adds some fun and almost balanced jokers (with some reference)",
     "prefix": "leornd",
     "main_file": "LeoRandColl.lua",
     "badge_colour": "c7638f",
     "dependencies": [
-        "Steamodded (>=1.0.0~ALPHA-1225a)",
-        "Talisman (>=2.2.0~)"
+        "Steamodded (>=1.0.0~BETA-0711a)"
     ],
-    "version": "1.0.0"
+    "version": "0.1.0"
 }
