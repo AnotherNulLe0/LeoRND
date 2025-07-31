@@ -6,7 +6,7 @@ local joker = {
 		return { vars = {  } }
 	end,
 	rarity = 4,
-	atlas = 'leornd_j',
+	atlas = 'jokers',
 	pos = { x = 3, y = 0 },
 
 	blueprint_compat = true,

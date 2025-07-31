@@ -10,7 +10,7 @@ local joker = {
 		return { vars = {card.ability.extra.mult_modifier, card.ability.extra.mult, ante_scale_threshold()} }
 	end,
 	rarity = 1,
-	atlas = 'leornd_j',
+	atlas = 'jokers',
 	pos = { x = 1, y = 0 },
 
 	cost = 4,

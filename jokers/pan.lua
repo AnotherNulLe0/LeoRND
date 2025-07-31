@@ -13,7 +13,7 @@ local joker = {
 		}
 	end,
 	rarity = 2,
-	atlas = 'leornd_j',
+	atlas = 'jokers',
 	pos = { x = 0, y = 0 },
 
 	cost = 6,

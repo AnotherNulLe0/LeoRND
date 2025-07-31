@@ -56,7 +56,7 @@ return {
 				}
 			},
 			j_leornd_abszero = {
-				name = "Absolute zero",
+				name = "Абсолютный ноль",
 				text = {
 					"Даёт",
 					"{C:mult}+#1#{} множ.",
@@ -72,12 +72,33 @@ return {
 					"Перезапуск всех",
 					"не {C:legendary}легендарных{} джокеров",
 				}
+			},
+			j_leornd_sour = {
+				name = "Кислый камень",
+				text = {
+					"{C:inactive,s:0.9}(Stone sour){}",
+					"Накладывает на каждую разыгранную каменную карту",
+					"{C:attention}кислый{} стикер",
+				}
 			}
-        }
+        },
+		Other = {
+			leornd_sour = {
+				name = "Кислый",
+				text = {
+					"Уменьшает размер блайнда на {X:attention,C:white}X"..config.sour_sticker_reduce.."{}",
+					"от текущего размера блайнда",
+					"когда разыграна"
+				}
+			}
+		}
     },
 	misc = {
 		dictionary = {
 			k_broken = "Сломано!"
+		},
+		labels = {
+			leornd_sour = "Кислая"
 		}
 	}
 }

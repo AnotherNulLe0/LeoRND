@@ -1,13 +1,20 @@
 
 SMODS.Atlas {
-	key = "leornd_j",
+	key = "jokers",
 	path = "jokers.png",
 	px = 71,
 	py = 95
 }
 
-local config = SMODS.load_file("config.lua")()
+SMODS.Atlas {
+	key = "stickers",
+	path = "stickers.png",
+	px = 71,
+	py = 95
+}
+
 local jokers = config.jokers
+local stickers = config.stickers
 
 function event_destroy_card(card)
 	function wrap()
@@ -35,12 +42,12 @@ end
 
 for _, v in ipairs(jokers) do
 	local joker = SMODS.load_file("jokers/"..v..".lua")()
-	local joker_obj = SMODS.Joker(joker)
-	for k_, v_ in pairs(joker) do
-    if type(v_) == 'function' then
-      joker_obj[k_] = joker[k_]
-    end
-  end
+	SMODS.Joker(joker)
+end
+
+for _, v in ipairs(stickers) do
+	local sticker = SMODS.load_file("stickers/"..v..".lua")()
+	SMODS.Sticker(sticker)
 end
 
 SMODS.Sound({ key = "crit_hit", path = "crit_hit.ogg"})

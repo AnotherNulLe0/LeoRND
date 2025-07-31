@@ -5,7 +5,7 @@ local joker = {
 		return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain } }
 	end,
 	rarity = 3,
-	atlas = 'leornd_j',
+	atlas = 'jokers',
 	pos = { x = 2, y = 0 },
 
 	cost = 10,

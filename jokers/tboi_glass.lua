@@ -6,7 +6,7 @@ local joker = {
 		return { vars = { card.ability.extra.extra_card, card.ability.extra.chips_mult, card.ability.extra.mult, base, odds } }
 	end,
 	rarity = 2,
-	atlas = 'leornd_j',
+	atlas = 'jokers',
 	pos = { x = 0, y = 1 },
 
 	no_pool_flag = "tboiglass_destroyed",

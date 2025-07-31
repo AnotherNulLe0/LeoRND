@@ -70,12 +70,31 @@ return {
 					"Retrigger every",
 					"non-{C:legendary}legendary{} joker",
 				}
+			},
+			j_leornd_sour = {
+				name = "Stone sour",
+				text = {
+					"Gives every played stone card",
+					"a {C:attention}sour{} sticker",
+				}
 			}
-        }
+        },
+		Other = {
+			leornd_sour = {
+				name = "Sour",
+				text = {
+					"Reduces blind size by {X:attention,C:white}X"..config.sour_sticker_reduce.."{}",
+					"of blind when scored"
+				}
+			}
+		}
     },
 	misc = {
 		dictionary = {
 			k_broken = "Broken!"
+		},
+		labels = {
+			leornd_sour = "Sour"
 		}
 	}
 }
