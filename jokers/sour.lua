@@ -4,16 +4,33 @@ local joker = {
 		numetal = true, -- Stone sour can be considered nu-metal, so I'll add this flag to make Buffonery's mod maggit work with this joker
 		extra = {  } 
 	},
+	unlocked = false,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "leornd_sour", set = "Other" }
 		return { vars = {  } }
 	end,
-	rarity = 1,
+	rarity = 3,
 	atlas = 'jokers',
 	pos = { x = 3, y = 1 },
 	pixel_size = { h = 69 },
 
-	cost = 4,
+	cost = 8,
+
+	check_for_unlock = function (self, args)
+		if args.type == "hand_contents" then
+			local tally = 0
+            for j = 1, #args.cards do
+				print(args.cards[j].edition)
+                if SMODS.has_enhancement(args.cards[j], 'm_stone') and args.cards[j].edition then
+                    tally = tally + 1
+                    if tally == 5 then
+                        return true
+                    end
+                end
+            end
+			return false
+		end
+	end,
 
 	in_pool = function(self, args)
         for _, playing_card in ipairs(G.playing_cards or {}) do

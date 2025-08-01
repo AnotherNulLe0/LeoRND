@@ -4,9 +4,20 @@ local joker = {
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain } }
 	end,
+	locked_loc_vars = function(self, info_queue, card)
+        return { vars = { 10, G.PROFILES[G.SETTINGS.profile].career_stats.c_wins } }
+    end,
 	rarity = 3,
 	atlas = 'jokers',
 	pos = { x = 2, y = 0 },
+	unlocked = false,
+	
+	check_for_unlock = function (self, args)
+		if args.type == 'career_stat'then
+            return G.PROFILES[G.SETTINGS.profile].career_stats.c_wins >= 10
+        end
+	end,
+	
 
 	cost = 10,
 	blueprint_compat = true,

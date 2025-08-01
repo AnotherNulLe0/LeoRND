@@ -8,7 +8,11 @@ return {
 		        	"when boss blind",
 		        	"gets defeated",
 		        	"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)"
-		        }
+		        },
+				unlock = {
+					"Win #1# runs",
+					"{C:inactive}(#2#){}"
+				}
             },
             j_leornd_tboi_glass = {
                 name = '20/20',
@@ -31,7 +35,11 @@ return {
 		        	"{C:green}#3# in #4#{} chance this",
 		        	"card is destroyed",
 		        	"at end of round"
-		        }
+		        },
+				unlock = {
+					"Have at least half of your deck",
+                    "become {C:attention}glass{}",
+				}
             },
             j_leornd_a_grade = {
                 name = 'A+ grade',
@@ -75,6 +83,12 @@ return {
 				text = {
 					"Gives every played stone card",
 					"a {C:attention}sour{} sticker",
+				},
+				unlock = {
+					"Play a 5 card hand",
+                    "that contains only",
+                    "{C:enhanced,E:1}editioned{} stone cards",
+					"{C:inactive}(ex: 1 polychrome stone + 4 foil stones)"
 				}
 			},
 			j_leornd_dice = {
@@ -83,6 +97,10 @@ return {
 					"Halves all {C:attention}listed",
                     "{C:green,E:1,S:1.1}probabilities",
                     "{C:inactive}(ex: {C:green}2 in 3{C:inactive} -> {C:green}1 in 3{C:inactive})"
+				},
+				unlock = {
+					"Have 2 {C:attention}Oops! All 6s{}",
+                    "at the same time",
 				}
 			},
         },
