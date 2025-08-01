@@ -77,13 +77,21 @@ return {
 					"Gives every played stone card",
 					"a {C:attention}sour{} sticker",
 				}
-			}
+			},
+			j_leornd_dice = {
+				name = "Unfair dice",
+				text = {
+					"Halves all {C:attention}listed",
+                    "{C:green,E:1,S:1.1}probabilities",
+                    "{C:inactive}(ex: {C:green}2 in 3{C:inactive} -> {C:green}1 in 3{C:inactive})"
+				}
+			},
         },
 		Other = {
 			leornd_sour = {
 				name = "Sour",
 				text = {
-					"Reduces blind size by {X:attention,C:white}X"..config.sour_sticker_reduce.."{}",
+					"Reduces blind size by {X:attention,C:white}X"..LeoRND.config.sour_sticker_reduce.."{}",
 					"of blind when scored"
 				}
 			}

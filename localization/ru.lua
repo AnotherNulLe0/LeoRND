@@ -58,6 +58,7 @@ return {
 			j_leornd_abszero = {
 				name = "Абсолютный ноль",
 				text = {
+					"{C:inactive,s:0.85}(Absolute zero){}",
 					"Даёт",
 					"{C:mult}+#1#{} множ.",
 					"{X:chips,C:white}X#2#{} фишек",
@@ -76,17 +77,25 @@ return {
 			j_leornd_sour = {
 				name = "Кислый камень",
 				text = {
-					"{C:inactive,s:0.9}(Stone sour){}",
+					"{C:inactive,s:0.85}(Stone sour){}",
 					"Накладывает на каждую разыгранную каменную карту",
 					"{C:attention}кислый{} стикер",
 				}
-			}
+			},
+			j_leornd_dice = {
+				name = "Нечестная кость",
+				text = {
+					"Уменьшает все {C:attention}перечисленные",
+                    "{C:green,E:1,S:1.1}вероятности в {C:attention}2{} раза",
+                    "{C:inactive}(напр.: {C:green}2 из 3{C:inactive} -> {C:green}1 из 3{C:inactive})",
+				}
+			},
         },
 		Other = {
 			leornd_sour = {
 				name = "Кислый",
 				text = {
-					"Уменьшает размер блайнда на {X:attention,C:white}X"..config.sour_sticker_reduce.."{}",
+					"Уменьшает размер блайнда на {X:attention,C:white}X"..LeoRND.config.sour_sticker_reduce.."{}",
 					"от текущего размера блайнда",
 					"когда разыграна"
 				}
