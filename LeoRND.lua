@@ -18,10 +18,13 @@ SMODS.Atlas {
 
 
 -- Load jokers
-LeoRND.utils.load_content(LeoRND.config.jokers, "jokers", SMODS.Joker)
+LeoRND.utils.load_content(LeoRND.config.jokers, "items/jokers", SMODS.Joker)
 
 -- Load stickers
-LeoRND.utils.load_content(LeoRND.config.stickers, "stickers", SMODS.Sticker)
+LeoRND.utils.load_content(LeoRND.config.stickers, "items/stickers", SMODS.Sticker)
+
+-- Load consumables
+LeoRND.utils.load_content(LeoRND.config.consumables, "items/consumables", SMODS.Consumable)
 
 -- Load sounds
 SMODS.Sound({ key = "crit_hit", path = "crit_hit.ogg"})

@@ -8,7 +8,7 @@ local sticker = {
         if context.main_scoring and context.cardarea == G.play then
             G.E_MANAGER:add_event(
             Event({func = function()
-						G.GAME.blind.chips = math.floor(G.GAME.blind.chips - G.GAME.blind.chips * config.sour_sticker_reduce)
+						G.GAME.blind.chips = math.floor(G.GAME.blind.chips - G.GAME.blind.chips * LeoRND.config.sour_sticker_reduce)
 						G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 						G.FUNCS.blind_chip_UI_scale(G.hand_text_area.blind_chips)
 						G.HUD_blind:recalculate()
