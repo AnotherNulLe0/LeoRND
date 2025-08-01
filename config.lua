@@ -13,6 +13,9 @@ local config = {
 	stickers = {
 		"sour",
 	},
+	consumables = {
+		"sour_card"
+	},
 	sour_sticker_reduce = 0.1,
 }
 return config

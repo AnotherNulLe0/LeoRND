@@ -104,6 +104,16 @@ return {
 				}
 			},
         },
+		Spectral = {
+			c_leornd_sour_card = {
+				name = "Sour card",
+				text = {
+					"Add a {C:attention}sour{} sticker",
+					"up to {C:attention}#1#{} cards",
+					"in your hand"
+				}
+			}
+		},
 		Other = {
 			leornd_sour = {
 				name = "Sour",

@@ -108,6 +108,16 @@ return {
 				}
 			},
         },
+		Spectral = {
+			c_leornd_sour_card = {
+				name = "Кислая карта",
+				text = {
+					"Добавляет {C:attention}кислый{} стикер",
+					"до {C:attention}#1#{} выбранных карт",
+					"в вашей руке"
+				}
+			}
+		},
 		Other = {
 			leornd_sour = {
 				name = "Кислый",
