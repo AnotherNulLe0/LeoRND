@@ -1,6 +1,6 @@
 local joker = {
 	key = 'abszero',
-	config = { extra = { mult = 10, xchips = 2 } },
+	config = { extra = { mult = 20 } },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.mult, card.ability.extra.xchips } }
 	end,
@@ -14,7 +14,6 @@ local joker = {
 		if context.joker_main and #context.full_hand == 4 and next(context.poker_hands['Three of a Kind']) then
 			return {
 				mult = card.ability.extra.mult,
-				xchips = card.ability.extra.xchips,
 			}
 		end
 	end

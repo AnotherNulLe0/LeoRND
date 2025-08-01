@@ -58,7 +58,6 @@ return {
 				name = "Absolute zero",
 				text = {
 					"{C:mult}+#1#{} Mult",
-					"{X:chips,C:white}X#2#{} Chips",
 					"when playing a {C:attention}three of a kind{}",
 					"with 1 unscored card",
 					"{C:inactive,s:0.7}\"Man\" is a four-letter word{}"
