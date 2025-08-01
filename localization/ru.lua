@@ -61,7 +61,6 @@ return {
 					"{C:inactive,s:0.85}(Absolute zero){}",
 					"Даёт",
 					"{C:mult}+#1#{} множ.",
-					"{X:chips,C:white}X#2#{} фишек",
 					"если сыграть {C:attention}сет{}",
 					"с 1 неразыгранной картой",
 					"{C:inactive,s:0.85}\"Man\" is a four-letter word{}"
