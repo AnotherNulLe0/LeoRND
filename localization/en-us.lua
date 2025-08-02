@@ -119,7 +119,8 @@ return {
 				name = "Sour",
 				text = {
 					"Reduces blind size by {X:attention,C:white}X"..LeoRND.config.sour_sticker_reduce.."{}",
-					"of blind when scored"
+					"of blind when scored.",
+					"{C:chips}"..LeoRND.config.sour_sticker_chips.."{} chips when scored"
 				}
 			}
 		}

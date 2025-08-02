@@ -124,7 +124,8 @@ return {
 				text = {
 					"Уменьшает размер блайнда на {X:attention,C:white}X"..LeoRND.config.sour_sticker_reduce.."{}",
 					"от текущего размера блайнда",
-					"когда разыграна"
+					"когда разыграна.",
+					"{C:chips}"..LeoRND.config.sour_sticker_chips.."{} фишек когда разыграна"
 				}
 			}
 		}

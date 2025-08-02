@@ -16,6 +16,9 @@ local sticker = {
 						card:juice_up()
                 return true
             end}))
+            return {
+                chips = LeoRND.config.sour_sticker_chips
+            }
         end
     end
 }
