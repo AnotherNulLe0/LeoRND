@@ -9,12 +9,14 @@ local config = {
 		"pan",
 		"placeholder",
 		"unfair_dice",
+		"tree",
 	},
 	stickers = {
 		"sour",
 	},
 	consumables = {
-		"sour_card"
+		"sour_card",
+		"apple"
 	},
 	sour_sticker_reduce = 0.1,
 	sour_sticker_chips = -20

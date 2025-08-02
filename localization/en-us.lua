@@ -78,6 +78,17 @@ return {
 					"non-{C:legendary}legendary{} joker",
 				}
 			},
+			j_leornd_tree = {
+				name = "Tree",
+				text = {
+					"Spawns a random {C:attention}fruit{} card",
+					"at the start of each ante",
+					"{C:inactive}(must have room){}"
+				},
+				unlock = {
+					"Obtain a card with {C:attention}sour{} sticker"
+				}
+			},
 			j_leornd_sour = {
 				name = "Stone sour",
 				text = {
@@ -104,13 +115,20 @@ return {
 				}
 			},
         },
-		Spectral = {
+		Fruit = {
 			c_leornd_sour_card = {
-				name = "Sour card",
+				name = "Lemon",
 				text = {
 					"Add a {C:attention}sour{} sticker",
 					"up to {C:attention}#1#{} cards",
 					"in your hand"
+				}
+			},
+			c_leornd_apple_card = {
+				name = "Apple",
+				text = {
+					"Upgrades edition of {C:attention}1{} selected card",
+					"{C:inactive}(ex: foil -> holographic){}"
 				}
 			}
 		},

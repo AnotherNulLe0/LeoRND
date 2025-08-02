@@ -16,6 +16,18 @@ SMODS.Atlas {
 	py = 95
 }
 
+-- Register fruit cards
+SMODS.ConsumableType {
+	key = "Fruit",
+	primary_colour = 0,
+	secondary_colour = HEX '0000ff',
+	loc_txt = {
+		name = "Fruit",
+		collection = "Fruit"
+	},
+	shop_rate = 0
+}
+
 
 -- Load jokers
 LeoRND.utils.load_content(LeoRND.config.jokers, "items/jokers", SMODS.Joker)

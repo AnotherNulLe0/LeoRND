@@ -1,0 +1,70 @@
+local joker = {
+    key = 'tree',
+	config = { extra = { active = false } },
+	loc_vars = function(self, info_queue, card)
+		return { vars = {  } }
+	end,
+	rarity = 1,
+	atlas = 'jokers',
+	pos = { x = 1, y = 2 },
+
+	blueprint_compat = true,
+	unlocked = false,
+
+	cost = 4,
+
+	check_for_unlock = function (self, args)
+		if args.type == 'modify_deck' then
+            local count = 0
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if playing_card.ability and playing_card.ability.leornd_sour then
+					return true
+				end
+            end
+			return false
+        end
+	end,
+
+	calculate = function(self, card, context)
+		if context.beat_boss and context.game_over == false and not context.blueprint and not context.retrigger_joker and not context.repetition then
+			card.ability.extra.active = true
+		end
+		if context.ending_shop and card.ability.extra.active and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+			G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+			card.ability.extra.active = false
+			G.E_MANAGER :add_event(Event({
+				func = function ()
+					-- I stole this code from Balatro source, I really don't understand what it does but it works
+					-- (lines 2113-2121)
+					local _pool, _pool_key = get_current_pool("Fruit", nil, nil, nil)
+					local center = pseudorandom_element(_pool, pseudoseed(_pool_key))
+					local it = 1
+					while center == 'UNAVAILABLE' do
+						it = it + 1
+						center = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample'..it))
+					end
+
+					center = G.P_CENTERS[center]
+					-- ...stolen code ends
+
+					if center.set ~= "Fruit" then
+						print("Tree spawned something but a fruit")
+						return true
+					end
+
+					local new_card = create_card("Fruit", G.consumeables, nil, nil, nil, nil, nil, "leornd_c_sour_card")
+					new_card:add_to_deck()
+					G.consumeables:emplace(new_card)
+					if new_card.ability.set ~= "Fruit" then
+						print("What the fuck, why did the tree spawn something beside Fruit consumeable, even after the pool check thing")
+					end
+
+					G.GAME.consumeable_buffer = 0
+					return true
+				end
+			}))
+		end
+	end
+}
+
+return joker

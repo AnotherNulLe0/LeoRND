@@ -1,6 +1,6 @@
 local consumable = {
     key = "sour_card",
-    set = "Spectral",
+    set = "Fruit",
     config = { extra = {max_selection = 2} },
     loc_vars = function (self, info_queue)
         info_queue[#info_queue + 1] = { key = "leornd_sour", set = "Other" }

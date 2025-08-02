@@ -1,13 +1,8 @@
-local function ante_scale_threshold()
-	-- return (get_blind_amount((G.GAME.round_resets and G.GAME.round_resets.ante) or 1) or 300) / 100
-	return (G.GAME.round_resets.ante or 1) * 3
-end
-
 local joker = {
 	key = 'a_grade',
 	config = { extra = { mult_modifier = 5, mult = 0, threshold_mod = 2 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = {card.ability.extra.mult_modifier, card.ability.extra.mult, ante_scale_threshold()} }
+		return { vars = {card.ability.extra.mult_modifier, card.ability.extra.mult, card.ability.extra.threshold_mod } }
 	end,
 	rarity = 1,
 	atlas = 'jokers',
