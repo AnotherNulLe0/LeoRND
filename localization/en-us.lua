@@ -155,6 +155,17 @@ return {
 					},
 					{"{C:inactive}(#2# ante left){}"}
 				}
+			},
+			c_leornd_peach = {
+				name = "Peach",
+				text = {
+					{
+						"Does nothing",
+						"It's just tasty",
+						"and rots faster"
+					},
+					{"{C:inactive}(#2# ante left){}"}
+				}
 			}
 		},
 		Blind = {

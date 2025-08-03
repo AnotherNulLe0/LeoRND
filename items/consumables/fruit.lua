@@ -116,24 +116,14 @@ local orange = {
 local peach = {
     key = "peach",
     set = "Fruit",
-    config = { extra = { } },
+    config = { extra = { rot_modifier = -1 } },
     atlas = "fruit",
     pos = { x = 3, y = 0 },
     loc_vars = function (self, info_queue, card)
         return { vars = {count_fruit_themed_items(card)} }
     end,
     can_use = function (self, card)
-        return count_fruit_themed_items(card) > 0
-    end,
-    use = function (self, card, area, copier)
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.4,
-            func = function ()
-                ease_dollars(count_fruit_themed_items(card), true)
-                return true
-            end
-        }))
+        return false
     end
 }
 
@@ -145,7 +135,7 @@ local fruits = {
 }
 
 for _, fruit in ipairs(fruits) do
-    fruit.config.extra.ante_count = LeoRND.config.fruit_rot_time
+    fruit.config.extra.ante_count = LeoRND.config.fruit_rot_time + (fruit.config.extra.rot_modifier or 0)
     fruit.calculate = function (self, card, context)
         if context.end_of_round and context.game_over == false and context.beat_boss and not context.repetition then
 			card.ability.extra.ante_count = card.ability.extra.ante_count - 1
