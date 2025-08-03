@@ -161,7 +161,9 @@ return {
     },
 	misc = {
 		dictionary = {
-			k_broken = "Broken!"
+			k_broken = "Broken!",
+			k_fruit = "Fruit",
+			b_fruit_cards = "Fruit cards"
 		},
 		labels = {
 			leornd_sour = "Sour",

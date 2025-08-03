@@ -136,6 +136,15 @@ return {
 				}
 			}
 		},
+		Blind = {
+			bl_leornd_othala = {
+				name = "Одал",
+				text = {
+					"Сброшенные карты получают",
+					"стикер одержимости"
+				}
+			}
+		},
 		Other = {
 			leornd_sour = {
 				name = "Кислый",
@@ -145,15 +154,25 @@ return {
 					"когда разыграна.",
 					"{C:chips}"..LeoRND.config.sour_sticker_chips.."{} фишек когда разыграна"
 				}
-			}
+			},
+			leornd_possessed = {
+				name = "Одержимый",
+				text = {
+					"{X:mult,C:white}X"..LeoRND.config.possessed_mult_mod.."{} множ.",
+					"Уничтожается при сбросе",
+				}
+			},
 		}
     },
 	misc = {
 		dictionary = {
-			k_broken = "Сломано!"
+			k_broken = "Сломано!",
+			k_fruit = "Фрукт",
+			b_fruit_cards = "Фрукты"
 		},
 		labels = {
-			leornd_sour = "Кислая"
+			leornd_sour = "Кислая",
+			leornd_possessed = "Одержимая",
 		}
 	}
 }

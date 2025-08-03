@@ -2,6 +2,8 @@ local apple = {
     key = "apple",
     set = "Fruit",
     config = {  },
+    atlas = "fruit",
+    pos = { x = 0, y = 0 },
 
     can_use = function (self, card)
         if #G.jokers.highlighted >= 1 and #G.hand.highlighted >= 1 then
@@ -38,6 +40,8 @@ local lemon = {
     key = "lemon",
     set = "Fruit",
     config = { extra = {max_selection = 2} },
+    atlas = "fruit",
+    pos = { x = 1, y = 0 },
     loc_vars = function (self, info_queue)
         info_queue[#info_queue + 1] = { key = "leornd_sour", set = "Other" }
         return { vars = {self.config.extra.max_selection} }

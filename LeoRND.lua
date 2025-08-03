@@ -16,11 +16,18 @@ SMODS.Atlas {
 	py = 95
 }
 
+SMODS.Atlas {
+	key = "fruit",
+	path = "fruit.png",
+	px = 71,
+	py = 95
+}
+
 -- Register fruit cards
 SMODS.ConsumableType {
 	key = "Fruit",
 	primary_colour = 0,
-	secondary_colour = HEX '0000ff',
+	secondary_colour = HEX '9bf55b',
 	loc_txt = {
 		name = "Fruit",
 		collection = "Fruit"
