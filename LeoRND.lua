@@ -41,6 +41,10 @@ LeoRND.utils.load_content("items/stickers/stickers.lua", SMODS.Sticker)
 -- Load consumables
 LeoRND.utils.load_content("items/consumables/fruit.lua", SMODS.Consumable)
 
+-- Load blinds
+LeoRND.utils.load_content("items/blinds/non_final.lua", SMODS.Blind)
+
+
 -- Load sounds
 SMODS.Sound({ key = "crit_hit", path = "crit_hit.ogg"})
 

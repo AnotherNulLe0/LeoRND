@@ -132,6 +132,15 @@ return {
 				}
 			}
 		},
+		Blind = {
+			bl_leornd_othala = {
+				name = "Othala",
+				text = {
+					"Discarded cards gain",
+					"possessed sticker"
+				}
+			}
+		},
 		Other = {
 			leornd_sour = {
 				name = "Sour",
@@ -140,7 +149,14 @@ return {
 					"of blind when scored.",
 					"{C:chips}"..LeoRND.config.sour_sticker_chips.."{} chips when scored"
 				}
-			}
+			},
+			leornd_possessed = {
+				name = "Possessed",
+				text = {
+					"{X:mult,C:white}X"..LeoRND.config.possessed_mult_mod.."{} mult when scored",
+					"Destroyed when discarded",
+				}
+			},
 		}
     },
 	misc = {
@@ -148,7 +164,8 @@ return {
 			k_broken = "Broken!"
 		},
 		labels = {
-			leornd_sour = "Sour"
+			leornd_sour = "Sour",
+			leornd_possessed = "Possessed",
 		}
 	}
 }
