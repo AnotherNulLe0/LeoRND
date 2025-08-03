@@ -130,6 +130,16 @@ return {
 					"Upgrades edition of {C:attention}1{} selected card",
 					"{C:inactive}(ex: foil -> holographic){}"
 				}
+			},
+			c_leornd_orange = {
+				name = "Orange",
+				text = {
+					"Gives {C:money}1${} for each",
+					"fruit-themed card or joker",
+					"{C:inactive}(currently {C:money}#1#${C:inactive}){}",
+					"{C:inactive,s:0.7}You're not Alexander.{}",
+					"{C:inactive,s:0.5}This is a reference to a reference{}"
+				}
 			}
 		},
 		Blind = {

@@ -50,7 +50,10 @@ local abszero = {
 
 local tree = {
     key = 'tree',
-	config = { extra = { active = false } },
+	config = {
+		fruit_themed = true,
+		extra = { active = false }
+	},
 	loc_vars = function(self, info_queue, card)
 		return { vars = {  } }
 	end,
