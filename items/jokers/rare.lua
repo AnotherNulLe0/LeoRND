@@ -88,7 +88,7 @@ local sour_glass = {
 			if SMODS.pseudorandom_probability(card, 'sour_glass', 1, card.ability.extra.odds, 'leornd_j_sour_glass')then
 				-- This part plays the animation.
 				G.E_MANAGER:add_event(Event({
-					func = utils.event_destroy_card(card)
+					func = LeoRND.utils.event_destroy_card(card)
 				}))
 				return {
 					message = localize("k_broken")

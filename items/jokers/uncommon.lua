@@ -89,7 +89,7 @@ local tboi_glass = {
 		if context.end_of_round and not context.repetition and not context.retrigger_joker and context.game_over == false and not context.blueprint then
 			if SMODS.pseudorandom_probability(card, 'tboi_glass', 1, card.ability.extra.odds, 'leornd_j_tboi_glass') then
 				G.E_MANAGER:add_event(Event({
-					func = utils.event_destroy_card(card)
+					func = LeoRND.utils.event_destroy_card(card)
 				}))
 				G.GAME.pool_flags.tboiglass_destroyed = true
 				return {
