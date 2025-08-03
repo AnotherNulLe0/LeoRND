@@ -1,4 +1,4 @@
-local sticker = {
+local sour = {
     key = "sour",
     badge_colour = HEX '272e38',
     pos = { x = 0, y = 0 },
@@ -23,4 +23,6 @@ local sticker = {
     end
 }
 
-return sticker
+return {
+    sour
+}

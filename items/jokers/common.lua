@@ -1,4 +1,54 @@
-local joker = {
+local a_grade = {
+	key = 'a_grade',
+	config = { extra = { mult_modifier = 5, mult = 0, threshold_mod = 2 } },
+	loc_vars = function(self, info_queue, card)
+		return { vars = {card.ability.extra.mult_modifier, card.ability.extra.mult, card.ability.extra.threshold_mod } }
+	end,
+	rarity = 1,
+	atlas = 'jokers',
+	pos = { x = 1, y = 0 },
+
+	cost = 4,
+	blueprint_compat = true,
+
+	calculate = function(self, card, context)
+		if context.end_of_round and context.game_over == false and not context.blueprint and not context.repetition and not context.retrigger_joker and G.GAME.chips > G.GAME.blind.chips * (G.GAME.round_resets.ante or 1) * card.ability.extra.threshold_mod then
+			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_modifier
+			return {
+				message = localize("k_upgrade_ex")
+			}
+		end
+
+		if context.joker_main then
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
+	end
+}
+
+local abszero = {
+	key = 'abszero',
+	config = { extra = { mult = 20 } },
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.mult, card.ability.extra.xchips } }
+	end,
+	rarity = 1,
+	atlas = 'jokers',
+	pos = { x = 2, y = 1 },
+
+	cost = 4,
+
+	calculate = function(self, card, context)
+		if context.joker_main and #context.full_hand == 4 and next(context.poker_hands['Three of a Kind']) then
+			return {
+				mult = card.ability.extra.mult,
+			}
+		end
+	end
+}
+
+local tree = {
     key = 'tree',
 	config = { extra = { active = false } },
 	loc_vars = function(self, info_queue, card)
@@ -67,4 +117,8 @@ local joker = {
 	end
 }
 
-return joker
+return {
+    a_grade,
+    abszero,
+    tree
+}

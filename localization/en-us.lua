@@ -116,7 +116,7 @@ return {
 			},
         },
 		Fruit = {
-			c_leornd_sour_card = {
+			c_leornd_lemon = {
 				name = "Lemon",
 				text = {
 					"Add a {C:attention}sour{} sticker",
@@ -124,7 +124,7 @@ return {
 					"in your hand"
 				}
 			},
-			c_leornd_apple_card = {
+			c_leornd_apple = {
 				name = "Apple",
 				text = {
 					"Upgrades edition of {C:attention}1{} selected card",

@@ -120,7 +120,7 @@ return {
 			},
         },
 		Fruit = {
-			c_leornd_sour_card = {
+			c_leornd_lemon = {
 				name = "Лимон",
 				text = {
 					"Добавляет {C:attention}кислый{} стикер",
@@ -128,7 +128,7 @@ return {
 					"в вашей руке"
 				}
 			},
-			c_leornd_apple_card = {
+			c_leornd_apple = {
 				name = "Яблоко",
 				text = {
 					"Улучшает выпуск {C:attention}1{} выбранной карты",

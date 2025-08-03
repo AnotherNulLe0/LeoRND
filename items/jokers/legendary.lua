@@ -1,5 +1,4 @@
--- Does random shit in your run
-local joker = {
+local placeholder = {
 	key = 'placeholder',
 	config = {  },
 	loc_vars = function(self, info_queue, card)
@@ -24,4 +23,6 @@ local joker = {
 	end
 }
 
-return joker
+return {
+    placeholder
+}

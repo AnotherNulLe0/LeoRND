@@ -30,13 +30,16 @@ SMODS.ConsumableType {
 
 
 -- Load jokers
-LeoRND.utils.load_content(LeoRND.config.jokers, "items/jokers", SMODS.Joker)
+LeoRND.utils.load_content("items/jokers/common.lua", SMODS.Joker)
+LeoRND.utils.load_content("items/jokers/uncommon.lua", SMODS.Joker)
+LeoRND.utils.load_content("items/jokers/rare.lua", SMODS.Joker)
+LeoRND.utils.load_content("items/jokers/legendary.lua", SMODS.Joker)
 
 -- Load stickers
-LeoRND.utils.load_content(LeoRND.config.stickers, "items/stickers", SMODS.Sticker)
+LeoRND.utils.load_content("items/stickers/stickers.lua", SMODS.Sticker)
 
 -- Load consumables
-LeoRND.utils.load_content(LeoRND.config.consumables, "items/consumables", SMODS.Consumable)
+LeoRND.utils.load_content("items/consumables/fruit.lua", SMODS.Consumable)
 
 -- Load sounds
 SMODS.Sound({ key = "crit_hit", path = "crit_hit.ogg"})

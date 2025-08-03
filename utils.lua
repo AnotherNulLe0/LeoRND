@@ -22,16 +22,28 @@ local utils = {
     	end
     	return wrap
     end,
-	load_content = function (load_list, path, reg_function)
-		for _, v in ipairs(load_list) do
-			local cur_directory = path.."/"..v..".lua"
-			local obj = SMODS.load_file(cur_directory)
-			if not obj then
-				print("LeoRND: unable to load "..cur_directory)
-			else
-				reg_function(obj())
-			end
+	load_content = function (path, reg_function)
+		local objects = SMODS.load_file(path)()
+		for _, v in ipairs(objects) do
+			reg_function(v)
 		end
+	end,
+	find_next_edition = function(card)
+    	-- Find index of selected card's edition 
+    	local edition_index = 1
+    	for i, v in ipairs(G.P_CENTER_POOLS.Edition) do
+    	    if card.edition and v.key == card.edition.key then
+    	        edition_index = i
+    	    end
+    	end
+
+    	if edition_index + 1 > #G.P_CENTER_POOLS.Edition then
+    	    return nil
+    	end
+
+    	-- Find next edition in collection
+    	local next_edition = G.P_CENTER_POOLS.Edition[edition_index + 1]
+    	return next_edition.key
 	end
 }
 return utils
