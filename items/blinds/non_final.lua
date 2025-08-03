@@ -7,7 +7,8 @@ local othala = {
 				card.ability.leornd_possessed = true
 			end
         end
-    end
+    end,
+    boss_colour = HEX '56789A'
 }
 
 return {
