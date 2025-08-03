@@ -35,6 +35,22 @@ SMODS.ConsumableType {
 	shop_rate = 0
 }
 
+-- Register fruit-themed pool
+SMODS.ObjectType {
+	key = "FruitPool",
+	default = "j_gros_michel",
+	cards = {
+		-- Fruit jokers
+		["j_gros_michel"] = true,
+		["j_cavendish"] = true,
+		["j_leornd_tree"] = true,
+		-- Fruit cards
+		["c_leornd_lemon"] = true,
+		["c_leornd_apple"] = true,
+		["c_leornd_orange"] = true,
+		["c_leornd_peach"] = true,
+	}
+}
 
 -- Load jokers
 LeoRND.utils.load_content("items/jokers/common.lua", SMODS.Joker)

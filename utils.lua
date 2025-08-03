@@ -44,6 +44,17 @@ local utils = {
     	-- Find next edition in collection
     	local next_edition = G.P_CENTER_POOLS.Edition[edition_index + 1]
     	return next_edition.key
+	end,
+	is_in_pool = function (card, pool_name)
+		if not card.config.center.pools then
+			return false
+		end
+		for k, v in pairs(card.config.center.pools) do
+			if k == pool_name then
+				return true
+			end
+		end
+		return false
 	end
 }
 return utils

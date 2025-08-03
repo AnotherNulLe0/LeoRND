@@ -51,7 +51,6 @@ local abszero = {
 local tree = {
     key = 'tree',
 	config = {
-		fruit_themed = true,
 		extra = { active = false }
 	},
 	loc_vars = function(self, info_queue, card)
@@ -101,7 +100,6 @@ local tree = {
 					-- ...stolen code ends
 
 					if center.set ~= "Fruit" then
-						print("Tree spawned something but a fruit")
 						return true
 					end
 

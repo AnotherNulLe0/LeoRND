@@ -81,11 +81,7 @@ local function count_fruit_themed_items(except)
 
     -- Find fruit-themed jokers
     for _, v in ipairs(G.jokers.cards) do
-        if v.ability.fruit_themed or 
-        -- I have to find another way to do this, but I just can't
-        -- so I'll hardcode this
-        v.config.center_key == "j_gros_michel" or 
-        v.config.center_key == "j_cavendish" then
+        if v.ability.fruit_themed or LeoRND.utils.is_in_pool(v, "FruitPool") then
             counter = counter + 1
         end
     end
