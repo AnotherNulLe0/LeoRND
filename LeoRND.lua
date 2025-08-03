@@ -27,7 +27,7 @@ SMODS.Atlas {
 SMODS.ConsumableType {
 	key = "Fruit",
 	primary_colour = 0,
-	secondary_colour = HEX '9bf55b',
+	secondary_colour = HEX '6CA147',
 	loc_txt = {
 		name = "Fruit",
 		collection = "Fruit"
