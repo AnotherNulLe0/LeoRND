@@ -81,9 +81,15 @@ return {
 			j_leornd_tree = {
 				name = "Tree",
 				text = {
-					"Spawns a random {C:attention}fruit{} card",
-					"at the start of each ante",
-					"{C:inactive}(must have room){}"
+					{
+						"Spawns a random {C:attention}fruit{} card",
+						"at the start of each ante",
+						"{C:inactive}(must have room){}"
+					},
+					{
+						"Fruit cards {C:attention}rot{} after #1# antes",
+						"so you should use them before they are gone"
+					}
 				},
 				unlock = {
 					"Obtain a card with {C:attention}sour{} sticker"
@@ -119,26 +125,35 @@ return {
 			c_leornd_lemon = {
 				name = "Lemon",
 				text = {
-					"Add a {C:attention}sour{} sticker",
-					"up to {C:attention}#1#{} cards",
-					"in your hand"
+					{
+						"Add a {C:attention}sour{} sticker",
+						"up to {C:attention}#1#{} cards",
+						"in your hand",
+					},
+					{"{C:inactive}(#2# ante left){}"}
 				}
 			},
 			c_leornd_apple = {
 				name = "Apple",
 				text = {
-					"Upgrades edition of {C:attention}1{} selected card",
-					"{C:inactive}(ex: foil -> holographic){}"
+					{
+						"Upgrades edition of {C:attention}1{} selected card",
+						"{C:inactive}(ex: foil -> holographic){}",
+					},
+					{"{C:inactive}(#1# ante left){}"}
 				}
 			},
 			c_leornd_orange = {
 				name = "Orange",
 				text = {
-					"Gives {C:money}1${} for each",
-					"fruit-themed card or joker",
-					"{C:inactive}(currently {C:money}#1#${C:inactive}){}",
-					"{C:inactive,s:0.7}You're not Alexander.{}",
-					"{C:inactive,s:0.5}This is a reference to a reference{}"
+					{
+						"Gives {C:money}1${} for each",
+						"fruit-themed card or joker",
+						"{C:inactive}(currently {C:money}#1#${C:inactive}){}",
+						"{C:inactive,s:0.7}You're not Alexander.{}",
+						"{C:inactive,s:0.5}This is a reference to a reference{}",
+					},
+					{"{C:inactive}(#2# ante left){}"}
 				}
 			}
 		},
@@ -172,6 +187,7 @@ return {
 	misc = {
 		dictionary = {
 			k_broken = "Broken!",
+			k_rotten = "Rotten!",
 			k_fruit = "Fruit",
 			b_fruit_cards = "Fruit cards"
 		},

@@ -54,7 +54,7 @@ local tree = {
 		extra = { active = false }
 	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = {  } }
+		return { vars = { LeoRND.config.fruit_rot_time } }
 	end,
 	rarity = 1,
 	atlas = 'jokers',

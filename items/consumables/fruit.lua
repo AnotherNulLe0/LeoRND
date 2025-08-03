@@ -1,7 +1,7 @@
 local apple = {
     key = "apple",
     set = "Fruit",
-    config = {  },
+    config = { extra = {} },
     atlas = "fruit",
     pos = { x = 0, y = 0 },
 
@@ -42,7 +42,7 @@ local lemon = {
     config = { extra = {max_selection = 2} },
     atlas = "fruit",
     pos = { x = 1, y = 0 },
-    loc_vars = function (self, info_queue)
+    loc_vars = function (self, info_queue, card)
         info_queue[#info_queue + 1] = { key = "leornd_sour", set = "Other" }
         return { vars = {self.config.extra.max_selection} }
     end,
@@ -113,8 +113,67 @@ local orange = {
     end
 }
 
-return {
+local peach = {
+    key = "peach",
+    set = "Fruit",
+    config = { extra = { } },
+    atlas = "fruit",
+    pos = { x = 3, y = 0 },
+    loc_vars = function (self, info_queue, card)
+        return { vars = {count_fruit_themed_items(card)} }
+    end,
+    can_use = function (self, card)
+        return count_fruit_themed_items(card) > 0
+    end,
+    use = function (self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.4,
+            func = function ()
+                ease_dollars(count_fruit_themed_items(card), true)
+                return true
+            end
+        }))
+    end
+}
+
+local fruits = {
     apple,
     lemon,
-    orange
+    orange,
+    peach
 }
+
+for _, fruit in ipairs(fruits) do
+    fruit.config.extra.ante_count = LeoRND.config.fruit_rot_time
+    fruit.calculate = function (self, card, context)
+        if context.end_of_round and context.game_over == false and context.beat_boss and not context.repetition then
+			card.ability.extra.ante_count = card.ability.extra.ante_count - 1
+            if card.ability.extra.ante_count <= 0 then
+                G.E_MANAGER:add_event(Event({
+                    func = LeoRND.utils.event_destroy_card(card)
+                }))
+                return {
+                    message = localize("k_rotten"),
+                    remove_default_message = true
+                }
+            end
+            return {
+                message = "-1",
+                remove_default_message = true
+            }
+		end
+    end
+    local loc_vars_ref = (fruit.loc_vars or 
+        function ()
+            return {vars={}}
+        end
+    )
+    fruit.loc_vars = function (self, info_queue, card)
+        local result_table = loc_vars_ref(self, info_queue, card)
+        table.insert(result_table.vars, card.ability.extra.ante_count)
+        return result_table
+    end
+end
+
+return fruits
