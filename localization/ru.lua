@@ -196,7 +196,7 @@ return {
 				name = "Одержимый",
 				text = {
 					"{X:mult,C:white}X"..LeoRND.config.possessed_mult_mod.."{} множ.",
-					"Уничтожается при сбросе",
+					"При сбросе возвращается обратно в руку",
 				}
 			},
 		}

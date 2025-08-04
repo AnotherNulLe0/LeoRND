@@ -190,7 +190,7 @@ return {
 				name = "Possessed",
 				text = {
 					"{X:mult,C:white}X"..LeoRND.config.possessed_mult_mod.."{} mult when scored",
-					"Destroyed when discarded",
+					"Returns to hand when discarded",
 				}
 			},
 		}

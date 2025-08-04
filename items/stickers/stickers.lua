@@ -35,11 +35,16 @@ local possessed = {
                 xmult = LeoRND.config.possessed_mult_mod
             }
         end
-        if context.hand_drawn then
-            card.ability.possessed_can_destroy = true
+        if not context.discard then
+            card.ability.possessed_active = true
         end
-        if context.discard and card.ability.possessed_can_destroy and context.other_card == card then
-            card:start_dissolve()
+        if context.discard and card.ability.possessed_active and context.other_card == card then
+            G.E_MANAGER:add_event(Event({
+                func = function ()
+                    draw_card(G.discard, G.hand, nil, 'up', true, card, nil, nil, true)
+                    return true
+                end
+            }))
         end
     end
 }
