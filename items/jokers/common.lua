@@ -1,8 +1,13 @@
+-- It became a way too complicated to save these values in joker config
+local function a_grade_scaling(card)
+	return 2 + math.floor((1.4 * (G.GAME.round_resets.ante or 1) * (G.GAME.round_resets.ante or 1))/ 8)
+end
+
 local a_grade = {
 	key = 'a_grade',
-	config = { extra = { mult_modifier = 5, mult = 0, threshold_mod = 2 } },
+	config = { extra = { mult_modifier = 5, mult = 0 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = {card.ability.extra.mult_modifier, card.ability.extra.mult, card.ability.extra.threshold_mod } }
+		return { vars = {card.ability.extra.mult_modifier, card.ability.extra.mult, a_grade_scaling(card)} }
 	end,
 	rarity = 1,
 	atlas = 'jokers',
@@ -12,7 +17,7 @@ local a_grade = {
 	blueprint_compat = true,
 
 	calculate = function(self, card, context)
-		if context.end_of_round and context.game_over == false and not context.blueprint and not context.repetition and not context.retrigger_joker and G.GAME.chips > G.GAME.blind.chips * (G.GAME.round_resets.ante or 1) * card.ability.extra.threshold_mod then
+		if context.end_of_round and context.game_over == false and not context.blueprint and not context.repetition and not context.retrigger_joker and G.GAME.chips > G.GAME.blind.chips * a_grade_scaling(card) then
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_modifier
 			return {
 				message = localize("k_upgrade_ex")
