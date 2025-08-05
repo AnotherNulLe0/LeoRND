@@ -32,7 +32,7 @@ SMODS.ConsumableType {
 		name = "Fruit",
 		collection = "Fruit"
 	},
-	shop_rate = 0
+	shop_rate = G.PROFILES[G.SETTINGS.profile].leornd_fruity and LeoRND.config.fruit_rate or 0
 }
 
 -- Register fruit-themed pool

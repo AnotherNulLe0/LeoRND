@@ -83,6 +83,10 @@ local tree = {
 	end,
 
 	calculate = function(self, card, context)
+		if not G.PROFILES[G.SETTINGS.profile].leornd_fruity then
+			G.GAME.fruit_rate = LeoRND.config.fruit_rate
+			G.PROFILES[G.SETTINGS.profile].leornd_fruity = true
+		end
 		if context.beat_boss and context.game_over == false and not context.blueprint and not context.retrigger_joker and not context.repetition then
 			card.ability.extra.active = true
 		end

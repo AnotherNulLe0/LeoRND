@@ -164,6 +164,12 @@ for _, fruit in ipairs(fruits) do
         table.insert(result_table.vars, card.ability.extra.ante_count)
         return result_table
     end
+
+    local in_pool_ref = fruit.in_pool
+    fruit.in_pool = function (self, args)
+        local condition = G.PROFILES[G.SETTINGS.profile].leornd_fruity
+        return (in_pool_ref and in_pool_ref(self, args) or true) and condition
+    end
 end
 
 return fruits
