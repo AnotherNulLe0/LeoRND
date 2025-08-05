@@ -76,7 +76,10 @@ return {
 				text = {
 					"Retrigger every",
 					"non-{C:legendary}legendary{} joker",
-				}
+				},
+                unlock={
+                    "{E:1,s:1.3}?????",
+                },
 			},
 			j_leornd_tree = {
 				name = "Tree",
