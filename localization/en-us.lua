@@ -26,10 +26,8 @@ return {
 		        	"at end of round"
 		        },
 				unlock = {
-					"Play a 5 card hand",
-                    "that contains only",
-                    "{C:enhanced,E:1}editioned{} stone cards",
-					"{C:inactive}(ex: 1 polychrome stone + 4 foil stones)"
+					"Have at least half of your deck",
+                    "become {C:attention}glass{}",
 		        }
             },
             j_leornd_sour_glass = {
@@ -41,10 +39,6 @@ return {
 		        	"{C:green}#3# in #4#{} chance this",
 		        	"card is destroyed",
 		        	"at end of round"
-		        },
-				unlock = {
-					"Have at least half of your deck",
-                    "become {C:attention}glass{}",
 				}
             },
             j_leornd_a_grade = {
@@ -106,6 +100,12 @@ return {
 				text = {
 					"Gives every played stone card",
 					"a {C:attention}sour{} sticker",
+				},
+				unlock = {
+					"Play a 5 card hand",
+                    "that contains only",
+                    "{C:enhanced,E:1}editioned{} stone cards",
+					"{C:inactive}(ex: 1 polychrome stone + 4 foil stones)"
 				}
 			},
 			j_leornd_dice = {
