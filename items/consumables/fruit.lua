@@ -127,6 +127,104 @@ local peach = {
     end
 }
 
+local pear = {
+    key = "pear",
+    set = "Fruit",
+    config = { extra = { } },
+    atlas = "fruit",
+    pos = { x = 0, y = 1 },
+    loc_vars = function (self, info_queue, card)
+        return { vars = { } }
+    end,
+    can_use = function (self, card)
+        return false
+    end,
+    use = function (self, card, area, copier)
+        
+    end
+}
+
+local coconut = {
+    key = "coconut",
+    set = "Fruit",
+    config = { extra = { additional_slots = 2 } },
+    atlas = "fruit",
+    pos = { x = 0, y = 2 },
+    no_pool_flag = "coconut_used",
+    loc_vars = function (self, info_queue, card)
+        return { vars = { card.ability.extra.additional_slots } }
+    end,
+    can_use = function (self, card)
+        return true
+    end,
+    calculate = function (self, card, context)
+        if context.card_added then
+            G.GAME.pool_flags.coconut_used = true
+        end
+    end,
+    use = function (self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            func = function ()
+                G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.additional_slots
+            end
+        }))
+        -- G.GAME.pool_flags.coconut_used = true
+    end
+}
+
+local cracked_coconut = {
+    key = "cracked_coconut",
+    set = "Fruit",
+    config = { extra = { rot_reduce = 1.5 } },
+    atlas = "fruit",
+    pos = { x = 1, y = 2 },
+    yes_pool_flag = "coconut_used",
+    no_collection = true,
+    loc_vars = function (self, info_queue, card)
+        return { vars = { card.ability.extra.rot_reduce } }
+    end,
+    can_use = function (self, card)
+        return true
+    end,
+    use = function (self, card, area, copier)
+        G.GAME.fruit_rot_time = G.GAME.fruit_rot_time * card.ability.extra.rot_reduce
+    end
+}
+
+local cherry = {
+    key = "cherry",
+    set = "Fruit",
+    config = { extra = { } },
+    atlas = "fruit",
+    pos = { x = 2, y = 1 },
+    loc_vars = function (self, info_queue, card)
+        return { vars = { } }
+    end,
+    can_use = function (self, card)
+        return false
+    end,
+    use = function (self, card, area, copier)
+        
+    end
+}
+
+local watermelon = {
+    key = "watermelon",
+    set = "Fruit",
+    config = { extra = { } },
+    atlas = "fruit",
+    pos = { x = 3, y = 1 },
+    loc_vars = function (self, info_queue, card)
+        return { vars = { } }
+    end,
+    can_use = function (self, card)
+        return false
+    end,
+    use = function (self, card, area, copier)
+        
+    end
+}
+
 local fruits = {
     apple,
     lemon,

@@ -49,6 +49,10 @@ SMODS.ObjectType {
 		["c_leornd_apple"] = true,
 		["c_leornd_orange"] = true,
 		["c_leornd_peach"] = true,
+		["c_leornd_pear"] = true,
+		["c_leornd_coconut"] = true,
+		["c_leornd_cherry"] = true,
+		["c_leornd_watermelon"] = true,
 	}
 }
 

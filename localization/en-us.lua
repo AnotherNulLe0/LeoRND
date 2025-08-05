@@ -28,7 +28,7 @@ return {
 				unlock = {
 					"Have at least half of your deck",
                     "become {C:attention}glass{}",
-		        }
+				}
             },
             j_leornd_sour_glass = {
                 name = '30/30-150',
@@ -39,7 +39,7 @@ return {
 		        	"{C:green}#3# in #4#{} chance this",
 		        	"card is destroyed",
 		        	"at end of round"
-				}
+		        }
             },
             j_leornd_a_grade = {
                 name = 'A+ grade',
@@ -167,7 +167,60 @@ return {
 						"It's just tasty",
 						"and rots faster"
 					},
+					{"{C:inactive}(#1# ante left){}"}
+				}
+			},
+			c_leornd_pear = {
+				name = "Pear",
+				text = {
+					{
+						"Does nothing",
+						"It's just tasty",
+						"and rots faster"
+					},
+					{"{C:inactive}(#1# ante left){}"}
+				}
+			},
+			c_leornd_coconut = {
+				name = "Coconut",
+				text = {
+					{
+						"{C:dark_edition}+#1#{} consumable slots",
+						"{C:red}Cannot appear twice in a run{}"
+					},
 					{"{C:inactive}(#2# ante left){}"}
+				}
+			},
+			c_leornd_cracked_coconut = {
+				name = "Cracked coconut",
+				text = {
+					{
+						"Slows fruit rotting",
+						"{C:inactive}({C:attention}#1#X{C:inactive} slower){}",
+					},
+					{"{C:inactive}(#2# ante left){}"}
+				}
+			},
+			c_leornd_cherry = {
+				name = "Cherry",
+				text = {
+					{
+						"Does nothing",
+						"It's just tasty",
+						"and rots faster"
+					},
+					{"{C:inactive}(#1# ante left){}"}
+				}
+			},
+			c_leornd_watermelon = {
+				name = "Watermelon",
+				text = {
+					{
+						"Does nothing",
+						"It's just tasty",
+						"and rots faster"
+					},
+					{"{C:inactive}(#1# ante left){}"}
 				}
 			}
 		},
