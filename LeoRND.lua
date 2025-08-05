@@ -71,6 +71,9 @@ LeoRND.utils.load_content("items/consumables/fruit.lua", SMODS.Consumable)
 -- Load blinds
 LeoRND.utils.load_content("items/blinds/non_final.lua", SMODS.Blind)
 
+-- Load editions
+LeoRND.utils.load_content("items/editions.lua", SMODS.Edition)
+
 
 -- Load sounds
 SMODS.Sound({ key = "crit_hit", path = "crit_hit.ogg"})
