@@ -63,7 +63,7 @@ LeoRND.utils.load_content("items/jokers/rare.lua", SMODS.Joker)
 LeoRND.utils.load_content("items/jokers/legendary.lua", SMODS.Joker)
 
 -- Load stickers
-LeoRND.utils.load_content("items/stickers/stickers.lua", SMODS.Sticker)
+LeoRND.utils.load_content("items/stickers.lua", SMODS.Sticker)
 
 -- Load consumables
 LeoRND.utils.load_content("items/consumables/fruit.lua", SMODS.Consumable)
