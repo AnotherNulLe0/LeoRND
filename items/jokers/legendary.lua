@@ -7,6 +7,7 @@ local placeholder = {
 	rarity = 4,
 	atlas = 'jokers',
 	pos = { x = 3, y = 0 },
+	unlocked = false,
 
 	blueprint_compat = true,
 
