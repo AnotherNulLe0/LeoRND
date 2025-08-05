@@ -49,24 +49,11 @@ local sour_glass = {
 	rarity = 3,
 	atlas = 'jokers',
 	pos = { x = 1, y = 1 },
-	unlocked = false,
 
 	yes_pool_flag = "tboiglass_destroyed",
 	eternal_compat = false,
 	blueprint_compat = true,
 	cost = 8,
-
-	check_for_unlock = function (self, args)
-		if args.type == 'modify_deck' then
-            local count = 0
-            for _, playing_card in ipairs(G.playing_cards or {}) do
-                if SMODS.has_enhancement(playing_card, 'm_glass') then count = count + 1 end
-                if count >= #G.playing_cards / 2 then
-                    return true
-                end
-            end
-        end
-	end,
 
 	calculate = function(self, card, context)
 		if context.open_booster then

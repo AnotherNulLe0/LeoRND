@@ -24,6 +24,12 @@ return {
 		        	"{C:green}#4# in #5#{} chance this",
 		        	"card is destroyed",
 		        	"at end of round"
+		        },
+				unlock = {
+					"Play a 5 card hand",
+                    "that contains only",
+                    "{C:enhanced,E:1}editioned{} stone cards",
+					"{C:inactive}(ex: 1 polychrome stone + 4 foil stones)"
 		        }
             },
             j_leornd_sour_glass = {
@@ -100,12 +106,6 @@ return {
 				text = {
 					"Gives every played stone card",
 					"a {C:attention}sour{} sticker",
-				},
-				unlock = {
-					"Play a 5 card hand",
-                    "that contains only",
-                    "{C:enhanced,E:1}editioned{} stone cards",
-					"{C:inactive}(ex: 1 polychrome stone + 4 foil stones)"
 				}
 			},
 			j_leornd_dice = {
