@@ -44,10 +44,10 @@ local lemon = {
     pos = { x = 1, y = 0 },
     loc_vars = function (self, info_queue, card)
         info_queue[#info_queue + 1] = { key = "leornd_sour", set = "Other" }
-        return { vars = {self.config.extra.max_selection} }
+        return { vars = {card.ability.extra.max_selection} }
     end,
     can_use = function (self, card)
-        return #G.hand.highlighted >= 1 and #G.hand.highlighted <= self.config.extra.max_selection
+        return #G.hand.highlighted >= 1 and #G.hand.highlighted <= card.ability.extra.max_selection
     end,
     use = function (self, card, area, copier)
         local highlighted = G.hand.highlighted
@@ -116,11 +116,11 @@ local orange = {
 local peach = {
     key = "peach",
     set = "Fruit",
-    config = { extra = { rot_modifier = -1 } },
+    config = { extra = { rot_modifier = 2 } },
     atlas = "fruit",
     pos = { x = 3, y = 0 },
     loc_vars = function (self, info_queue, card)
-        return { vars = {count_fruit_themed_items(card)} }
+        return { vars = { } }
     end,
     can_use = function (self, card)
         return false
@@ -131,15 +131,25 @@ local fruits = {
     apple,
     lemon,
     orange,
-    peach
+    peach,
 }
 
+local ref = G.start_run
+
+function G:start_run(args)
+    ref(self, args)
+    self.GAME.fruit_rot_time = LeoRND.config.fruit_rot_time
+end
+
 for _, fruit in ipairs(fruits) do
-    fruit.config.extra.ante_count = LeoRND.config.fruit_rot_time + (fruit.config.extra.rot_modifier or 0)
+    fruit.config.extra.ante_count = 0
+
+    local calculate_ref = (fruit.calculate or function (self, card, context) end)
     fruit.calculate = function (self, card, context)
+        calculate_ref(self, card, context)
         if context.end_of_round and context.game_over == false and context.beat_boss and not context.repetition then
-			card.ability.extra.ante_count = card.ability.extra.ante_count - 1
-            if card.ability.extra.ante_count <= 0 then
+			card.ability.extra.ante_count = card.ability.extra.ante_count + 1
+            if card.ability.extra.ante_count >= math.floor(G.GAME.fruit_rot_time / (fruit.config.extra.rot_modifier or 1)) then
                 G.E_MANAGER:add_event(Event({
                     func = LeoRND.utils.event_destroy_card(card)
                 }))
@@ -154,6 +164,7 @@ for _, fruit in ipairs(fruits) do
             }
 		end
     end
+
     local loc_vars_ref = (fruit.loc_vars or 
         function ()
             return {vars={}}
@@ -161,7 +172,7 @@ for _, fruit in ipairs(fruits) do
     )
     fruit.loc_vars = function (self, info_queue, card)
         local result_table = loc_vars_ref(self, info_queue, card)
-        table.insert(result_table.vars, card.ability.extra.ante_count)
+        table.insert(result_table.vars, math.floor((G.GAME and G.GAME.fruit_rot_time or LeoRND.config.fruit_rot_time) / (card.ability.extra.rot_modifier or 1)) - card.ability.extra.ante_count)
         return result_table
     end
 

@@ -59,7 +59,7 @@ local tree = {
 		extra = { active = false }
 	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { LeoRND.config.fruit_rot_time } }
+		return { vars = { G.GAME.fruit_rot_time or LeoRND.config.fruit_rot_time } }
 	end,
 	rarity = 1,
 	atlas = 'jokers',
@@ -75,6 +75,8 @@ local tree = {
             local count = 0
             for _, playing_card in ipairs(G.playing_cards or {}) do
                 if playing_card.ability and playing_card.ability.leornd_sour then
+					G.GAME.fruit_rate = LeoRND.config.fruit_rate
+					G.PROFILES[G.SETTINGS.profile].leornd_fruity = true
 					return true
 				end
             end
