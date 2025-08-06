@@ -150,7 +150,7 @@ local coconut = {
     config = { extra = { additional_slots = 2 } },
     atlas = "fruit",
     pos = { x = 0, y = 2 },
-    no_pool_flag = "coconut_used",
+    no_pool_flag = "coconut_appeared",
     loc_vars = function (self, info_queue, card)
         return { vars = { card.ability.extra.additional_slots } }
     end,
@@ -159,16 +159,16 @@ local coconut = {
     end,
     calculate = function (self, card, context)
         if context.card_added then
-            G.GAME.pool_flags.coconut_used = true
+            G.GAME.pool_flags.coconut_appeared = true
         end
     end,
     use = function (self, card, area, copier)
         G.E_MANAGER:add_event(Event({
             func = function ()
                 G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.additional_slots
+                return true
             end
         }))
-        -- G.GAME.pool_flags.coconut_used = true
     end
 }
 
@@ -178,8 +178,7 @@ local cracked_coconut = {
     config = { extra = { rot_reduce = 1.5 } },
     atlas = "fruit",
     pos = { x = 1, y = 2 },
-    yes_pool_flag = "coconut_used",
-    no_collection = true,
+    yes_pool_flag = "coconut_appeared",
     loc_vars = function (self, info_queue, card)
         return { vars = { card.ability.extra.rot_reduce } }
     end,
@@ -230,6 +229,11 @@ local fruits = {
     lemon,
     orange,
     peach,
+    pear,
+    coconut,
+    cracked_coconut,
+    cherry,
+    watermelon
 }
 
 local ref = G.start_run
