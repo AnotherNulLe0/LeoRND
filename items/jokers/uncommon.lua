@@ -120,7 +120,7 @@ local tboi_glass = {
 local sour = {
 	key = 'sour',
 	config = { 
-		numetal = true, -- Stone sour can be considered nu-metal, so I'll add this flag to make Buffonery's mod maggit work with this joker
+		numetal = true, -- Stone sour can be considered nu-metal, so I'll add this flag to make Buffoonery's mod maggit work with this joker
 		extra = {  } 
 	},
 	unlocked = false,
