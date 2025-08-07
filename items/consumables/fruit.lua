@@ -236,17 +236,19 @@ local fruits = {
     watermelon
 }
 
+-- This adds fruit rotting
 local ref = G.start_run
-
 function G:start_run(args)
     ref(self, args)
     self.GAME.fruit_rot_time = LeoRND.config.fruit_rot_time
 end
 
+-- This makes every fruit rot
 for _, fruit in ipairs(fruits) do
     fruit.config.extra.ante_count = 0
 
     local calculate_ref = (fruit.calculate or function (self, card, context) end)
+    if not fruit.override_calculate then
     fruit.calculate = function (self, card, context)
         calculate_ref(self, card, context)
         if context.end_of_round and context.game_over == false and context.beat_boss and not context.repetition then
@@ -264,6 +266,7 @@ for _, fruit in ipairs(fruits) do
                 message = "-1",
                 remove_default_message = true
             }
+	    	end
 		end
     end
 
