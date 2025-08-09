@@ -123,6 +123,19 @@ return {
                     "at the same time",
 				}
 			},
+			j_leornd_wine = {
+				name = "Grape juice",
+				text = {
+					"Retrigger every heart card",
+					"#1# times",
+					"Gains {C:money}$#2#{} of",
+                    "{C:attention}sell value{} at",
+                    "end of round",
+				},
+				unlock = {
+					"Obtain a grape fruit card",
+				}
+			}
         },
 		Fruit = {
 			c_leornd_lemon = {
@@ -221,6 +234,16 @@ return {
 						"and rots faster"
 					},
 					{"{C:inactive}(#1# ante left){}"}
+				}
+			},
+			c_leornd_grape = {
+				name = "Grape",
+				text = {
+					{
+						"When grape rots, it becomes grape juice",
+						"{C:inactive}(rots {C:attention}#1#X{C:inactive} slower){}",
+					},
+					{"{C:inactive}(#2# ante left){}"}
 				}
 			}
 		},

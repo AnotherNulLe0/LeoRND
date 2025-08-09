@@ -81,3 +81,13 @@ SMODS.Sound({ key = "crit_hit", path = "crit_hit.ogg"})
 SMODS.current_mod.optional_features = {
 	retrigger_joker = true
 }
+
+-- Hook to add unlock event
+-- I think this should be added to SMODS because it's very convenient
+local emplace_hook = CardArea.emplace
+function CardArea:emplace(card, location, stay_flipped)
+	emplace_hook(self, card, location, stay_flipped)
+	if self == G.consumeables then
+		check_for_unlock({type = "obtain_consumable"}) -- Called whenever a consumable is added to G.consumeables
+	end
+end

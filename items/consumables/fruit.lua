@@ -207,6 +207,40 @@ local cherry = {
     end
 }
 
+local grape = {
+    key = "grape",
+    set = "Fruit",
+    config = { extra = { rot_modifier = 0.5 } },
+    atlas = "fruit",
+    pos = { x = 1, y = 1 },
+    override_calculate = true,
+    loc_vars = function (self, info_queue, card)
+        return { vars = { 1 / card.ability.extra.rot_modifier } }
+    end,
+    can_use = function (self, card)
+        return false
+    end,
+    calculate = function (self, card, context)
+        if context.end_of_round and context.game_over == false and context.beat_boss and not context.repetition then
+	    	card.ability.extra.ante_count = card.ability.extra.ante_count + 1
+            if card.ability.extra.ante_count >= math.floor(G.GAME.fruit_rot_time / (card.ability.extra.rot_modifier or 1)) then
+                SMODS.add_card({set = "Joker", key = "j_leornd_wine"})
+                G.E_MANAGER:add_event(Event({
+                    func = LeoRND.utils.event_destroy_card(card)
+                }))
+                return {
+                    message = localize("k_rotten"),
+                    remove_default_message = true
+                }
+            end
+            return {
+                message = "-1",
+                remove_default_message = true
+            }
+	    end
+    end,
+}
+
 local watermelon = {
     key = "watermelon",
     set = "Fruit",
@@ -233,7 +267,8 @@ local fruits = {
     coconut,
     cracked_coconut,
     cherry,
-    watermelon
+    watermelon,
+    grape
 }
 
 -- This adds fruit rotting
@@ -249,25 +284,25 @@ for _, fruit in ipairs(fruits) do
 
     local calculate_ref = (fruit.calculate or function (self, card, context) end)
     if not fruit.override_calculate then
-    fruit.calculate = function (self, card, context)
-        calculate_ref(self, card, context)
-        if context.end_of_round and context.game_over == false and context.beat_boss and not context.repetition then
-			card.ability.extra.ante_count = card.ability.extra.ante_count + 1
-            if card.ability.extra.ante_count >= math.floor(G.GAME.fruit_rot_time / (fruit.config.extra.rot_modifier or 1)) then
-                G.E_MANAGER:add_event(Event({
-                    func = LeoRND.utils.event_destroy_card(card)
-                }))
+        fruit.calculate = function (self, card, context)
+            calculate_ref(self, card, context)
+            if context.end_of_round and context.game_over == false and context.beat_boss and not context.repetition then
+	    		card.ability.extra.ante_count = card.ability.extra.ante_count + 1
+                if card.ability.extra.ante_count >= math.floor(G.GAME.fruit_rot_time / (fruit.config.extra.rot_modifier or 1)) then
+                    G.E_MANAGER:add_event(Event({
+                        func = LeoRND.utils.event_destroy_card(card)
+                    }))
+                    return {
+                        message = localize("k_rotten"),
+                        remove_default_message = true
+                    }
+                end
                 return {
-                    message = localize("k_rotten"),
+                    message = "-1",
                     remove_default_message = true
                 }
-            end
-            return {
-                message = "-1",
-                remove_default_message = true
-            }
 	    	end
-		end
+        end
     end
 
     local loc_vars_ref = (fruit.loc_vars or 
