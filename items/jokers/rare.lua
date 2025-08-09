@@ -89,15 +89,15 @@ local sour_glass = {
 	end
 }
 
-local wine = {
-	key = 'wine',
-	config = { extra = { suit = "Hearts", repetitions = 1, price = 1 } },
+local grape_juice = {
+	key = 'grape_juice',
+	config = { extra = { suit = "Hearts", repetitions = 1, repetition_increase = 1, price = 1 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.repetitions, card.ability.extra.price } }
+		return { vars = { card.ability.extra.repetitions, card.ability.extra.repetition_increase, card.ability.extra.price } }
 	end,
 	rarity = 3,
 	atlas = 'jokers',
-	pos = { x = 3, y = 0 },
+	pos = { x = 2, y = 2 },
 
 	unlocked = false,
 
@@ -113,12 +113,24 @@ local wine = {
 				}
 			end
 		end
-		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+		-- if context.end_of_round and context.game_over == false and context.beat_boss and not context.blueprint and not context.retrigger_joker and not context.repetition then
+		-- 	card.ability.extra.repetitions = card.ability.extra.repetitions + card.ability.extra.repetition_increase
+		-- 	return {
+		-- 		message = localize('k_upgrade_ex'),
+		-- 	}
+		-- end
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and not context.repetition and not context.joker_repetition then
             card.ability.extra_value = card.ability.extra_value + card.ability.extra.price
 			card:set_cost()
+			local extra = nil
+			if context.beat_boss then
+				card.ability.extra.repetitions = card.ability.extra.repetitions + card.ability.extra.repetition_increase
+				extra = {message = localize('k_upgrade_ex')}
+			end
             return {
                 message = localize('k_val_up'),
-                colour = G.C.MONEY
+                colour = G.C.MONEY,
+				extra = extra
             }
         end
 	end,
@@ -137,5 +149,5 @@ local wine = {
 return {
     brimstone,
     sour_glass,
-	wine
+	grape_juice
 }

@@ -127,8 +127,10 @@ return {
 				name = "Grape juice",
 				text = {
 					"Retrigger every heart card",
-					"#1# times",
-					"Gains {C:money}$#2#{} of",
+					"{C:attention}#1#{} times",
+					"Increase retriggers by {C:attention}#2#{}",
+					"at the end of ante",
+					"Gains {C:money}$#3#{} of",
                     "{C:attention}sell value{} at",
                     "end of round",
 				},
