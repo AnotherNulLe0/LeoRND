@@ -271,13 +271,6 @@ local fruits = {
     grape
 }
 
--- This adds fruit rotting
-local ref = G.start_run
-function G:start_run(args)
-    ref(self, args)
-    self.GAME.fruit_rot_time = LeoRND.config.fruit_rot_time
-end
-
 -- This makes every fruit rot
 for _, fruit in ipairs(fruits) do
     fruit.config.extra.ante_count = 0
