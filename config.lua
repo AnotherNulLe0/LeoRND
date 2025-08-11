@@ -4,5 +4,6 @@ local config = {
 	possessed_mult_mod = 0.5,
 	fruit_rot_time = 2,
 	fruit_rate = 4,
+	fruit_label_colour = "6CA147"
 }
 return config
