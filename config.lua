@@ -4,6 +4,17 @@ local config = {
 	possessed_mult_mod = 0.5,
 	fruit_rot_time = 2,
 	fruit_rate = 4,
-	fruit_label_colour = "6CA147"
+	fruit_label_colour = "6CA147",
+	placeholder_excluded_rarities = {
+		4,
+		"cry_exotic", -- Exotic jokers are more powerful than legendary, so I'll exclude them
+		-- Astronomica's beyond exotic jokers
+		"ast_empyrean",
+		-- Entropy beyond exotic jokers / 
+		-- alt legendaries
+		"entr_entropic",
+		"entr_zenith",
+		"ent_reverse_legendary"
+	}
 }
 return config

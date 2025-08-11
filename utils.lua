@@ -55,6 +55,14 @@ local utils = {
 			end
 		end
 		return false
+	end,
+	placeholder_compat = function (card)
+		for _, v in ipairs(LeoRND.config.placeholder_excluded_rarities) do
+			if card.config.center.rarity == v then
+				return false
+			end
+		end
+		return true
 	end
 }
 utils.count_fruit_themed_items = function (except)

@@ -14,7 +14,9 @@ local placeholder = {
 	cost = 20,
 
 	calculate = function(self, card, context)
-		if context.retrigger_joker_check and not context.retrigger_joker and (context.other_card.config.center.rarity or 4) <= 3 then
+		if context.retrigger_joker_check
+		and not context.retrigger_joker
+		and LeoRND.utils.placeholder_compat(context.other_card) then
 			return {
 				message = localize('k_again_ex'),
 				repetitions = 1,
