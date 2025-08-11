@@ -65,29 +65,6 @@ local lemon = {
     end
 }
 
--- Used in orange.can_use(), orange.use() and orange.loc_vars()
-local function count_fruit_themed_items(except)
-    local counter = 0
-    if not G.consumeables then
-        return 0
-    end
-
-    -- Find fruit-themed in consumables
-    for _, v in ipairs(G.consumeables.cards) do
-        if (v.ability.set == "Fruit" or v.config.fruit_themed) and v ~= except then
-            counter = counter + 1
-        end
-    end
-
-    -- Find fruit-themed jokers
-    for _, v in ipairs(G.jokers.cards) do
-        if v.ability.fruit_themed or LeoRND.utils.is_in_pool(v, "FruitPool") then
-            counter = counter + 1
-        end
-    end
-
-    return counter
-end
 
 local orange = {
     key = "orange",
@@ -96,17 +73,17 @@ local orange = {
     atlas = "fruit",
     pos = { x = 2, y = 0 },
     loc_vars = function (self, info_queue, card)
-        return { vars = {count_fruit_themed_items(card)} }
+        return { vars = {LeoRND.utils.count_fruit_themed_items(card)} }
     end,
     can_use = function (self, card)
-        return count_fruit_themed_items(card) > 0
+        return LeoRND.utils.count_fruit_themed_items(card) > 0
     end,
     use = function (self, card, area, copier)
         G.E_MANAGER:add_event(Event({
             trigger = "after",
             delay = 0.4,
             func = function ()
-                ease_dollars(count_fruit_themed_items(card), true)
+                ease_dollars(LeoRND.utils.count_fruit_themed_items(card), true)
                 return true
             end
         }))

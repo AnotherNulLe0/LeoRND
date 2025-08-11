@@ -57,4 +57,26 @@ local utils = {
 		return false
 	end
 }
+utils.count_fruit_themed_items = function (except)
+	    local counter = 0
+	    if not G.consumeables then
+	        return 0
+	    end
+
+	    -- Find fruit-themed in consumables
+	    for _, v in ipairs(G.consumeables.cards) do
+	        if (v.ability.set == "Fruit" or v.config.fruit_themed) and v ~= except then
+	            counter = counter + 1
+	        end
+	    end
+
+	    -- Find fruit-themed jokers
+	    for _, v in ipairs(G.jokers.cards) do
+	        if v.ability.fruit_themed or LeoRND.utils.is_in_pool(v, "FruitPool") then
+	            counter = counter + 1
+	        end
+	    end
+
+	    return counter
+	end
 return utils

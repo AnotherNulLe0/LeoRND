@@ -126,7 +126,7 @@ return {
 			j_leornd_grape_juice = {
 				name = "Grape juice",
 				text = {
-					"Retrigger every heart card",
+					"Retrigger every {C:heart}heart{} card",
 					"{C:attention}#1#{} times",
 					"Increase retriggers by {C:attention}#2#{}",
 					"at the end of ante",
