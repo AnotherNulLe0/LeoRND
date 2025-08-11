@@ -63,12 +63,24 @@ local utils = {
 			end
 		end
 		return true
+	end,
+	get_poll_results = function (set, rarity)
+		local _pool, _pool_key = get_current_pool(set, rarity, nil, nil)
+		local center = pseudorandom_element(_pool, pseudoseed(_pool_key))
+		local it = 1
+		while center == 'UNAVAILABLE' do
+			it = it + 1
+			center = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample'..it))
+		end
+
+		center = G.P_CENTERS[center]
+		return center
 	end
 }
 utils.fruit_themed_jokers = function (except)
 	local items = {}
 	if not G.jokers then
-	    return 0
+	    return {}
 	end
 	-- Find fruit-themed jokers
 	for _, v in ipairs(G.jokers.cards) do
@@ -81,11 +93,11 @@ end
 utils.fruit_themed_consumables = function (except)
 	local items = {}
 	if not G.consumeables then
-	    return 0
+	    return {}
 	end
 	-- Find fruit-themed in consumables
 	for _, v in ipairs(G.consumeables.cards) do
-	    if (v.ability.set == "Fruit" or LeoRND.utils.is_in_pool(v, "FruitPool")) and v ~= except then
+	    if v.ability.set == "Fruit" and v ~= except then
 	        items[#items+1] = v
 	    end
 	end

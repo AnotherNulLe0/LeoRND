@@ -1,6 +1,7 @@
 LeoRND = SMODS.current_mod
 LeoRND.utils = SMODS.load_file("utils.lua")()
 LeoRND.config = SMODS.load_file("config.lua")()
+SMODS.load_file("lib/hooks.lua")()
 
 SMODS.Atlas {
 	key = "jokers",
@@ -38,7 +39,7 @@ SMODS.ConsumableType {
 -- Register fruit-themed pool
 SMODS.ObjectType {
 	key = "FruitPool",
-	default = "j_gros_michel",
+	default = "j_joker",
 	cards = {
 		-- Fruit jokers
 		["j_gros_michel"] = true,
@@ -46,15 +47,6 @@ SMODS.ObjectType {
 		["j_leornd_tree"] = true,
 		["j_leornd_fruity_joker"] = true,
 		["j_leornd_fruityful_joker"] = true,
-		-- Fruit cards
-		["c_leornd_lemon"] = true,
-		["c_leornd_apple"] = true,
-		["c_leornd_orange"] = true,
-		["c_leornd_peach"] = true,
-		["c_leornd_pear"] = true,
-		["c_leornd_coconut"] = true,
-		["c_leornd_cherry"] = true,
-		["c_leornd_watermelon"] = true,
 	}
 }
 

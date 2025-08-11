@@ -208,25 +208,25 @@ return {
 				}
 			},
 			c_leornd_peach = {
-				name = "Персик",
+				name = "Peach",
 				text = {
 					{
 						"Ничего не делает",
 						"Он просто вкусный",
 						"и гниёт быстрее"
 					},
-					{"{C:inactive}(осталось #2# анте){}"}
+					{"{C:inactive}(осталось #1# анте){}"}
 				}
 			},
 			c_leornd_pear = {
-				name = "Pear",
+				name = "Груша",
 				text = {
 					{
-						"Does nothing",
-						"It's just tasty",
-						"and rots faster"
+						"{C:money}-$#1#{} при использовании",
+						"Создаёт случайного {V:1}Необычного{} джокера",
+						"{C:inactive}(должно быть место){}"
 					},
-					{"{C:inactive}(#1# ante left){}"}
+					{"{C:inactive}(осталось #3# анте){}"}
 				}
 			},
 			c_leornd_coconut = {
@@ -257,18 +257,18 @@ return {
 						"It's just tasty",
 						"and rots faster"
 					},
-					{"{C:inactive}(#1# ante left){}"}
+					{"{C:inactive}(осталось #2# анте){}"}
 				}
 			},
 			c_leornd_watermelon = {
 				name = "Арбуз",
 				text = {
 					{
-						"Does nothing",
-						"It's just tasty",
-						"and rots faster"
+						"Создаёт случайного",
+						"{E:1,V:1}фруктового{} джокера",
+						"{C:inactive}(должно быть место){}"
 					},
-					{"{C:inactive}(#1# ante left){}"}
+					{"{C:inactive}(осталось #2# анте){}"}
 				}
 			},
 			c_leornd_grape = {

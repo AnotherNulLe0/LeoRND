@@ -97,18 +97,7 @@ local tree = {
 			card.ability.extra.active = false
 			G.E_MANAGER :add_event(Event({
 				func = function ()
-					-- I stole this code from Balatro source, I really don't understand what it does but it works
-					-- (lines 2113-2121)
-					local _pool, _pool_key = get_current_pool("Fruit", nil, nil, nil)
-					local center = pseudorandom_element(_pool, pseudoseed(_pool_key))
-					local it = 1
-					while center == 'UNAVAILABLE' do
-						it = it + 1
-						center = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample'..it))
-					end
-
-					center = G.P_CENTERS[center]
-					-- ...stolen code ends
+					local center = LeoRND.utils.get_poll_results("Fruit")
 
 					if center.set ~= "Fruit" then
 						return true

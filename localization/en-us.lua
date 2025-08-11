@@ -59,7 +59,6 @@ return {
 					"Odds increase by {C:attention}#4#{}",
 					"per played hand.",
 					"Odds reset when mult is given",
-					"{C:inactive,s:0.7}Random crits are fair and balanced{}"
 				}
 			},
 			j_leornd_abszero = {
@@ -192,11 +191,9 @@ return {
 				name = "Orange",
 				text = {
 					{
-						"Gives {C:money}1${} for each",
+						"Gives {C:money}$1{} for each",
 						"fruit-themed card or joker",
-						"{C:inactive}(currently {C:money}#1#${C:inactive}){}",
-						"{C:inactive,s:0.7}You're not Alexander.{}",
-						"{C:inactive,s:0.5}This is a reference to a reference{}",
+						"{C:inactive}(currently {C:money}$#1#{C:inactive}){}",
 					},
 					{"{C:inactive}(#2# ante left){}"}
 				}
@@ -216,11 +213,11 @@ return {
 				name = "Pear",
 				text = {
 					{
-						"Does nothing",
-						"It's just tasty",
-						"and rots faster"
+						"{C:money}-$#1#{} when used",
+						"Creates a random {V:1}#2#{} joker",
+						"{C:inactive}(must have room){}"
 					},
-					{"{C:inactive}(#1# ante left){}"}
+					{"{C:inactive}(#3# ante left){}"}
 				}
 			},
 			c_leornd_coconut = {
@@ -247,20 +244,21 @@ return {
 				name = "Cherry",
 				text = {
 					{
-						"Does nothing",
-						"It's just tasty",
-						"and rots faster"
+						"Gives {C:money}$1{} for each",
+						"{C:hearts}heart{} card",
+						"in your deck",
+						"{C:inactive}(Currently +{C:money}$#1#{C:inactive}){}"
 					},
-					{"{C:inactive}(#1# ante left){}"}
+					{"{C:inactive}(#2# ante left){}"}
 				}
 			},
 			c_leornd_watermelon = {
 				name = "Watermelon",
 				text = {
 					{
-						"Does nothing",
-						"It's just tasty",
-						"and rots faster"
+						"Creates a random",
+						"{E:1,V:1}fruit-{}themed joker",
+						"{C:inactive}(must have room){}"
 					},
 					{"{C:inactive}(#1# ante left){}"}
 				}

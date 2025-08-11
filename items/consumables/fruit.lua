@@ -30,9 +30,11 @@ local apple = {
             delay = 0.4,
             func = function ()
                 highlighted:set_edition(next_edition, true)
+                card:juice_up()
                 return true
             end
         }))
+        delay(0.6)
     end
 }
 
@@ -52,6 +54,12 @@ local lemon = {
     use = function (self, card, area, copier)
         local highlighted = G.hand.highlighted
         if highlighted then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
             for i, v in ipairs(highlighted) do
                 v.ability.leornd_sour = true
                 G.E_MANAGER:add_event(Event({
@@ -61,6 +69,15 @@ local lemon = {
                     end
                 }))
             end
+            delay(0.6)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.2,
+                func = function()
+                    G.hand:unhighlight_all()
+                    return true
+                end
+            }))
         end
     end
 }
@@ -84,9 +101,11 @@ local orange = {
             delay = 0.4,
             func = function ()
                 ease_dollars(LeoRND.utils.count_fruit_themed_items(card), true)
+                card:juice_up(0.3, 0.5)
                 return true
             end
         }))
+        delay(0.6)
     end
 }
 
@@ -107,17 +126,32 @@ local peach = {
 local pear = {
     key = "pear",
     set = "Fruit",
-    config = { extra = { } },
+    config = { extra = { loss = 5, rarity = "Uncommon" } },
     atlas = "fruit",
     pos = { x = 0, y = 1 },
     loc_vars = function (self, info_queue, card)
-        return { vars = { } }
+        return { vars = { card.ability.extra.loss, card.ability.extra.rarity, colours = {G.C.RARITY[card.ability.extra.rarity]} } }
     end,
     can_use = function (self, card)
-        return false
+        -- Guess I'll have to use to_big
+        return to_big(G.GAME.dollars or 0) >= to_big(card.ability.extra.loss) 
+                and #G.jokers.cards < G.jokers.config.card_limit
+                and LeoRND.utils.get_poll_results("Joker", card.ability.extra.rarity).key ~= "j_joker"
     end,
     use = function (self, card, area, copier)
-        
+        ease_dollars(-card.ability.extra.loss)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                local _card = create_card("Joker", nil, nil, card.ability.extra.rarity)
+                _card:add_to_deck()
+                G.jokers:emplace(_card)
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
     end
 }
 
@@ -141,11 +175,15 @@ local coconut = {
     end,
     use = function (self, card, area, copier)
         G.E_MANAGER:add_event(Event({
-            func = function ()
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
                 G.consumeables.config.card_limit = G.consumeables.config.card_limit + card.ability.extra.additional_slots
+                card:juice_up(0.3, 0.5)
                 return true
             end
         }))
+        delay(0.6)
     end
 }
 
@@ -162,25 +200,62 @@ local cracked_coconut = {
     can_use = function (self, card)
         return true
     end,
-    use = function (self, card, area, copier)
-        G.GAME.fruit_rot_time = G.GAME.fruit_rot_time * card.ability.extra.rot_reduce
+    use = function (self, card, area, copier) 
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                G.GAME.fruit_rot_time = G.GAME.fruit_rot_time * card.ability.extra.rot_reduce
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
+        
     end
 }
 
 local cherry = {
     key = "cherry",
     set = "Fruit",
-    config = { extra = { } },
+    config = { extra = { suit = "Hearts"} },
     atlas = "fruit",
     pos = { x = 2, y = 1 },
     loc_vars = function (self, info_queue, card)
-        return { vars = { } }
+        local tally = 0
+        for _, v in ipairs(G.playing_cards or {}) do
+            if v:is_suit(card.ability.extra.suit) then
+                tally = tally + 1
+            end
+        end
+        return { vars = { tally } }
     end,
     can_use = function (self, card)
-        return false
+        local tally = 0
+        for _, v in ipairs(G.playing_cards or {}) do
+            if v:is_suit(card.ability.extra.suit) then
+                tally = tally + 1
+            end
+        end
+        return tally > 0
     end,
     use = function (self, card, area, copier)
-        
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                local tally = 0
+                for _, v in ipairs(G.playing_cards or {}) do
+                    if v:is_suit(card.ability.extra.suit) then
+                        tally = tally + 1
+                    end
+                end
+                ease_dollars(tally, true)
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
     end
 }
 
@@ -285,17 +360,28 @@ local golden_apple = {
 local watermelon = {
     key = "watermelon",
     set = "Fruit",
-    config = { extra = { } },
+    config = { extra = { count = 1} },
     atlas = "fruit",
     pos = { x = 3, y = 1 },
     loc_vars = function (self, info_queue, card)
-        return { vars = { } }
+        return { vars = { colours = {HEX(LeoRND.config.fruit_label_colour)} } }
     end,
     can_use = function (self, card)
-        return false
+        return LeoRND.utils.get_poll_results("FruitPool").key ~= "j_joker" and #G.jokers.cards < G.jokers.config.card_limit
     end,
     use = function (self, card, area, copier)
-        
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                local _card = create_card("FruitPool", G.jokers)
+                _card:add_to_deck()
+                G.jokers:emplace(_card)
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        delay(0.6)
     end
 }
 
