@@ -146,8 +146,60 @@ local grape_juice = {
 	end
 }
 
+local fruityful = {
+	key = 'fruityful_joker',
+	config = { extra = { xmult = 1, xmult_mod = 0.1, gain_increase = 0.5 } },
+	loc_vars = function(self, info_queue, card)
+		return { vars = { 
+			card.ability.extra.xmult_mod + card.ability.extra.gain_increase * (math.max(#LeoRND.utils.fruit_themed_consumables(card)-1, 0) + #LeoRND.utils.fruit_themed_jokers(card)),
+			card.ability.extra.xmult,
+			colours = {HEX(LeoRND.config.fruit_label_colour)}
+		} }
+	end,
+	locked_loc_vars = function(self, info_queue, card)
+        return { vars = { colours = {HEX(LeoRND.config.fruit_label_colour)} } }
+    end,
+	rarity = 3,
+	atlas = 'jokers',
+	pos = { x = 0, y = 3 },
+	unlocked = false,
+
+	blueprint_compat = true,
+
+	cost = 8,
+
+	check_for_unlock = function (self, args)
+		if args.type == 'discover_amount' then
+			local tally = 0
+			local of = 0
+            for k, v in pairs(G.P_CENTERS) do
+				if v.set == "Fruit" and not v.omit then
+					of = of + 1
+					if v.discovered then
+						tally = tally + 1
+					end
+				end
+			end
+			return of ~= 0 and tally >= of
+        end
+	end,
+
+	calculate = function(self, card, context)
+		if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == 'Fruit' then
+			card.ability.extra.xmult = card.ability.extra.xmult
+			+ card.ability.extra.xmult_mod + card.ability.extra.gain_increase * LeoRND.utils.count_fruit_themed_items(card)
+		end
+		if context.joker_main then
+			return {
+				xmult = card.ability.extra.xmult
+			}
+		end
+	end
+}
+
 return {
     brimstone,
     sour_glass,
-	grape_juice
+	grape_juice,
+	fruityful
 }

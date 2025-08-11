@@ -129,8 +129,54 @@ local tree = {
 	end
 }
 
+local fruity_joker = {
+	key = 'fruity_joker',
+	config = {
+		extra = { chips_per_fruit = 50 }
+	},
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.chips_per_fruit, card.ability.extra.chips_per_fruit * LeoRND.utils.count_fruit_themed_items() } }
+	end,
+	locked_loc_vars = function(self, info_queue, card)
+        return { vars = { colours = {HEX(LeoRND.config.fruit_label_colour)} } }
+    end,
+	rarity = 1,
+	atlas = 'jokers',
+	pos = { x = 3, y = 2 },
+
+	blueprint_compat = true,
+	unlocked = false,
+
+	cost = 4,
+
+	check_for_unlock = function (self, args)
+		if args.type == 'discover_amount' then
+			local tally = 0
+			local of = 0
+            for k, v in pairs(G.P_CENTERS) do
+				if v.set == "Fruit" and not v.omit then
+					of = of + 1
+					if v.discovered then
+						tally = tally + 1
+					end
+				end
+			end
+			return of ~= 0 and tally >= of / 2
+        end
+	end,
+
+	calculate = function(self, card, context)
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips_per_fruit * LeoRND.utils.count_fruit_themed_items()
+			}
+		end
+	end
+}
+
 return {
     a_grade,
     abszero,
-    tree
+    tree,
+	fruity_joker
 }

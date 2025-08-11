@@ -44,6 +44,8 @@ SMODS.ObjectType {
 		["j_gros_michel"] = true,
 		["j_cavendish"] = true,
 		["j_leornd_tree"] = true,
+		["j_leornd_fruity_joker"] = true,
+		["j_leornd_fruityful_joker"] = true,
 		-- Fruit cards
 		["c_leornd_lemon"] = true,
 		["c_leornd_apple"] = true,

@@ -137,6 +137,33 @@ return {
 				unlock = {
 					"Obtain a grape fruit card",
 				}
+			},
+			j_leornd_fruity_joker = {
+				name = "Fruity joker",
+				text = {
+					"Gives {C:chips}+#1#{} chips",
+					"per fruit-themed card",
+					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} chips){}"
+				},
+				unlock = {
+					"Discover half of all",
+					"{E:1,V:1}Fruit{} cards"
+				}
+			},
+			j_leornd_fruityful_joker = {
+				name = "Fruityful joker",
+				text = {
+					"Gains {X:mult,C:white}X#1#{} mult",
+					"when a {V:1}Fruit{} card is used",
+					"Gain is increased for",
+					"every {C:attention}fruit-themed{} card",
+					"you have",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} mult){}"
+				},
+				unlock = {
+					"Discover every",
+					"{E:1,V:1}Fruit{} card"
+				}
 			}
         },
 		Fruit = {
