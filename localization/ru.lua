@@ -128,6 +128,49 @@ return {
 					"{C:attention}Упс! Все шестёрки{}",
 				}
 			},
+			j_leornd_grape_juice = {
+				name = "Виноградный сок",
+				text = {
+					"Перезапуск всех {C:heart}червовых{} карт",
+					"{C:attention}#1#{} раз(а)",
+					"Количество перезапусков увеличивается",
+					"на {C:attention}#2#{}",
+					"в конце каждого анте",
+					"Добавляет {C:money}$#3#{} к",
+                    "{C:attention}стоимости продажи{}",
+                    "в конце раунда",
+				},
+				unlock = {
+					"Получите виноград",
+				}
+			},
+			j_leornd_fruity_joker = {
+				name = "Фруктовый джокер",
+				text = {
+					"Даёт {C:chips}+#1#{} фишек",
+					"за каждую фруктовую карту или джокера",
+					"{C:inactive}(сейчас: {C:chips}+#2#{C:inactive} фишек){}"
+				},
+				unlock = {
+					"Разблокируйте половину всех",
+					"{E:1,V:1}Фруктовых{} карт"
+				}
+			},
+			j_leornd_fruityful_joker = {
+				name = "Наифруктовейший джокер",
+				text = {
+					"Получает {X:mult,C:white}X#1#{} к множ.",
+					"когда используется {V:1}фруктовая{} карта",
+					"Получает больше за каждую",
+					"{C:attention}фруктовую{} карту или джокера",
+					"у вас",
+					"{C:inactive}(сейчас: {X:mult,C:white}X#2#{C:inactive} множ.){}"
+				},
+				unlock = {
+					"Разблокируйте все",
+					"{E:1,V:1}Фруктовые{} карты"
+				}
+			}
         },
 		Fruit = {
 			c_leornd_lemon = {
@@ -173,6 +216,80 @@ return {
 						"и гниёт быстрее"
 					},
 					{"{C:inactive}(осталось #2# анте){}"}
+				}
+			},
+			c_leornd_pear = {
+				name = "Pear",
+				text = {
+					{
+						"Does nothing",
+						"It's just tasty",
+						"and rots faster"
+					},
+					{"{C:inactive}(#1# ante left){}"}
+				}
+			},
+			c_leornd_coconut = {
+				name = "Кокос",
+				text = {
+					{
+						"{C:dark_edition}+#1#{} слот расходников",
+						"{C:red}Не может появиться дважды в забеге{}"
+					},
+					{"{C:inactive}(осталось #2# анте){}"}
+				}
+			},
+			c_leornd_cracked_coconut = {
+				name = "Вскрытый кокос",
+				text = {
+					{
+						"Замедляет гниение фрутов",
+						"{C:inactive}({C:attention}#1#X{C:inactive} медленнее){}",
+					},
+					{"{C:inactive}(осталось #2# анте){}"}
+				}
+			},
+			c_leornd_cherry = {
+				name = "Вишня",
+				text = {
+					{
+						"Does nothing",
+						"It's just tasty",
+						"and rots faster"
+					},
+					{"{C:inactive}(#1# ante left){}"}
+				}
+			},
+			c_leornd_watermelon = {
+				name = "Арбуз",
+				text = {
+					{
+						"Does nothing",
+						"It's just tasty",
+						"and rots faster"
+					},
+					{"{C:inactive}(#1# ante left){}"}
+				}
+			},
+			c_leornd_grape = {
+				name = "Виноград",
+				text = {
+					{
+						"Вместо сгнивания превращается в",
+						"виноградный сок",
+						"{C:inactive}(гниёт в {C:attention}#1#{C:inactive} раза медленнее){}",
+					},
+					{"{C:inactive}(осталось #2# анте){}"}
+				}
+			},
+			c_leornd_golden_apple = {
+				name = "Золотое яблоко",
+				text = {
+					{
+						"Превращает все карты",
+						"на руке в {C:money}золотые{}"
+					},
+					{"Не гниёт"}
 				}
 			}
 		},
