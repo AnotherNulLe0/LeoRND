@@ -123,7 +123,7 @@ return {
                     "at the same time",
 				}
 			},
-			j_leornd_wine = {
+			j_leornd_grape_juice = {
 				name = "Grape juice",
 				text = {
 					"Retrigger every heart card",
@@ -246,6 +246,16 @@ return {
 						"{C:inactive}(rots {C:attention}#1#X{C:inactive} slower){}",
 					},
 					{"{C:inactive}(#2# ante left){}"}
+				}
+			},
+			c_leornd_golden_apple = {
+				name = "Golden apple",
+				text = {
+					{
+						"Apply {C:money}gold{} to",
+						"all cards in your hand",
+					},
+					{"Doesn't rot"}
 				}
 			}
 		},

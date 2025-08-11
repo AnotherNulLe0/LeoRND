@@ -241,6 +241,70 @@ local grape = {
     end,
 }
 
+local golden_apple = {
+    key = "golden_apple",
+    set = "Fruit",
+    config = { extra = { convert_to = "m_gold" } },
+    atlas = "fruit",
+    pos = { x = 2, y = 2 },
+    override_calculate = true,
+    loc_vars = function (self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS[card.ability.extra.convert_to]
+        return { vars = { } }
+    end,
+    can_use = function (self, card)
+        return true
+    end,
+    use = function (self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+        for i, k in ipairs(G.hand.cards) do
+            local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    k:flip()
+                    play_sound('card1', percent)
+                    k:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        local _suit = pseudorandom_element(SMODS.Suits, 'sigil')
+        for i, k in ipairs(G.hand.cards) do
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    k:set_ability(card.ability.extra.convert_to)
+                    return true
+                end
+            }))
+        end
+        for i, k in ipairs(G.hand.cards) do
+            local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    k:flip()
+                    play_sound('tarot2', percent, 0.6)
+                    k:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.5)
+    end,
+    
+}
+
 local watermelon = {
     key = "watermelon",
     set = "Fruit",
@@ -268,7 +332,8 @@ local fruits = {
     cracked_coconut,
     cherry,
     watermelon,
-    grape
+    grape,
+    golden_apple
 }
 
 -- This makes every fruit rot
