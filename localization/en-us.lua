@@ -127,7 +127,10 @@ return {
 				text = {
 					"No listed {C:green,E:1,S:1.1}probability{}",
                     "will trigger",
-                    "{C:inactive}(ex: {C:green}3 in 4{C:inactive} = {C:green}0 in 4{C:inactive})"
+                    "{C:inactive}(ex: {C:green}3 in 4{C:inactive} = {C:green}0 in 4{C:inactive})",
+					"Selling this joker will add",
+					"{C:attention,E:1}possessed{} sticker to",
+					"all cards in your hand"
 				},
 				unlock = {
 					"Have 3 {C:attention}Unfair dice{}",
@@ -342,6 +345,7 @@ return {
 			k_broken = "Broken!",
 			k_rotten = "Rotten!",
 			k_returned = "Returned!",
+			k_possess = "Possessed!",
 			k_fruit = "Fruit",
 			b_fruit_cards = "Fruit cards"
 		},
