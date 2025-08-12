@@ -37,17 +37,38 @@ SMODS.ConsumableType {
 }
 
 -- Register fruit-themed pool
+local fruit_jokers = {
+	-- Fruit jokers
+	["j_gros_michel"] = true,
+	["j_cavendish"] = true,
+	["j_leornd_tree"] = true,
+	["j_leornd_fruity_joker"] = true,
+	["j_leornd_fruityful_joker"] = true,
+}
+
+-- Gonna add theese strawberry jokers
+if next(SMODS.find_mod("Buffoonery")) then
+	fruit_jokers["j_buf_gfondue"] = true
+	fruit_jokers["j_buf_camarosa"] = true
+end
+
+if next(SMODS.find_mod("extracredit")) then
+	fruit_jokers["j_ExtraCredit_starfruit"] = true
+	fruit_jokers["j_ExtraCredit_badapple"] = true
+end
+
+if next(SMODS.find_mod("Cryptid")) then
+	fruit_jokers["j_cry_starfruit"] = true
+end
+
+if next(SMODS.find_mod("entr")) then
+	fruit_jokers["j_entr_dragonfruit"] = true
+end
+
 SMODS.ObjectType {
 	key = "FruitPool",
 	default = "j_joker",
-	cards = {
-		-- Fruit jokers
-		["j_gros_michel"] = true,
-		["j_cavendish"] = true,
-		["j_leornd_tree"] = true,
-		["j_leornd_fruity_joker"] = true,
-		["j_leornd_fruityful_joker"] = true,
-	}
+	cards = fruit_jokers
 }
 
 -- Load jokers
