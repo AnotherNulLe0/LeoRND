@@ -23,6 +23,10 @@ local brimstone = {
 	blueprint_compat = true,
 
 	calculate = function(self, card, context)
+		if G.GAME.modifiers.leornd_pact and not card.ability.extra.pacted then
+			card.ability.extra.e_mult = 0.5
+			card.ability.extra.pacted = true
+		end
 		if context.joker_main then
 			return {
 				e_mult = card.ability.extra.e_mult
@@ -228,6 +232,48 @@ local unfairer_dice = {
 	end,
 
 	calculate = function(self, card, context)
+		if context.selling_self and G.GAME.blind.in_blind and not context.blueprint and not context.retrigger and not context.retrigger_joker then
+			local possess = function()
+				for i, k in ipairs(G.hand.cards) do
+       			    local percent = 1.15 - (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+       			    G.E_MANAGER:add_event(Event({
+       			        trigger = 'after',
+       			        delay = 0.15,
+       			        func = function()
+       			            k:flip()
+       			            play_sound('card1', percent)
+       			            k:juice_up(0.3, 0.3)
+       			            return true
+       			        end
+       			    }))
+       			end
+       			for i, k in ipairs(G.hand.cards) do
+       			    G.E_MANAGER:add_event(Event({
+       			        func = function()
+       			            k.ability.leornd_possessed = true
+       			            return true
+       			        end
+       			    }))
+       			end
+       			for i, k in ipairs(G.hand.cards) do
+       			    local percent = 0.85 + (i - 0.999) / (#G.hand.cards - 0.998) * 0.3
+       			    G.E_MANAGER:add_event(Event({
+       			        trigger = 'after',
+       			        delay = 0.15,
+       			        func = function()
+       			            k:flip()
+       			            play_sound('tarot2', percent, 0.6)
+       			            k:juice_up(0.3, 0.3)
+       			            return true
+       			        end
+       			    }))
+       			end
+			end
+			return {
+				message = localize("k_possess"),
+				func = possess
+			}
+		end
 		if context.mod_probability and not context.blueprint and not context.retrigger and not context.retrigger_joker then
 			return {
 				numerator = 0
