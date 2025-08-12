@@ -23,7 +23,7 @@ local utils = {
     	return wrap
     end,
 	load_content = function (path, reg_function)
-		local objects = SMODS.load_file(path)()
+		local objects = assert(SMODS.load_file(path))()
 		for _, v in ipairs(objects) do
 			reg_function(v)
 		end
