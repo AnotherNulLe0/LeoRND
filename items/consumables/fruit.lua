@@ -187,7 +187,6 @@ local coconut = {
     end,
     set_ability = function (self, card, initial, delay_sprites)
         if not G.OVERLAY_MENU then
-            print("COCONUT APPEARED!!!!!!!")
 	    	G.GAME.pool_flags.coconut_appeared = true
 	    end
     end

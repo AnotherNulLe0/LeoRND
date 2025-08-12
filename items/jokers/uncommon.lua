@@ -139,7 +139,6 @@ local sour = {
 		if args.type == "hand_contents" then
 			local tally = 0
             for j = 1, #args.cards do
-				print(args.cards[j].edition)
                 if SMODS.has_enhancement(args.cards[j], 'm_stone') and args.cards[j].edition then
                     tally = tally + 1
                     if tally == 5 then
