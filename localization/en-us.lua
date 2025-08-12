@@ -122,6 +122,18 @@ return {
                     "at the same time",
 				}
 			},
+			j_leornd_unfairer_dice = {
+				name = "Unfairer dice",
+				text = {
+					"No listed {C:green,E:1,S:1.1}probability{}",
+                    "will trigger",
+                    "{C:inactive}(ex: {C:green}3 in 4{C:inactive} = {C:green}0 in 4{C:inactive})"
+				},
+				unlock = {
+					"Have 3 {C:attention}Unfair dice{}",
+                    "at the same time",
+				}
+			},
 			j_leornd_grape_juice = {
 				name = "Grape juice",
 				text = {

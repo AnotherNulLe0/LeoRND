@@ -197,9 +197,49 @@ local fruityful = {
 	end
 }
 
+local unfairer_dice = {
+	key = 'unfairer_dice',
+	config = { extra = { } },
+	loc_vars = function(self, info_queue, card)
+		return {}
+	end,
+	rarity = 3,
+	atlas = 'jokers',
+	pos = { x = 1, y = 3 },
+	unlocked = false,
+
+	blueprint_compat = false,
+
+	cost = 10,
+
+    check_for_unlock = function (self, args)
+		if args.type == 'modify_jokers' and G.jokers then
+            local tally = 0
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.config.center.key == "j_leornd_dice" then
+					tally = tally + 1
+				end
+            end
+			if tally >= 3 then
+				return true
+			end
+        end
+        return false
+	end,
+
+	calculate = function(self, card, context)
+		if context.mod_probability and not context.blueprint and not context.retrigger and not context.retrigger_joker then
+			return {
+				numerator = 0
+			}
+		end
+	end
+}
+
 return {
     brimstone,
     sour_glass,
 	grape_juice,
-	fruityful
+	fruityful,
+	unfairer_dice
 }
