@@ -311,7 +311,7 @@ return {
 		},
 		Blind = {
 			bl_leornd_othala = {
-				name = "Othala",
+				name = "The Othala",
 				text = {
 					"Discarded cards gain",
 					"possessed sticker"
