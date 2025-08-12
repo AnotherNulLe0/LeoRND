@@ -318,8 +318,9 @@ return {
 			leornd_possessed = {
 				name = "Possessed",
 				text = {
-					"{X:mult,C:white}X"..LeoRND.config.possessed_mult_mod.."{} mult when scored",
-					"Returns to hand when discarded",
+					"{X:mult,C:white}X#1#{} mult when scored",
+					"{C:green,E:1}#2# to #3#{} chance to return",
+					"into hand when discarded",
 				}
 			},
 		}
@@ -328,8 +329,12 @@ return {
 		dictionary = {
 			k_broken = "Broken!",
 			k_rotten = "Rotten!",
+			k_returned = "Returned!",
 			k_fruit = "Fruit",
 			b_fruit_cards = "Fruit cards"
+		},
+		challenge_names = {
+			c_leornd_pact_challenge = "Devil's pact"
 		},
 		labels = {
 			leornd_sour = "Sour",

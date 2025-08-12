@@ -36,7 +36,17 @@ local possessed = {
     badge_colour = HEX '1f1f1f',
     pos = { x = 1, y = 0 },
     atlas = "stickers",
-    should_apply = false,
+    should_apply = function (self, card, center, area, bypass_roll)
+        return false
+    end,
+    loc_vars = function (self, info_queue, card)
+        local n, d = SMODS.get_probability_vars(card, LeoRND.config.possessed_numerator, LeoRND.config.possessed_denominator, 'othala') 
+        return { vars = {
+            LeoRND.config.possessed_mult_mod,
+            n, -- numerator
+            d -- denominator
+        } }
+    end,
     calculate = function(self, card, context)
         if context.main_scoring and context.cardarea == G.play then
             return {
@@ -46,13 +56,17 @@ local possessed = {
         if not context.discard then
             card.ability.possessed_active = true
         end
-        if context.discard and card.ability.possessed_active and context.other_card == card then
+        if context.discard and card.ability.possessed_active and context.other_card == card 
+        and SMODS.pseudorandom_probability(card, 'possessed', LeoRND.config.possessed_numerator, LeoRND.config.possessed_denominator, 'othala')  then
             G.E_MANAGER:add_event(Event({
                 func = function ()
                     draw_card(G.discard, G.hand, nil, 'up', true, card, nil, nil, true)
                     return true
                 end
             }))
+            return {
+                message = localize("k_returned")
+            }
         end
     end
 }
