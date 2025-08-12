@@ -220,6 +220,19 @@ return {
 					{"{C:inactive}(#3# ante left){}"}
 				}
 			},
+			c_leornd_coconut_alt = {
+				name = "Coconut",
+				text = {
+					{
+						"{C:dark_edition}+#1#{} consumable slots",
+						"{C:red}Cannot appear twice in a run{}",
+						"{C:inactive,s:0.7}(litterally, this is the last{}",
+						"{C:inactive,s:0.7}time you see this coconut in",
+						"{C:inactive,s:0.7}your run.){}"
+					},
+					{"{C:inactive}(#2# ante left){}"}
+				}
+			},
 			c_leornd_coconut = {
 				name = "Coconut",
 				text = {

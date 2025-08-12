@@ -134,7 +134,8 @@ local pear = {
     end,
     can_use = function (self, card)
         -- Guess I'll have to use to_big
-        return to_big(G.GAME.dollars or 0) >= to_big(card.ability.extra.loss) 
+        -- Also I forgot about credit card
+        return to_big((G.GAME.dollars or 0) - (G.GAME.bankrupt_at or 0)) >= to_big(card.ability.extra.loss)
                 and #G.jokers.cards < G.jokers.config.card_limit
                 and LeoRND.utils.get_poll_results("Joker", card.ability.extra.rarity).key ~= "j_joker"
     end,
@@ -163,15 +164,14 @@ local coconut = {
     pos = { x = 0, y = 2 },
     no_pool_flag = "coconut_appeared",
     loc_vars = function (self, info_queue, card)
-        return { vars = { card.ability.extra.additional_slots } }
+        if not card.area.config.collection then
+            return { vars = { card.ability.extra.additional_slots }, key = self.key.."_alt" }
+        else
+            return { vars = { card.ability.extra.additional_slots } }
+        end
     end,
     can_use = function (self, card)
         return true
-    end,
-    calculate = function (self, card, context)
-        if context.card_added then
-            G.GAME.pool_flags.coconut_appeared = true
-        end
     end,
     use = function (self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -184,6 +184,12 @@ local coconut = {
             end
         }))
         delay(0.6)
+    end,
+    set_ability = function (self, card, initial, delay_sprites)
+        if not G.OVERLAY_MENU then
+            print("COCONUT APPEARED!!!!!!!")
+	    	G.GAME.pool_flags.coconut_appeared = true
+	    end
     end
 }
 
@@ -367,7 +373,7 @@ local watermelon = {
         return { vars = { colours = {HEX(LeoRND.config.fruit_label_colour)} } }
     end,
     can_use = function (self, card)
-        return LeoRND.utils.get_poll_results("FruitPool").key ~= "j_joker" and #G.jokers.cards < G.jokers.config.card_limit
+        return #G.jokers.cards < G.jokers.config.card_limit
     end,
     use = function (self, card, area, copier)
         G.E_MANAGER:add_event(Event({
