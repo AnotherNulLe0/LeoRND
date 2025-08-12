@@ -3,7 +3,15 @@ local sour = {
     badge_colour = HEX 'ffdd49',
     pos = { x = 0, y = 0 },
     atlas = "stickers",
-    should_apply = false,
+    should_apply = function (self, card, center, area, bypass_roll)
+        return false
+    end,
+    loc_vars = function (self, info_queue, card)
+        return { vars = {
+            LeoRND.config.sour_sticker_reduce,
+            LeoRND.config.sour_sticker_chips,
+        } }
+    end,
     calculate = function(self, card, context)
         if context.main_scoring and context.cardarea == G.play then
             G.E_MANAGER:add_event(

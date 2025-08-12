@@ -310,9 +310,9 @@ return {
 			leornd_sour = {
 				name = "Sour",
 				text = {
-					"Reduces blind size by {X:attention,C:white}X"..LeoRND.config.sour_sticker_reduce.."{}",
+					"Reduces blind size by {X:attention,C:white}X#1#{}",
 					"of blind when scored.",
-					"{C:chips}"..LeoRND.config.sour_sticker_chips.."{} chips when scored"
+					"{C:chips}#2#{} chips when scored"
 				}
 			},
 			leornd_possessed = {
