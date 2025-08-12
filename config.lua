@@ -7,6 +7,7 @@ local config = {
 	fruit_rot_time = 2,
 	fruit_rate = 4,
 	fruit_label_colour = "6CA147",
+	ch_pact_debuff = 0.4,
 	placeholder_excluded_rarities = {
 		4,
 		"cry_exotic", -- Exotic jokers are more powerful than legendary, so I'll exclude them

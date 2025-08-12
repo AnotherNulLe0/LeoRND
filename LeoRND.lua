@@ -1,3 +1,5 @@
+-- Question: why does this mod has a load priority of 667?
+-- Answer: Entropy's load priority is 666, so I had to make a little lower(higher) proprity
 LeoRND = SMODS.current_mod
 LeoRND.utils = SMODS.load_file("utils.lua")()
 LeoRND.config = SMODS.load_file("config.lua")()
@@ -89,6 +91,8 @@ LeoRND.utils.load_content("items/blinds/non_final.lua", SMODS.Blind)
 -- Load editions
 LeoRND.utils.load_content("items/editions.lua", SMODS.Edition)
 
+-- Load challenges
+LeoRND.utils.load_content("items/challenges.lua", SMODS.Challenge)
 
 -- Load sounds
 SMODS.Sound({ key = "crit_hit", path = "crit_hit.ogg"})

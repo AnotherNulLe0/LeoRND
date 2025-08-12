@@ -24,7 +24,7 @@ local brimstone = {
 
 	calculate = function(self, card, context)
 		if G.GAME.modifiers.leornd_pact and not card.ability.extra.pacted then
-			card.ability.extra.e_mult = 0.5
+			card.ability.extra.e_mult = LeoRND.config.ch_pact_debuff
 			card.ability.extra.pacted = true
 		end
 		if context.joker_main then

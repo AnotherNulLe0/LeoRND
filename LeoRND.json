@@ -4,6 +4,7 @@
     "author": ["NulLe0 (a.k.a. Natrium HCO3)"],
     "description": "Adds some fun and almost balanced jokers (with some reference)",
     "prefix": "leornd",
+    "priority": 667,
     "main_file": "LeoRND.lua",
     "badge_colour": "c7638f",
     "dependencies": [

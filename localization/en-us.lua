@@ -352,6 +352,11 @@ return {
 		challenge_names = {
 			c_leornd_pact_challenge = "Devil's pact"
 		},
+		v_text = {
+			ch_c_leornd_pact = {
+				"Start with Brimstone Mult equal {X:dark_edition,C:white}^"..LeoRND.config.ch_pact_debuff.."{}",
+			}
+		},
 		labels = {
 			leornd_sour = "Sour",
 			leornd_possessed = "Possessed",
