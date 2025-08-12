@@ -6,6 +6,8 @@ local othala = {
             for _, card in ipairs(G.hand.highlighted) do
 				card.ability.leornd_possessed = true
 			end
+            blind.triggered = true 
+            blind:wiggle()
         end
     end,
     boss_colour = HEX '56789A'
