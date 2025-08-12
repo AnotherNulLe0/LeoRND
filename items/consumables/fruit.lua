@@ -335,7 +335,6 @@ local golden_apple = {
                 end
             }))
         end
-        local _suit = pseudorandom_element(SMODS.Suits, 'sigil')
         for i, k in ipairs(G.hand.cards) do
             G.E_MANAGER:add_event(Event({
                 func = function()
