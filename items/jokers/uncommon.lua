@@ -125,7 +125,7 @@ local sour = {
 	},
 	unlocked = false,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { key = "leornd_sour", set = "Other" }
+		info_queue[#info_queue + 1] = { vars = {LeoRND.config.sour_sticker_reduce, LeoRND.config.sour_sticker_chips}, key = "leornd_sour", set = "Other" }
 		return { vars = {  } }
 	end,
 	rarity = 2,
