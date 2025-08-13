@@ -65,7 +65,7 @@ local possessed = {
                 end
             }))
             return {
-                message = localize("k_returned")
+                message = localize("k_returned_ex")
             }
         end
     end
