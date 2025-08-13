@@ -206,5 +206,4 @@ return {
     sour_glass,
 	grape_juice,
 	fruityful,
-	unfairer_dice
 }
