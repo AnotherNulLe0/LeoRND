@@ -4,6 +4,7 @@ return {
             j_leornd_brimstone = {
                 name = "Brimstone",
                 text = {
+					"+{V:1}#3# curse{}",
 		        	"Gains {X:dark_edition,C:white}^#2#{} Mult",
 		        	"when boss blind",
 		        	"gets defeated",
@@ -125,6 +126,7 @@ return {
 			j_leornd_unfairer_dice = {
 				name = "Unfairer dice",
 				text = {
+					"+{V:1}#1# curse{}",
 					"No listed {C:green,E:1,S:1.1}probability{}",
                     "will trigger",
                     "{C:inactive}(ex: {C:green}3 in 4{C:inactive} = {C:green}0 in 4{C:inactive})",

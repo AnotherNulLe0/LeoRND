@@ -1,8 +1,8 @@
 local brimstone = {
 	key = 'brimstone',
-	config = { extra = { e_mult = 1, e_mult_gain = 0.1 } },
+	config = { extra = { e_mult = 1, e_mult_gain = 0.1, curse = 1 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain } }
+		return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain, card.ability.extra.curse, colours = {G.C.PURPLE} } }
 	end,
 	locked_loc_vars = function(self, info_queue, card)
         return { vars = { 10, G.PROFILES[G.SETTINGS.profile].career_stats.c_wins } }
@@ -24,7 +24,7 @@ local brimstone = {
 			G.GAME.pool_flags.leornd_pacted = true
 		end
 		if LeoRND.config.curses_enabled then
-			ease_curse(1)
+			ease_curse(card.ability.extra.curse)
 		end
 	end,
 

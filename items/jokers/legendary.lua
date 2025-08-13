@@ -28,7 +28,7 @@ local placeholder = {
 
 local unfairer_dice = {
 	key = 'unfairer_dice',
-	config = { extra = { } },
+	config = { extra = { curse = 1 } },
 	loc_vars = function(self, info_queue, card)
 		local n, d = SMODS.get_probability_vars(card, LeoRND.config.possessed_numerator, LeoRND.config.possessed_denominator, 'othala')
 		info_queue[#info_queue + 1] = { 
@@ -40,7 +40,7 @@ local unfairer_dice = {
 			key = "leornd_possessed",
 			set = "Other"
 		}
-		return {}
+		return { vars = { card.ability.extra.curse, colours = {G.C.PURPLE} } }
 	end,
 	rarity = 4,
 	atlas = 'jokers',
