@@ -11,13 +11,19 @@ local brimstone = {
 	atlas = 'jokers',
 	pos = { x = 2, y = 0 },
 	unlocked = false,
+	no_pool_flag = "leornd_pacted",
 	
 	check_for_unlock = function (self, args)
 		if args.type == 'career_stat'then
             return G.PROFILES[G.SETTINGS.profile].career_stats.c_wins >= 10
         end
 	end,
-	
+
+	add_to_deck = function (self, card, from_debuff)
+		if not G.GAME.pool_flags.leornd_pacted then
+			G.GAME.pool_flags.leornd_pacted = true
+		end
+	end,
 
 	cost = 10,
 	blueprint_compat = true,

@@ -4,6 +4,7 @@ LeoRND = SMODS.current_mod
 LeoRND.utils = SMODS.load_file("utils.lua")()
 LeoRND.config = SMODS.load_file("config.lua")()
 SMODS.load_file("lib/hooks.lua")()
+SMODS.load_file("lib/ownerships.lua")()
 
 SMODS.Atlas {
 	key = "jokers",
@@ -29,7 +30,7 @@ SMODS.Atlas {
 -- Register fruit cards
 SMODS.ConsumableType {
 	key = "Fruit",
-	primary_colour = 0,
+	primary_colour = {},
 	secondary_colour = HEX(LeoRND.config.fruit_label_colour),
 	loc_txt = {
 		name = "Fruit",

@@ -37,11 +37,17 @@ local unfairer_dice = {
 	pos = { x = 1, y = 3 },
 	soul_pos = { x = 2, y = 3 },
 	unlocked = false,
-	-- no_pool_flag = "leornd_pacted",
+	no_pool_flag = "leornd_pacted",
 
 	blueprint_compat = false,
 
 	cost = 20,
+
+	add_to_deck = function (self, card, from_debuff)
+		if not G.GAME.pool_flags.leornd_pacted then
+			G.GAME.pool_flags.leornd_pacted = true
+		end
+	end,
 
     check_for_unlock = function (self, args)
 		if args.type == 'modify_jokers' and G.jokers then
@@ -59,9 +65,6 @@ local unfairer_dice = {
 	end,
 
 	calculate = function(self, card, context)
-		-- if not G.GAME.pool_flags.leornd_pacted then
-			-- G.GAME.pool_flags.leornd_pacted = true
-		-- end
 		if context.selling_self and G.GAME.blind.in_blind and not context.blueprint and not context.retrigger and not context.retrigger_joker then
 			local possess = function()
 				for i, k in ipairs(G.hand.cards) do
