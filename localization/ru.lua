@@ -4,6 +4,7 @@ return {
             j_leornd_brimstone = {
                 name = "Сера",
                 text = {
+					"+{V:1}#3# проклятие{}",
 		        	"Получает {X:dark_edition,C:white}^#2#{} множ.",
 		        	"при победе над",
 		        	"босс-блайндом",
@@ -128,6 +129,22 @@ return {
 					"{C:attention}Упс! Все шестёрки{}",
 				}
 			},
+			j_leornd_unfairer_dice = {
+				name = "Нечестнейшая кость",
+				text = {
+					"+{V:1}#1# проклятие{}",
+					"Никакие перечисленные {C:green,E:1,S:1.1}вероятности{}",
+                    "не могут сработать",
+                    "{C:inactive}(напр.: {C:green}3 к 4{C:inactive} = {C:green}0 к 4{C:inactive})",
+					"При продаже накладывает",
+					"{C:attention,E:1}одержимый{} стикер на",
+					"все карты в руке"
+				},
+				unlock = {
+					"Имейте одновременно 2",
+					"{C:attention}Нечестных кости{}",
+				}
+			},
 			j_leornd_grape_juice = {
 				name = "Виноградный сок",
 				text = {
@@ -229,6 +246,19 @@ return {
 					{"{C:inactive}(осталось #3# анте){}"}
 				}
 			},
+			c_leornd_coconut_alt = {
+				name = "Кокос",
+				text = {
+					{
+						"{C:dark_edition}+#1#{} слот расходников",
+						"{C:red}Не может появиться дважды в забеге{}",
+						"{C:inactive,s:0.7}(буквально, это последний{}",
+						"{C:inactive,s:0.7}раз, когда вы видите",
+						"{C:inactive,s:0.7}этот кокос в забеге.){}"
+					},
+					{"{C:inactive}(осталось #2# анте){}"}
+				}
+			},
 			c_leornd_coconut = {
 				name = "Кокос",
 				text = {
@@ -253,9 +283,10 @@ return {
 				name = "Вишня",
 				text = {
 					{
-						"Does nothing",
-						"It's just tasty",
-						"and rots faster"
+						"Даёт {C:money}$1{} за каждую",
+						"{C:hearts}червовую{} карту",
+						"в вашей колоде",
+						"{C:inactive}(сейчас: +{C:money}$#1#{C:inactive}){}"
 					},
 					{"{C:inactive}(осталось #2# анте){}"}
 				}
@@ -315,18 +346,31 @@ return {
 			leornd_possessed = {
 				name = "Одержимый",
 				text = {
-					"{X:mult,C:white}X"..LeoRND.config.possessed_mult_mod.."{} множ.",
-					"При сбросе возвращается обратно в руку",
+					"{X:mult,C:white}X#1#{} Множ. когда разыграна",
+					"Шанс {C:green,E:1}#2# к #3#{} вернуться",
+					"в руку при сбросе",
 				}
 			},
 		}
     },
 	misc = {
 		dictionary = {
-			k_broken = "Сломано!",
-			k_rotten = "Сгнило!",
+			k_broken_ex = "Сломано!",
+			k_rotten_ex = "Сгнило!",
+			k_returned_ex = "Вернулась!",
+			k_possess_ex = "Одержима!",
+			k_nosoul_ex = "Нет души!",
 			k_fruit = "Фрукт",
+			k_curse = "Проклятие",
 			b_fruit_cards = "Фрукты"
+		},
+		challenge_names = {
+			c_leornd_pact_challenge = "Сделка с дьяволом"
+		},
+		v_text = {
+			ch_c_leornd_pact = {
+				"Начальный множ. серы равен {X:dark_edition,C:white}^"..LeoRND.config.ch_pact_debuff.."{}",
+			}
 		},
 		labels = {
 			leornd_sour = "Кислая",
