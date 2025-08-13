@@ -346,7 +346,7 @@ return {
 			k_rotten_ex = "Rotten!",
 			k_returned_ex = "Returned!",
 			k_possess_ex = "Possessed!",
-			k_sold_ex = "Sold!",
+			k_nosoul_ex = "No soul!",
 			k_fruit = "Fruit",
 			b_fruit_cards = "Fruit cards"
 		},

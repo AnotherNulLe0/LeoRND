@@ -40,7 +40,7 @@ local possessed = {
         return false
     end,
     loc_vars = function (self, info_queue, card)
-        local n, d = SMODS.get_probability_vars(card, LeoRND.config.possessed_numerator, LeoRND.config.possessed_denominator, 'othala') 
+        local n, d = SMODS.get_probability_vars(card, LeoRND.config.possessed_numerator, LeoRND.config.possessed_denominator, 'othala')
         return { vars = {
             LeoRND.config.possessed_mult_mod,
             n, -- numerator
