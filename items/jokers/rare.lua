@@ -23,6 +23,9 @@ local brimstone = {
 		if not G.GAME.pool_flags.leornd_pacted then
 			G.GAME.pool_flags.leornd_pacted = true
 		end
+		if LeoRND.config.curses_enabled then
+			ease_curse(1)
+		end
 	end,
 
 	cost = 10,

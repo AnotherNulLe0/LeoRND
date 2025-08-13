@@ -106,4 +106,38 @@ end
 utils.count_fruit_themed_items = function (except)
 	return #utils.fruit_themed_jokers(except) + #utils.fruit_themed_consumables(except)
 end
+
+-- Global utils
+function ease_curse(mod)
+    G.E_MANAGER:add_event(Event({
+      trigger = 'immediate',
+      func = function()
+          local curse_UI = G.hand_text_area.curse
+          mod = mod or 0
+          local text = '+'
+          local col = G.C.IMPORTANT
+          if mod < 0 then
+              text = '-'
+              col = G.C.RED
+          end
+          G.GAME.round_resets.curse = G.GAME.round_resets.curse + mod
+          curse_UI.config.object:update()
+          G.HUD:recalculate()
+          --Popup text next to the chips in UI showing number of chips gained/lost
+          attention_text({
+            text = text..tostring(math.abs(mod)),
+            scale = 1, 
+            hold = 0.7,
+            cover = curse_UI.parent,
+            cover_colour = col,
+            align = 'cm',
+            })
+          --Play a chip sound
+          play_sound('highlight2', 0.685, 0.2)
+          play_sound('generic1')
+          return true
+      end
+    }))
+end
+
 return utils
