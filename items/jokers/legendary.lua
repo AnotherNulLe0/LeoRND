@@ -30,6 +30,16 @@ local unfairer_dice = {
 	key = 'unfairer_dice',
 	config = { extra = { } },
 	loc_vars = function(self, info_queue, card)
+		local n, d = SMODS.get_probability_vars(card, LeoRND.config.possessed_numerator, LeoRND.config.possessed_denominator, 'othala')
+		info_queue[#info_queue + 1] = { 
+			vars = {
+				LeoRND.config.possessed_mult_mod,
+				n,
+				d
+			},
+			key = "leornd_possessed",
+			set = "Other"
+		}
 		return {}
 	end,
 	rarity = 4,
