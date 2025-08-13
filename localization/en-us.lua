@@ -342,10 +342,11 @@ return {
     },
 	misc = {
 		dictionary = {
-			k_broken = "Broken!",
-			k_rotten = "Rotten!",
-			k_returned = "Returned!",
-			k_possess = "Possessed!",
+			k_broken_ex = "Broken!",
+			k_rotten_ex = "Rotten!",
+			k_returned_ex = "Returned!",
+			k_possess_ex = "Possessed!",
+			k_sold_ex = "Sold!",
 			k_fruit = "Fruit",
 			b_fruit_cards = "Fruit cards"
 		},

@@ -82,7 +82,7 @@ local sour_glass = {
 					func = LeoRND.utils.event_destroy_card(card)
 				}))
 				return {
-					message = localize("k_broken")
+					message = localize("k_broken_ex")
 				}
 			else
 				return {

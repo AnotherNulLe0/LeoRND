@@ -286,7 +286,7 @@ local grape = {
                     func = LeoRND.utils.event_destroy_card(card)
                 }))
                 return {
-                    message = localize("k_rotten"),
+                    message = localize("k_rotten_ex"),
                     remove_default_message = true
                 }
             end
@@ -418,7 +418,7 @@ for _, fruit in ipairs(fruits) do
                         func = LeoRND.utils.event_destroy_card(card)
                     }))
                     return {
-                        message = localize("k_rotten"),
+                        message = localize("k_rotten_ex"),
                         remove_default_message = true
                     }
                 end

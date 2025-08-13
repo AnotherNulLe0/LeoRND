@@ -106,7 +106,7 @@ local tboi_glass = {
 				}))
 				G.GAME.pool_flags.tboiglass_destroyed = true
 				return {
-					message = localize("k_broken")
+					message = localize("k_broken_ex")
 				}
 			else
 				return {
