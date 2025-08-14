@@ -323,6 +323,16 @@ return {
 				}
 			}
 		},
+		Stake = {
+			stake_leornd_midnight = {
+				name = "Midnight Stake",
+				text={
+                    "Shop can have {C:purple}Cursed{} Jokers",
+                    "{C:inactive,s:0.8}(having too much curse will make game harder)",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+			}
+		},
 		Other = {
 			leornd_sour = {
 				name = "Sour",
@@ -338,6 +348,13 @@ return {
 					"{X:mult,C:white}X#1#{} mult when scored",
 					"{C:green,E:1}#2# to #3#{} chance to return",
 					"into hand when discarded",
+				}
+			},
+			leornd_cursed = {
+				name = "Cursed",
+				text = {
+					"+{C:purple}#1# curse{} when",
+					"added to deck",
 				}
 			},
 		}
@@ -364,6 +381,7 @@ return {
 		labels = {
 			leornd_sour = "Sour",
 			leornd_possessed = "Possessed",
+			leornd_cursed = "Cursed",
 		}
 	}
 }

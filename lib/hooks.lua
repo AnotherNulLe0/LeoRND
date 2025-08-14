@@ -21,16 +21,15 @@ end
 local init_game_hook = Game.init_game_object
 function Game:init_game_object()
 	local proto = init_game_hook(self)
-	if LeoRND.config.curses_enabled then
-		proto.round_resets.curse = 0
-	end
+	proto.round_resets.curse = 0
+	proto.curse_rate = 1
 	return proto
 end
 
 local hud_ref = create_UIBox_HUD
 function create_UIBox_HUD()
 	local old_hud = hud_ref()
-	if LeoRND.config.curses_enabled then
+	if G.GAME.modifiers.enable_cursed then
 		local scale = 0.4
     	local stake_sprite = get_stake_sprite(G.GAME.stake or 1, 0.5)
 

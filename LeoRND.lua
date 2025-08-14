@@ -27,6 +27,13 @@ SMODS.Atlas {
 	py = 95
 }
 
+SMODS.Atlas {
+	key = "stakes",
+	path = "chips.png",
+	px = 29,
+	py = 29
+}
+
 -- Register fruit cards
 SMODS.ConsumableType {
 	key = "Fruit",
@@ -94,6 +101,9 @@ LeoRND.utils.load_content("items/editions.lua", SMODS.Edition)
 
 -- Load challenges
 LeoRND.utils.load_content("items/challenges.lua", SMODS.Challenge)
+
+-- Load stakes
+LeoRND.utils.load_content("items/stakes.lua", SMODS.Stake)
 
 -- Load sounds
 SMODS.Sound({ key = "crit_hit", path = "crit_hit.ogg"})

@@ -71,7 +71,44 @@ local possessed = {
     end
 }
 
+local cursed = {
+    key = "cursed",
+    badge_colour = HEX '8867a5',
+    pos = { x = 1, y = 0 },
+    atlas = "stickers",
+
+    loc_vars = function (self, info_queue, card)
+        return { vars = { G.GAME.curse_rate or 1 } }
+    end,
+
+    should_apply = function (self, card, center, area, bypass_roll)
+        if G.GAME.modifiers.enable_cursed and card.ability.set == "Joker" and pseudorandom((area == G.pack_cards and 'packetper' or 'etperpoll')..G.GAME.round_resets.ante) > 0.7 then
+            return true
+        end
+    end,
+
+    -- sets = {
+        -- Joker = true
+    -- },
+    -- needs_enable_flag = true,
+    -- rate = 1,
+
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+        if card.ability[self.key] then
+            local ref = card.config.center.add_to_deck
+            card.config.center.add_to_deck = function (self, card, from_debuff)
+                if ref then
+                    ref(self, card, from_debuff)
+                end
+                ease_curse(1)
+            end
+        end
+    end,
+}
+
 return {
     sour,
-    possessed
+    possessed,
+    cursed
 }
