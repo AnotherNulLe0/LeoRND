@@ -2,7 +2,12 @@ local brimstone = {
 	key = 'brimstone',
 	config = { extra = { e_mult = 1, e_mult_gain = 0.1, curse = 1 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain, card.ability.extra.curse, colours = {G.C.PURPLE} } }
+		if G.GAME.modifiers.enable_cursed then
+            return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain, card.ability.extra.curse }, key = self.key.."_alt" }
+        else
+            return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain, card.ability.extra.curse } }
+        end
+		
 	end,
 	locked_loc_vars = function(self, info_queue, card)
         return { vars = { 10, G.PROFILES[G.SETTINGS.profile].career_stats.c_wins } }

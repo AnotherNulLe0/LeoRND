@@ -40,7 +40,11 @@ local unfairer_dice = {
 			key = "leornd_possessed",
 			set = "Other"
 		}
-		return { vars = { card.ability.extra.curse, colours = {G.C.PURPLE} } }
+		if G.GAME.modifiers.enable_cursed then
+            return { vars = { card.ability.extra.curse }, key = self.key.."_alt" }
+        else
+            return { vars = { } }
+        end
 	end,
 	rarity = 4,
 	atlas = 'jokers',

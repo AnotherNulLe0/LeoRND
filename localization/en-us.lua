@@ -4,7 +4,20 @@ return {
             j_leornd_brimstone = {
                 name = "Brimstone",
                 text = {
-					"+{V:1}#3# curse{}",
+		        	"Gains {X:dark_edition,C:white}^#2#{} Mult",
+		        	"when boss blind",
+		        	"gets defeated",
+		        	"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)"
+		        },
+				unlock = {
+					"Win #1# runs",
+					"{C:inactive}(#2#){}"
+				}
+            },
+            j_leornd_brimstone_alt = {
+                name = "Brimstone",
+                text = {
+					"+{C:purple}#3# curse{}",
 		        	"Gains {X:dark_edition,C:white}^#2#{} Mult",
 		        	"when boss blind",
 		        	"gets defeated",
@@ -126,7 +139,22 @@ return {
 			j_leornd_unfairer_dice = {
 				name = "Unfairer dice",
 				text = {
-					"+{V:1}#1# curse{}",
+					"No listed {C:green,E:1,S:1.1}probability{}",
+                    "will trigger",
+                    "{C:inactive}(ex: {C:green}3 in 4{C:inactive} = {C:green}0 in 4{C:inactive})",
+					"Selling this joker will add",
+					"{C:attention,E:1}possessed{} sticker to",
+					"all cards in your hand"
+				},
+				unlock = {
+					"Have 3 {C:attention}Unfair dice{}",
+                    "at the same time",
+				}
+			},
+			j_leornd_unfairer_dice_alt = {
+				name = "Unfairer dice",
+				text = {
+					"+{C:purple}#1# curse{}",
 					"No listed {C:green,E:1,S:1.1}probability{}",
                     "will trigger",
                     "{C:inactive}(ex: {C:green}3 in 4{C:inactive} = {C:green}0 in 4{C:inactive})",
