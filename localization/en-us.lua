@@ -142,9 +142,6 @@ return {
 					"No listed {C:green,E:1,S:1.1}probability{}",
                     "will trigger",
                     "{C:inactive}(ex: {C:green}3 in 4{C:inactive} = {C:green}0 in 4{C:inactive})",
-					"Selling this joker will add",
-					"{C:attention,E:1}possessed{} sticker to",
-					"all cards in your hand"
 				},
 				unlock = {
 					"Have 3 {C:attention}Unfair dice{}",
@@ -158,9 +155,6 @@ return {
 					"No listed {C:green,E:1,S:1.1}probability{}",
                     "will trigger",
                     "{C:inactive}(ex: {C:green}3 in 4{C:inactive} = {C:green}0 in 4{C:inactive})",
-					"Selling this joker will add",
-					"{C:attention,E:1}possessed{} sticker to",
-					"all cards in your hand"
 				},
 				unlock = {
 					"Have 3 {C:attention}Unfair dice{}",
