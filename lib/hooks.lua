@@ -21,7 +21,8 @@ end
 local init_game_hook = Game.init_game_object
 function Game:init_game_object()
 	local proto = init_game_hook(self)
-	proto.round_resets.curse = 0
+	-- Curses
+	proto.curse = 0
 	proto.curse_rate = 1
 	return proto
 end
@@ -64,7 +65,7 @@ function create_UIBox_HUD()
 					{n=G.UIT.T, config={text = localize('k_curse'), minh = 0.33, scale = 0.85*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}},
 				  }},
 				  {n=G.UIT.R, config={align = "cm", r = 0.1, minw = 0.8, colour = temp_col2, id = 'row_curse_text'}, nodes={
-					  {n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.round_resets, ref_value = 'curse'}}, colours = {G.C.PURPLE},shadow = true, scale = 2*scale}),id = 'curse_UI_count'}},
+					  {n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'curse'}}, colours = {G.C.PURPLE},shadow = true, scale = 2*scale}),id = 'curse_UI_count'}},
 				  }},
 			  }},
     	}

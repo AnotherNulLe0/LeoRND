@@ -343,7 +343,13 @@ return {
 					"Discarded cards gain",
 					"possessed sticker"
 				}
-			}
+			},
+			bl_leornd_cursed_small = {
+				name = "Small blind",
+			},
+			bl_leornd_cursed_big = {
+				name = "Big blind",
+			},
 		},
 		Stake = {
 			stake_leornd_midnight = {

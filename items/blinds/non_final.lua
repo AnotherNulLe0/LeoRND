@@ -13,6 +13,22 @@ local othala = {
     boss_colour = HEX '56789A'
 }
 
+local cursed_small = {
+    key = "cursed_small",
+    small = true,
+    pos = { x = 0, y = 0 },
+    mult = 2
+}
+
+local cursed_big = {
+    key = "cursed_big",
+    big = true,
+    pos = { x = 0, y = 1 },
+    mult = 3
+}
+
 return {
-    othala
+    othala,
+    cursed_small,
+    cursed_big
 }

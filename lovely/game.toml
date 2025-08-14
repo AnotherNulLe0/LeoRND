@@ -1,0 +1,70 @@
+[manifest]
+version = "1.0.0"
+priority = 2
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "local bosses_used = {}"
+position = "after"
+payload = '''
+local blinds_used = { small={ }, big={ } }
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if v.boss then bosses_used[k] = 0 end"
+position = "at"
+payload = '''
+if v.boss then 
+    bosses_used[k] = 0
+elseif v.big then
+    blinds_used.big[k] = 0
+else
+    blinds_used.small[k] = 0
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "bosses_used = bosses_used,"
+position = "after"
+payload = '''
+blinds_used = blinds_used,
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "bl_small =           {name = 'Small Blind',  defeated = false, order = 1, dollars = 3, mult = 1,  vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=0}},"
+position = "at"
+payload = '''
+bl_small = {name = 'Small Blind', small = true, defeated = false, order = 1, dollars = 3, mult = 1,  vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=0}},
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "bl_big =             {name = 'Big Blind',    defeated = false, order = 2, dollars = 4, mult = 1.5,vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=1}},"
+position = "at"
+payload = '''
+bl_big = {name = 'Big Blind', big = true, defeated = false, order = 2, dollars = 4, mult = 1.5,vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=1}},
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if not saveTable then\n\t\tself.GAME.round_resets.blind_choices.Boss = get_new_boss()"
+position = "after"
+payload = '''
+    self.GAME.round_resets.blind_choices.Small = get_new_blind("small")
+    self.GAME.round_resets.blind_choices.Big = get_new_blind("big")
+'''
+match_indent = true
