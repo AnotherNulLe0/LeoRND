@@ -47,31 +47,33 @@ if success and dpAPI.isVersionCompatible(1) then
 	    name = "blind",
 	    shortDesc = "Reroll upcoming blinds",
 	    desc = "Reroll upcoming blinds. Usage:\n\
-				blind [kind] reroll - rerolls selected blind kind.\n\
+				blind reroll [kind] - rerolls selected blind kind.\n\
 				blind [kind] set [blind] - replaces [kind]blind with a specified blind.\n\
 				Possible blind kinds: 'small', 'big' and 'boss'",
 	    exec = function (args, rawArgs, dp)
 			if G.STAGE ~= G.STAGES.RUN then
         	    return "This command must be run during a run.", "ERROR"
         	end
-        	local subCmd = args[2]
-        	local kind = args[1]
-        	local replaceWith = args[3]
-			if subCmd == "reroll" then
-        		if kind == "small" then
+			if args[1] == "reroll" then
+        		if args[2] == "small" then
         		    G.FUNCS.reroll_small_blind()
-        		elseif kind == "big" then
+        		elseif args[2] == "big" then
         		    G.FUNCS.reroll_big_blind()
-        		elseif kind == "boss" then
+        		elseif args[2] == "boss" then
+					G.from_boss_tag = true
+        		    G.FUNCS.reroll_boss()
+				elseif args[2] == "all" then
+					G.FUNCS.reroll_small_blind()
+					G.FUNCS.reroll_big_blind()
 					G.from_boss_tag = true
         		    G.FUNCS.reroll_boss()
         		else
-        		    return "Uknown kind of blind: '"..kind.."'.Possible blind kinds: 'small', 'big' and 'boss'", "ERROR"
+        		    return "Unknown kind of blind: '"..args[2].."'.Possible blind kinds: 'small', 'big' and 'boss'", "ERROR"
         		end
-				return "Rerolling "..kind.." blind."
-			elseif subCmd == "set" then
-				G.FUNCS.set_blind(kind, replaceWith)
-				return "Replacing "..kind.." with "..replaceWith.."."
+				return "Rerolling "..args[2].." blind."
+			elseif args[2] == "set" then
+				G.FUNCS.set_blind(args[1], args[3])
+				return "Replacing "..args[1].." with "..args[3].."."
 			else
 				return "Please choose whether you want to reroll or set. For more info, run 'help blind'"
 			end
