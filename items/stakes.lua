@@ -5,6 +5,7 @@ local midnight = {
 
     atlas = "stakes",
     pos = { x = 0, y = 0 },
+    colour = HEX("333660"),
 
     modifiers = function ()
         G.GAME.modifiers.enable_cursed = true
