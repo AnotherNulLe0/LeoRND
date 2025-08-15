@@ -393,8 +393,8 @@ return {
 			leornd_sour = {
 				name = "Sour",
 				text = {
-					"Reduces blind size by {X:attention,C:white}X#1#{}",
-					"of blind when scored.",
+					"{X:attention,C:white}X#1#{} of blind size",
+					"when scored.",
 					"{C:chips}#2#{} chips when scored"
 				}
 			},
