@@ -75,6 +75,26 @@ local utils = {
 
 		center = G.P_CENTERS[center]
 		return center
+	end,
+	poll_curse_effect = function (seed, min_curse, weight, scaling)
+		local min_curse = min_curse or 5
+		local weight = weight or G.GAME.curse
+		local scaling = scaling or 1
+		if weight == 0 then
+			return false
+		end
+		local threshold = (min_curse * scaling) / weight
+		print("Polling for curse with seed '"..seed.."'")
+		local result = pseudorandom("curse"..seed) 
+		print(tostring(result).." should be more than "..tostring(threshold))
+		if G.GAME.modifiers.enable_cursed
+           and G.GAME.curse >= min_curse
+           and result > threshold then
+			print("It's more")
+            return true
+        end
+		print("It's less")
+        return false
 	end
 }
 utils.fruit_themed_jokers = function (except)
