@@ -23,6 +23,7 @@ function Game:init_game_object()
 	local proto = init_game_hook(self)
 	-- Curses
 	proto.curse = 0
+	proto.max_curse = 0
 	proto.curse_rate = 1
 	return proto
 end

@@ -225,9 +225,62 @@ local pan = {
 	end
 }
 
+local purified_joker = {
+	key = 'purified_joker',
+	config = {
+		extra = { xmult = 1, xmult_per_curse = 0.1, curse_decrease = 2 }
+	},
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.xmult_per_curse, card.ability.extra.xmult, card.ability.extra.curse_decrease } }
+	end,
+	rarity = 2,
+	atlas = 'jokers',
+	pos = { x = 1, y = 4 },
+
+	blueprint_compat = true,
+	unlocked = false,
+
+	cost = 5,
+
+	check_for_unlock = function (self, args)
+		-- Unlocked if you win with no curses
+		-- Can be obtained only in midnight+ stake runs (obviously)
+		if args.type == "win" and G.GAME.modifiers.enable_cursed and G.GAME.max_curse == 0 then
+			return true
+		end
+	end,
+
+	calculate = function(self, card, context)
+		if context.setting_blind and not context.blueprint and not context.repetition and not context.retrigger_joker then
+			local decrease = card.ability.extra.curse_decrease
+			if G.GAME.curse - decrease < 0 then
+				decrease = G.GAME.curse
+			end
+			if decrease ~= 0 then
+				ease_curse(-decrease)
+				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_per_curse * decrease
+				return {
+					message = "-"..tostring(decrease),
+					colour = G.C.PURPLE,
+					extra = {
+						message = localize("k_val_up"),
+						colour = G.C.IMPORTANT
+					}
+				}
+			end
+		end
+		if context.joker_main then
+			return {
+				xmult = card.ability.extra.xmult
+			}
+		end
+	end
+}
+
 return {
     unfair_dice,
     tboi_glass,
     sour,
-    pan
+    pan,
+	purified_joker
 }

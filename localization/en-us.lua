@@ -202,7 +202,35 @@ return {
 					"Discover every",
 					"{E:1,V:1}Fruit{} card"
 				}
-			}
+			},
+			j_leornd_cursed_joker = {
+				name = "Cursed joker",
+				text = {
+					"+{C:purple}#3# curse{}",
+					"Gives {C:mult}+#1#{} mult",
+					"for each {C:purple}curse{} level you have",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} mult){}"
+				},
+				unlock = {
+					"Win a run with {C:purple}curse{}",
+					"level more than 20"
+				}
+			},
+			j_leornd_purified_joker = {
+				name = "Purified joker",
+				text = {
+					"{C:purple}-#3#{} curse at the start of blind",
+					"Gains {X:mult,C:white}X#1#{} mult",
+					"for each {C:purple}curse{} level",
+					"you lost this way",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} mult){}"
+				},
+				unlock = {
+					"Win a run at least on",
+					"{C:purple}Midnight{} stake",
+					"without having any curses"
+				}
+			},
         },
 		Fruit = {
 			c_leornd_lemon = {

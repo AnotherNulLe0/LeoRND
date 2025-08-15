@@ -138,6 +138,10 @@ function ease_curse(mod)
           end
 
           G.GAME.curse = G.GAME.curse + mod
+		  if G.GAME.curse > G.GAME.max_curse then
+			G.GAME.max_curse = G.GAME.curse
+		  end
+
 		  local threshold = nil
 		  local modifier = nil
 

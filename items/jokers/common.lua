@@ -164,9 +164,54 @@ local fruity_joker = {
 	end
 }
 
+local cursed_joker = {
+	key = 'cursed_joker',
+	config = {
+		extra = { mult_per_curse = 5, curse = 1 }
+	},
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.mult_per_curse, G.GAME.curse * card.ability.extra.mult_per_curse, card.ability.extra.curse * G.GAME.curse_rate } }
+	end,
+	rarity = 1,
+	atlas = 'jokers',
+	pos = { x = 0, y = 4 },
+
+	blueprint_compat = true,
+	unlocked = false,
+
+	cost = 4,
+
+	add_to_deck = function (self, card, from_debuff)
+		if G.GAME.modifiers.enable_cursed then
+			ease_curse(card.ability.extra.curse * G.GAME.curse_rate)
+		else
+			G.E_MANAGER:add_event(Event({
+                func = LeoRND.utils.event_destroy_card(card)
+            }))
+		end
+	end,
+
+	check_for_unlock = function (self, args)
+		-- Unlocked if you win with more than 20 curse
+		-- Can be obtained only in midnight+ stake runs (obviously)
+		if args.type == "win" and G.GAME.curse >= 20 then
+			return true
+		end
+	end,
+
+	calculate = function(self, card, context)
+		if context.joker_main then
+			return {
+				mult = card.ability.extra.mult_per_curse * G.GAME.curse
+			}
+		end
+	end
+}
+
 return {
     a_grade,
     abszero,
     tree,
-	fruity_joker
+	fruity_joker,
+	cursed_joker
 }
