@@ -84,7 +84,7 @@ local utils = {
 			return false
 		end
 		local threshold = (min_curse * scaling) / weight
-		local result = pseudorandom("curse"..seed) 
+		local result = pseudorandom("curse"..seed)
 		if G.GAME.modifiers.enable_cursed
            and G.GAME.curse >= min_curse
            and result > threshold then
@@ -136,7 +136,67 @@ function ease_curse(mod)
               text = '-'
               col = G.C.RED
           end
+
           G.GAME.curse = G.GAME.curse + mod
+		  local threshold = nil
+		  local modifier = nil
+
+		  -- Rental cost increase
+		  threshold = 3
+		  modifier = 1
+		  if not G.GAME.rental_rate_buffer then
+			G.GAME.rental_rate_buffer = 0
+		  end
+		  G.GAME.rental_rate_buffer = G.GAME.rental_rate_buffer + mod
+
+		  if math.abs(G.GAME.rental_rate_buffer) >= threshold then
+			G.GAME.rental_rate = G.GAME.rental_rate + math.floor(G.GAME.rental_rate_buffer / threshold) * modifier
+			G.GAME.rental_rate_buffer = 0
+		  end
+
+		  -- Inflation
+		  threshold = 5
+		  modifier = 2
+		  if not G.GAME.inflation_buffer then
+			G.GAME.inflation_buffer = 0
+		  end
+		  G.GAME.inflation_buffer = G.GAME.inflation_buffer + mod
+
+		  if math.abs(G.GAME.inflation_buffer) >= threshold then
+			G.GAME.inflation = G.GAME.inflation + math.floor(G.GAME.inflation_buffer / threshold) * modifier
+			G.GAME.inflation_buffer = 0
+			if G.STATE == G.STATES.SHOP then
+		  		for _, card in ipairs(G.shop_jokers.cards) do
+					card:set_cost()
+		  		end
+		  		for _, card in ipairs(G.shop_vouchers.cards) do
+					card:set_cost()
+		  		end
+		  		for _, card in ipairs(G.shop_booster.cards) do
+					card:set_cost()
+		  		end
+			end
+		  end
+		  -- Reroll cost increase
+		  threshold = 2
+		  modifier = 1
+		  if not G.GAME.round_resets.reroll_cost_buffer then
+			G.GAME.round_resets.reroll_cost_buffer = 0
+		  end
+		  G.GAME.round_resets.reroll_cost_buffer = G.GAME.round_resets.reroll_cost_buffer + mod
+
+		  if math.abs(G.GAME.round_resets.reroll_cost_buffer) >= threshold then
+			G.E_MANAGER:add_event(Event{
+				func = function ()
+					G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost + math.floor(G.GAME.round_resets.reroll_cost_buffer / threshold) * modifier
+					calculate_reroll_cost(true)
+					return true
+				end
+			})
+			G.GAME.round_resets.reroll_cost_buffer = 0
+		  end
+
+
           curse_UI.config.object:update()
           G.HUD:recalculate()
           --Popup text next to the chips in UI showing number of chips gained/lost
