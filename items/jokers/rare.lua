@@ -3,9 +3,9 @@ local brimstone = {
 	config = { extra = { e_mult = 1, e_mult_gain = 0.1, curse = 1 } },
 	loc_vars = function(self, info_queue, card)
 		if G.GAME.modifiers.enable_cursed then
-            return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain, card.ability.extra.curse }, key = self.key.."_alt" }
+            return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain, card.ability.extra.curse * G.GAME.curse_rate }, key = self.key.."_alt" }
         else
-            return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain, card.ability.extra.curse } }
+            return { vars = { card.ability.extra.e_mult, card.ability.extra.e_mult_gain, card.ability.extra.curse * G.GAME.curse_rate } }
         end
 		
 	end,
@@ -29,7 +29,7 @@ local brimstone = {
 			G.GAME.pool_flags.leornd_pacted = true
 		end
 		if G.GAME.modifiers.enable_cursed then
-			ease_curse(card.ability.extra.curse)
+			ease_curse(card.ability.extra.curse * G.GAME.curse_rate)
 		end
 	end,
 

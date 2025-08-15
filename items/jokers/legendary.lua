@@ -31,7 +31,7 @@ local unfairer_dice = {
 	config = { extra = { curse = 1 } },
 	loc_vars = function(self, info_queue, card)
 		if G.GAME.modifiers.enable_cursed then
-            return { vars = { card.ability.extra.curse }, key = self.key.."_alt" }
+            return { vars = { card.ability.extra.curse * G.GAME.curse_rate }, key = self.key.."_alt" }
         else
             return { vars = { } }
         end
@@ -52,7 +52,7 @@ local unfairer_dice = {
 			G.GAME.pool_flags.leornd_pacted = true
 		end
 		if G.GAME.modifiers.enable_cursed then
-			ease_curse(1)
+			ease_curse(card.ability.extra.curse * G.GAME.curse_rate)
 		end
 	end,
 
