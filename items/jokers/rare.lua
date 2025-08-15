@@ -180,6 +180,7 @@ local fruityful = {
 	rarity = 3,
 	atlas = 'jokers',
 	pos = { x = 0, y = 3 },
+	soul_pos = { x = 3 , y = 3},
 	unlocked = false,
 
 	blueprint_compat = true,

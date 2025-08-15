@@ -132,6 +132,7 @@ local fruity_joker = {
 	rarity = 1,
 	atlas = 'jokers',
 	pos = { x = 3, y = 2 },
+	soul_pos = { x = 3 , y = 3},
 
 	blueprint_compat = true,
 	unlocked = false,
