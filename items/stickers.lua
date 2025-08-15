@@ -74,7 +74,7 @@ local possessed = {
 local cursed = {
     key = "cursed",
     badge_colour = HEX '8867a5',
-    pos = { x = 1, y = 0 },
+    pos = { x = 2, y = 0 },
     atlas = "stickers",
 
     loc_vars = function (self, info_queue, card)
