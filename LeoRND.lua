@@ -122,6 +122,12 @@ SMODS.ConsumableType {
 	shop_rate = G.PROFILES[G.SETTINGS.profile].leornd_fruity and LeoRND.config.fruit_rate or 0
 }
 
+SMODS.UndiscoveredSprite {
+	key = "Fruit",
+	atlas = "fruit",
+	pos = { x = 3, y = 2}
+}
+
 -- Register fruit-themed pool
 local fruit_jokers = {
 	-- Fruit jokers
