@@ -17,6 +17,9 @@ local brimstone = {
 	pos = { x = 2, y = 0 },
 	unlocked = false,
 	no_pool_flag = "leornd_pacted",
+	pools = {
+		["Demonic"] = true
+	},
 	
 	check_for_unlock = function (self, args)
 		if args.type == 'career_stat'then

@@ -160,6 +160,11 @@ SMODS.ObjectType {
 	cards = fruit_jokers
 }
 
+SMODS.ObjectType {
+	key = "Demonic",
+	default = "j_joker",
+}
+
 -- Load jokers
 LeoRND.utils.load_content("items/jokers/common.lua", SMODS.Joker)
 LeoRND.utils.load_content("items/jokers/uncommon.lua", SMODS.Joker)

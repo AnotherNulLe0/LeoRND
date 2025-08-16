@@ -42,6 +42,9 @@ local unfairer_dice = {
 	soul_pos = { x = 2, y = 3 },
 	unlocked = false,
 	no_pool_flag = "leornd_pacted",
+	pools = {
+		["Demonic"] = true
+	},
 
 	blueprint_compat = false,
 
