@@ -64,6 +64,9 @@ local tree = {
 	rarity = 1,
 	atlas = 'jokers',
 	pos = { x = 1, y = 2 },
+	pools = {
+		["FruitPool"] = true
+	},
 
 	blueprint_compat = true,
 	unlocked = false,
@@ -133,6 +136,9 @@ local fruity_joker = {
 	atlas = 'jokers',
 	pos = { x = 3, y = 2 },
 	soul_pos = { x = 3 , y = 3},
+	pools = {
+		["FruitPool"] = true
+	},
 
 	blueprint_compat = true,
 	unlocked = false,

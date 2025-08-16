@@ -127,9 +127,6 @@ local fruit_jokers = {
 	-- Fruit jokers
 	["j_gros_michel"] = true,
 	["j_cavendish"] = true,
-	["j_leornd_tree"] = true,
-	["j_leornd_fruity_joker"] = true,
-	["j_leornd_fruityful_joker"] = true,
 }
 
 -- Gonna add theese strawberry jokers
