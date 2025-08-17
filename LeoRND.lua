@@ -182,7 +182,6 @@ end
 table.sort(
 	jokers,
 	function (a, b)
-		print(inspect(a))
 		return a.order < b.order
 	end
 )
