@@ -17,14 +17,14 @@ local pact = {
             id = "j_leornd_brimstone",
             edition = "negative",
             -- Use Entropy's aleph, fallbacks to Cryptid's absolute, fallbacks to vanilla eternal
-            eternal =  not (Entropy and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
-            stickers = {(Entropy and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
+            eternal =  not (Entropy and Cryptid and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
+            stickers = {(Entropy and Cryptid and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
         },
         {
             id = "j_leornd_unfairer_dice",
             -- Use Entropy's aleph, fallbacks to Cryptid's absolute, fallbacks to vanilla eternal
-            eternal =  not (Entropy and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
-            stickers = {(Entropy and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
+            eternal =  not (Entropy and Cryptid and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
+            stickers = {(Entropy and Cryptid and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
         },
     },
     restrictions = {
