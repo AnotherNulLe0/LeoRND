@@ -1,0 +1,18 @@
+[manifest]
+version = "1.0.0"
+priority = 1
+
+# G.GAME:start_run()
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if v.pinned then _joker.pinned = true end"
+position = "after"
+payload = '''
+if v.config then 
+    for field, value in pairs(v.config) do
+        _joker.ability.extra[field] = value
+    end
+end
+'''
+match_indent = true

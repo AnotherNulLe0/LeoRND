@@ -1,0 +1,25 @@
+[manifest]
+version = "1.0.0"
+priority = 1
+
+# Starting curse modifier for challenges
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "hand_size = {value = starting_params.hand_size, order = 3},"
+position = "after"
+payload = '''
+curses = {value = starting_params.curses, order = 8},
+'''
+match_indent = true
+
+# Adds an ability to start run with a specific amount of curse
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "self.GAME.dollars = self.GAME.starting_params.dollars"
+position = "after"
+payload = '''
+self.GAME.curse = self.GAME.starting_params.curses
+'''
+match_indent = true
