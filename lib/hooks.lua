@@ -28,6 +28,13 @@ function Game:init_game_object()
 	return proto
 end
 
+local get_starting_params_hook = get_starting_params
+function get_starting_params()
+	local res = get_starting_params_hook()
+	res.curses = 0
+	return res
+end
+
 local hud_ref = create_UIBox_HUD
 function create_UIBox_HUD()
 	local old_hud = hud_ref()
