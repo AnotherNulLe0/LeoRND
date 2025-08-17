@@ -177,7 +177,7 @@ local fruity_joker = {
 local cursed_joker = {
 	key = 'cursed_joker',
 	config = {
-		extra = { mult_per_curse = 5, curse = 1 }
+		extra = { mult_per_curse = 1, curse = 1 }
 	},
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.mult_per_curse, G.GAME.curse * card.ability.extra.mult_per_curse, card.ability.extra.curse * G.GAME.curse_rate } }
