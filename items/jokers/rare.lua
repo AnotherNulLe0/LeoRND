@@ -15,6 +15,7 @@ local brimstone = {
 	rarity = 3,
 	atlas = 'jokers',
 	pos = { x = 2, y = 0 },
+	order =  7,
 	unlocked = false,
 	no_pool_flag = "leornd_pacted",
 	pools = {
@@ -70,6 +71,7 @@ local sour_glass = {
 	rarity = 3,
 	atlas = 'jokers',
 	pos = { x = 1, y = 1 },
+	order =  4,
 
 	yes_pool_flag = "tboiglass_destroyed",
 	eternal_compat = false,
@@ -119,6 +121,7 @@ local grape_juice = {
 	rarity = 3,
 	atlas = 'jokers',
 	pos = { x = 2, y = 2 },
+	order = 11,
 
 	unlocked = false,
 
@@ -184,6 +187,7 @@ local fruityful = {
 	atlas = 'jokers',
 	pos = { x = 0, y = 3 },
 	soul_pos = { x = 3 , y = 3},
+	order = 10,
 	unlocked = false,
 	pools = {
 		["FruitPool"] = true

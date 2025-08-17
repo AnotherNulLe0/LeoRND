@@ -8,6 +8,7 @@ local unfair_dice = {
 	atlas = 'jokers',
     unlocked = false,
 	pos = { x = 0, y = 2 },
+	order = 6,
 
 	blueprint_compat = true,
 
@@ -63,6 +64,7 @@ local tboi_glass = {
 	rarity = 2,
 	atlas = 'jokers',
 	pos = { x = 0, y = 1 },
+	order = 3,
 	unlocked = false,
 
 	no_pool_flag = "tboiglass_destroyed",
@@ -131,6 +133,7 @@ local sour = {
 	rarity = 2,
 	atlas = 'jokers',
 	pos = { x = 3, y = 1 },
+	order = 5,
 	pixel_size = { h = 69 },
 
 	cost = 6,
@@ -200,6 +203,7 @@ local pan = {
 	rarity = 2,
 	atlas = 'jokers',
 	pos = { x = 0, y = 0 },
+	order = 12,
 
 	cost = 6,
 
@@ -236,6 +240,7 @@ local purified_joker = {
 	rarity = 2,
 	atlas = 'jokers',
 	pos = { x = 1, y = 4 },
+	order = 14,
 
 	blueprint_compat = true,
 	unlocked = false,

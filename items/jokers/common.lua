@@ -12,6 +12,7 @@ local a_grade = {
 	rarity = 1,
 	atlas = 'jokers',
 	pos = { x = 1, y = 0 },
+	order = 1,
 
 	cost = 4,
 	blueprint_compat = true,
@@ -41,6 +42,7 @@ local abszero = {
 	rarity = 1,
 	atlas = 'jokers',
 	pos = { x = 2, y = 1 },
+	order = 2,
 
 	cost = 4,
 
@@ -64,6 +66,7 @@ local tree = {
 	rarity = 1,
 	atlas = 'jokers',
 	pos = { x = 1, y = 2 },
+	order = 8,
 	pools = {
 		["FruitPool"] = true
 	},
@@ -136,6 +139,7 @@ local fruity_joker = {
 	atlas = 'jokers',
 	pos = { x = 3, y = 2 },
 	soul_pos = { x = 3 , y = 3},
+	order = 9,
 	pools = {
 		["FruitPool"] = true
 	},
@@ -181,6 +185,7 @@ local cursed_joker = {
 	rarity = 1,
 	atlas = 'jokers',
 	pos = { x = 0, y = 4 },
+	order = 13,
 
 	blueprint_compat = true,
 	unlocked = false,
@@ -219,5 +224,5 @@ return {
     abszero,
     tree,
 	fruity_joker,
-	cursed_joker
+	cursed_joker,
 }

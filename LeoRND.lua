@@ -166,10 +166,29 @@ SMODS.ObjectType {
 }
 
 -- Load jokers
-LeoRND.utils.load_content("items/jokers/common.lua", SMODS.Joker)
-LeoRND.utils.load_content("items/jokers/uncommon.lua", SMODS.Joker)
-LeoRND.utils.load_content("items/jokers/rare.lua", SMODS.Joker)
-LeoRND.utils.load_content("items/jokers/legendary.lua", SMODS.Joker)
+local jokers = {}
+for _, jkr in ipairs(SMODS.load_file("items/jokers/common.lua")()) do
+	jokers[#jokers+1] = jkr
+end
+for _, jkr in ipairs(SMODS.load_file("items/jokers/uncommon.lua")()) do
+	jokers[#jokers+1] = jkr
+end
+for _, jkr in ipairs(SMODS.load_file("items/jokers/rare.lua")()) do
+	jokers[#jokers+1] = jkr
+end
+for _, jkr in ipairs(SMODS.load_file("items/jokers/legendary.lua")()) do
+	jokers[#jokers+1] = jkr
+end
+table.sort(
+	jokers,
+	function (a, b)
+		print(inspect(a))
+		return a.order < b.order
+	end
+)
+for _, jkr in ipairs(jokers) do
+	SMODS.Joker(jkr)
+end
 
 -- Load stickers
 LeoRND.utils.load_content("items/stickers.lua", SMODS.Sticker)
