@@ -1,5 +1,5 @@
 local pact = {
-    key = "pact_challenge",
+    key = "pact",
     unlocked = function (self)
         return G.P_CENTERS["j_leornd_unfairer_dice"].discovered and G.P_CENTERS["j_leornd_brimstone"].discovered
     end,
@@ -16,6 +16,7 @@ local pact = {
         {
             id = "j_leornd_brimstone",
             edition = "negative",
+            config = { e_mult = LeoRND.config.ch_pact_debuff },
             -- Use Entropy's aleph, fallbacks to Cryptid's absolute, fallbacks to vanilla eternal
             eternal =  not (Entropy and Cryptid and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
             stickers = {(Entropy and Cryptid and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
@@ -113,6 +114,36 @@ local pact = {
     }
 }
 
+local cursed = {
+    key = "cursed",
+    rules = {
+        custom = {
+            { id = "enable_cursed" },
+        },
+        modifiers = {
+            { id = "curses", value = 10 },
+        }
+    },
+    jokers = {
+        {
+            id = "j_leornd_cursed_joker",
+            edition = "negative",
+            -- Use Entropy's aleph, fallbacks to Cryptid's absolute, fallbacks to vanilla eternal
+            eternal =  not (Entropy and Cryptid and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
+            stickers = {(Entropy and Cryptid and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
+            config = { curse = 0 }
+        },
+        {
+            id = "j_leornd_purified_joker",
+            edition = "negative",
+            -- Use Entropy's aleph, fallbacks to Cryptid's absolute, fallbacks to vanilla eternal
+            eternal =  not (Entropy and Cryptid and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
+            stickers = {(Entropy and Cryptid and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
+        },
+    },
+}
+
 return {
-    pact
+    pact,
+    cursed
 }
