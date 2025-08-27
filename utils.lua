@@ -91,6 +91,71 @@ local utils = {
             return true
         end
         return false
+	end,
+	check_curse_debuff = function (mod)
+		local threshold = nil
+		local modifier = nil
+		mod = mod or G.GAME.curse
+
+		-- Rental cost increase
+		threshold = 3
+		modifier = 1
+
+		if not G.GAME.rental_rate_buffer then
+			G.GAME.rental_rate_buffer = 0
+		end
+
+		G.GAME.rental_rate_buffer = G.GAME.rental_rate_buffer + mod
+		if math.abs(G.GAME.rental_rate_buffer) >= threshold then
+			G.GAME.rental_rate = G.GAME.rental_rate + math.floor(G.GAME.rental_rate_buffer / threshold) * modifier
+			G.GAME.rental_rate_buffer = 0
+		end
+
+		-- Inflation
+		threshold = 5
+		modifier = 2
+
+		if not G.GAME.inflation_buffer then
+			G.GAME.inflation_buffer = 0
+		end
+		G.GAME.inflation_buffer = G.GAME.inflation_buffer + mod
+
+		if math.abs(G.GAME.inflation_buffer) >= threshold then
+			G.GAME.inflation = G.GAME.inflation + math.floor(G.GAME.inflation_buffer / threshold) * modifier
+			G.GAME.inflation_buffer = 0
+			if G.STATE == G.STATES.SHOP then
+				for _, card in ipairs(G.shop_jokers.cards) do
+					card:set_cost()
+				end
+				for _, card in ipairs(G.shop_vouchers.cards) do
+					card:set_cost()
+				end
+				for _, card in ipairs(G.shop_booster.cards) do
+					card:set_cost()
+				end
+			end
+		end
+
+		-- Reroll cost increase
+		threshold = 2
+		modifier = 1
+
+		if not G.GAME.round_resets.reroll_cost_buffer then
+			G.GAME.round_resets.reroll_cost_buffer = 0
+		end
+		G.GAME.round_resets.reroll_cost_buffer = G.GAME.round_resets.reroll_cost_buffer + mod
+
+		if math.abs(G.GAME.round_resets.reroll_cost_buffer) >= threshold then
+			G.GAME.current_round.reroll_cost = G.GAME.current_round.reroll_cost + math.floor(G.GAME.round_resets.reroll_cost_buffer / threshold) * modifier
+			G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost + math.floor(G.GAME.round_resets.reroll_cost_buffer / threshold) * modifier
+			G.E_MANAGER:add_event(Event{
+				func = function ()
+					calculate_reroll_cost(true)
+					return true
+				end
+			})
+			G.GAME.round_resets.reroll_cost_buffer = 0
+		end
 	end
 }
 utils.fruit_themed_jokers = function (except)
@@ -142,63 +207,7 @@ function ease_curse(mod)
 			G.GAME.max_curse = G.GAME.curse
 		  end
 
-		  local threshold = nil
-		  local modifier = nil
-
-		  -- Rental cost increase
-		  threshold = 3
-		  modifier = 1
-		  if not G.GAME.rental_rate_buffer then
-			G.GAME.rental_rate_buffer = 0
-		  end
-		  G.GAME.rental_rate_buffer = G.GAME.rental_rate_buffer + mod
-
-		  if math.abs(G.GAME.rental_rate_buffer) >= threshold then
-			G.GAME.rental_rate = G.GAME.rental_rate + math.floor(G.GAME.rental_rate_buffer / threshold) * modifier
-			G.GAME.rental_rate_buffer = 0
-		  end
-
-		  -- Inflation
-		  threshold = 5
-		  modifier = 2
-		  if not G.GAME.inflation_buffer then
-			G.GAME.inflation_buffer = 0
-		  end
-		  G.GAME.inflation_buffer = G.GAME.inflation_buffer + mod
-
-		  if math.abs(G.GAME.inflation_buffer) >= threshold then
-			G.GAME.inflation = G.GAME.inflation + math.floor(G.GAME.inflation_buffer / threshold) * modifier
-			G.GAME.inflation_buffer = 0
-			if G.STATE == G.STATES.SHOP then
-		  		for _, card in ipairs(G.shop_jokers.cards) do
-					card:set_cost()
-		  		end
-		  		for _, card in ipairs(G.shop_vouchers.cards) do
-					card:set_cost()
-		  		end
-		  		for _, card in ipairs(G.shop_booster.cards) do
-					card:set_cost()
-		  		end
-			end
-		  end
-		  -- Reroll cost increase
-		  threshold = 2
-		  modifier = 1
-		  if not G.GAME.round_resets.reroll_cost_buffer then
-			G.GAME.round_resets.reroll_cost_buffer = 0
-		  end
-		  G.GAME.round_resets.reroll_cost_buffer = G.GAME.round_resets.reroll_cost_buffer + mod
-
-		  if math.abs(G.GAME.round_resets.reroll_cost_buffer) >= threshold then
-			G.E_MANAGER:add_event(Event{
-				func = function ()
-					G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost + math.floor(G.GAME.round_resets.reroll_cost_buffer / threshold) * modifier
-					calculate_reroll_cost(true)
-					return true
-				end
-			})
-			G.GAME.round_resets.reroll_cost_buffer = 0
-		  end
+		  LeoRND.utils.check_curse_debuff(mod)
 
 
           curse_UI.config.object:update()
