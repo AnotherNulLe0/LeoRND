@@ -1,5 +1,19 @@
 return {
     descriptions = {
+		Mod = {
+			leornd = {
+				name = "The LeoRND",
+				text = {
+					"{X:inactive,C:white}Adds some fun and almost balanced jokers (with some references)",
+        			"Curse effects: ",
+        			"- +1 rental rate for each 3 curse",
+        			"- +2 inflation for each 5 curse",
+        			"- +1 reroll cost for each 2 curse",
+        			"- >5 curse - cursed blind variants.",
+        			"  More curse - more chances to appear"
+				}
+			}
+		},
         Joker = {
             j_leornd_brimstone = {
                 name = "Brimstone",
