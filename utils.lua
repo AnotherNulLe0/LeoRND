@@ -190,6 +190,9 @@ end
 
 -- Global utils
 function ease_curse(mod)
+	if G.GAME.curse + mod < (G.GAME.modifiers.leornd_min_curse or 0) then 
+		return
+	end
     G.E_MANAGER:add_event(Event({
       trigger = 'immediate',
       func = function()
