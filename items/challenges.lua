@@ -119,27 +119,11 @@ local cursed = {
     rules = {
         custom = {
             { id = "enable_cursed" },
+            { id = "leornd_min_curse", value = 50 },
         },
         modifiers = {
-            { id = "curses", value = 10 },
+            { id = "curses", value = 50 },
         }
-    },
-    jokers = {
-        {
-            id = "j_leornd_cursed_joker",
-            edition = "negative",
-            -- Use Entropy's aleph, fallbacks to Cryptid's absolute, fallbacks to vanilla eternal
-            eternal =  not (Entropy and Cryptid and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
-            stickers = {(Entropy and Cryptid and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
-            config = { curse = 0 }
-        },
-        {
-            id = "j_leornd_purified_joker",
-            edition = "negative",
-            -- Use Entropy's aleph, fallbacks to Cryptid's absolute, fallbacks to vanilla eternal
-            eternal =  not (Entropy and Cryptid and Cryptid.enabled("entr_aleph") or Cryptid and Cryptid.enabled("cry_absolute")),
-            stickers = {(Entropy and Cryptid and Cryptid.enabled("entr_aleph") and "entr_aleph") or (Cryptid and Cryptid.enabled("cry_absolute") and "cry_absolute")},
-        },
     },
 }
 

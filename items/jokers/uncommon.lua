@@ -258,8 +258,8 @@ local purified_joker = {
 	calculate = function(self, card, context)
 		if context.setting_blind and not context.blueprint and not context.repetition and not context.retrigger_joker then
 			local decrease = card.ability.extra.curse_decrease
-			if G.GAME.curse - decrease < 0 then
-				decrease = G.GAME.curse
+			if G.GAME.curse - decrease < (G.GAME.modifiers.leornd_min_curse or 0) then
+				decrease = G.GAME.curse - (G.GAME.modifiers.leornd_min_curse or 0)
 			end
 			if decrease ~= 0 then
 				ease_curse(-decrease)
