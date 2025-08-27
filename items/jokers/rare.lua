@@ -17,7 +17,6 @@ local brimstone = {
 	pos = { x = 2, y = 0 },
 	order =  7,
 	unlocked = false,
-	no_pool_flag = "leornd_pacted",
 	pools = {
 		["Demonic"] = true
 	},
@@ -29,9 +28,6 @@ local brimstone = {
 	end,
 
 	add_to_deck = function (self, card, from_debuff)
-		if not G.GAME.pool_flags.leornd_pacted then
-			G.GAME.pool_flags.leornd_pacted = true
-		end
 		if G.GAME.modifiers.enable_cursed then
 			G.E_MANAGER:add_event(Event{
 				func = function ()
