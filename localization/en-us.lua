@@ -426,7 +426,8 @@ return {
 			b_fruit_cards = "Fruit cards"
 		},
 		challenge_names = {
-			c_leornd_pact = "Devil's pact"
+			c_leornd_pact = "Devil's pact",
+			c_leornd_cursed = "Forever cursed"
 		},
 		v_text = {
 			ch_c_leornd_pact = {
