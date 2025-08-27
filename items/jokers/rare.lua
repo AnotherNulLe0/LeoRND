@@ -33,7 +33,7 @@ local brimstone = {
 			G.GAME.pool_flags.leornd_pacted = true
 		end
 		if G.GAME.modifiers.enable_cursed then
-			G.E_MANAGER.add_event(Event{
+			G.E_MANAGER:add_event(Event{
 				func = function ()
 					ease_curse(card.ability.extra.curse * G.GAME.curse_rate)
 					return true
