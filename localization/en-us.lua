@@ -432,6 +432,9 @@ return {
 			ch_c_leornd_pact = {
 				"Start with Brimstone Mult equal {X:dark_edition,C:white}^"..LeoRND.config.ch_pact_debuff.."{}",
 			},
+			ch_c_leornd_min_curse = {
+				"{C:purple}Curse{} cannot be lower than {C:purple}#1#{}",
+			},
 			ch_m_curses={
 				"{C:purple}#1#{} Curse",
 			},
