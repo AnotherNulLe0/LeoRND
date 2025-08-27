@@ -86,12 +86,17 @@ local tboi_glass = {
 
 	calculate = function(self, card, context)
 		if context.open_booster then
-			card:juice_up()
-			if G.GAME.pack_choices + card.ability.extra.extra_card > G.GAME.pack_size then
-				G.GAME.pack_choices = G.GAME.pack_size
-			else
-				G.GAME.pack_choices = G.GAME.pack_choices + card.ability.extra.extra_card
-			end
+			G.E_MANAGER:add_event(Event{
+				func = function ()
+					card:juice_up()
+					if G.GAME.pack_choices + card.ability.extra.extra_card > context.card.ability.extra then
+						G.GAME.pack_choices = context.card.ability.extra
+					else
+						G.GAME.pack_choices = G.GAME.pack_choices + card.ability.extra.extra_card
+					end
+					return true
+				end
+			})
 		end
 
 		if context.joker_main then

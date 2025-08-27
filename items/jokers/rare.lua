@@ -60,7 +60,7 @@ local brimstone = {
 
 local sour_glass = {
 	key = 'sour_glass',
-	config = { extra = { extra_card = 1, chips_mult = 2.5, odds = 100 } },
+	config = { extra = { extra_card = 2, chips_mult = 2.5, odds = 100 } },
 	loc_vars = function(self, info_queue, card)
 		local base, odds = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'leornd_j_sour_glass')
 		return { vars = { card.ability.extra.extra_card, card.ability.extra.chips_mult, base, odds } }
@@ -77,12 +77,17 @@ local sour_glass = {
 
 	calculate = function(self, card, context)
 		if context.open_booster then
-			card:juice_up()
-			if G.GAME.pack_choices + card.ability.extra.extra_card > G.GAME.pack_size then
-				G.GAME.pack_choices = G.GAME.pack_size
-			else
-				G.GAME.pack_choices = G.GAME.pack_choices + card.ability.extra.extra_card
-			end
+			G.E_MANAGER:add_event(Event{
+				func = function ()
+					card:juice_up()
+					if G.GAME.pack_choices + card.ability.extra.extra_card > context.card.ability.extra then
+						G.GAME.pack_choices = context.card.ability.extra
+					else
+						G.GAME.pack_choices = G.GAME.pack_choices + card.ability.extra.extra_card
+					end
+					return true
+				end
+			})
 		end
 
 		if context.joker_main then
