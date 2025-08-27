@@ -3,6 +3,7 @@ version = "1.0.0"
 priority = 1
 
 # G.GAME:start_run()
+# Modify starting params for jokers
 [[patches]]
 [patches.pattern]
 target = "game.lua"

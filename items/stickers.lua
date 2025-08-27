@@ -101,7 +101,12 @@ local cursed = {
                 if ref then
                     ref(self, card, from_debuff)
                 end
-                ease_curse(1)
+                G.E_MANAGER.add_event(Event{
+                    func = function ()
+                        ease_curse(G.GAME.curse_rate)
+                        return true
+                    end
+                })
             end
         end
     end,

@@ -194,7 +194,12 @@ local cursed_joker = {
 
 	add_to_deck = function (self, card, from_debuff)
 		if G.GAME.modifiers.enable_cursed then
-			ease_curse(card.ability.extra.curse * G.GAME.curse_rate)
+			G.E_MANAGER:add_event(Event({
+                func = function ()
+					ease_curse(card.ability.extra.curse * G.GAME.curse_rate)
+					return true
+				end
+            }))
 		else
 			G.E_MANAGER:add_event(Event({
                 func = LeoRND.utils.event_destroy_card(card)
