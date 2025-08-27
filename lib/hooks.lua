@@ -13,7 +13,7 @@ function G:start_run(args)
     start_run_hook(self, args)
 	-- This adds fruit rotting
     self.GAME.fruit_rot_time = LeoRND.config.fruit_rot_time
-	if LeoRND.config.curses_enabled then
+	if G.GAME.modifiers.enable_cursed then
 		self.hand_text_area.curse = self.HUD:get_UIE_by_ID('curse_UI_count')
 	end
 end
