@@ -119,10 +119,10 @@ local cursed = {
     rules = {
         custom = {
             { id = "enable_cursed" },
-            { id = "leornd_min_curse", value = 50 },
+            { id = "leornd_min_curse", value = 10 },
         },
         modifiers = {
-            { id = "curses", value = 50 },
+            { id = "curses", value = 10 },
         }
     },
 }
