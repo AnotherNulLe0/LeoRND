@@ -27,7 +27,22 @@ local molten = {
     end
 }
 
+local emerald = {
+    key = "emerald",
+    applied_stakes = { "leornd_molten" },
+    prefix_config = { applied_stakes = { mod = false }, above_stake = { mod = false } },
+
+    atlas = "stakes",
+    pos = { x = 2, y = 0 },
+    colour = HEX("333660"),
+
+    modifiers = function ()
+        G.GAME.modifiers.all_cursed = true
+    end
+}
+
 return {
     midnight,
-    -- molten
+    -- molten,
+    -- emerald,
 }

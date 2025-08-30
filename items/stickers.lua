@@ -82,7 +82,8 @@ local cursed = {
     end,
 
     should_apply = function (self, card, center, area, bypass_roll)
-        if G.GAME.modifiers.enable_cursed and card.ability.set == "Joker" and pseudorandom((area == G.pack_cards and 'packetper' or 'etperpoll')..G.GAME.round_resets.ante) > 0.7 then
+        local check = pseudorandom((area == G.pack_cards and 'packetper' or 'etperpoll')..G.GAME.round_resets.ante) > 0.7
+        if check and G.GAME.modifiers.enable_cursed and (card.ability.set == "Joker" or G.GAME.modifiers.all_cursed) then
             return true
         end
     end,
