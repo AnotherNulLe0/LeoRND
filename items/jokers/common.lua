@@ -192,6 +192,10 @@ local cursed_joker = {
 
 	cost = 4,
 
+	in_pool = function ()
+		return G.GAME.modifiers.enable_cursed
+	end,
+
 	add_to_deck = function (self, card, from_debuff)
 		if G.GAME.modifiers.enable_cursed then
 			G.E_MANAGER:add_event(Event({

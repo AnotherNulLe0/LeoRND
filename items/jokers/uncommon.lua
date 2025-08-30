@@ -252,6 +252,10 @@ local purified_joker = {
 
 	cost = 5,
 
+	in_pool = function ()
+		return G.GAME.modifiers.enable_cursed
+	end,
+	
 	check_for_unlock = function (self, args)
 		-- Unlocked if you win with no curses
 		-- Can be obtained only in midnight+ stake runs (obviously)
