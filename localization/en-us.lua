@@ -245,6 +245,27 @@ return {
 					"without having any curses"
 				}
 			},
+			j_leornd_hyperjoker = {
+				name = "Hyperjoker",
+				text = {
+					"{X:dark_edition,C:white}#1##2#{} Mult",
+					"Operator increases when triggered."
+				},
+				unlock = {
+					"This joker is unobtainable."
+				}
+			},
+			j_leornd_retrigger = {
+				name = "Retrigger",
+				text = {
+					"Retrigger {C:attention}everything{}",
+					"#1# time(s)",
+					"Increase retriggers by #2# when triggered",
+				},
+				unlock = {
+					"This joker is unobtainable."
+				}
+			},
         },
 		Fruit = {
 			c_leornd_lemon = {
@@ -469,7 +490,8 @@ return {
 			k_possess_ex = "Possessed!",
 			k_fruit = "Fruit",
 			k_curse = "Curse",
-			b_fruit_cards = "Fruit cards"
+			k_leornd_unobtainable = "Unobtainable",
+			b_fruit_cards = "Fruit cards",
 		},
 		challenge_names = {
 			c_leornd_pact = "Devil's pact",
@@ -492,6 +514,7 @@ return {
 			leornd_cursed = "Cursed",
 			leornd_fruity = "Fruity",
 			leornd_nostalgic = "Nostalgic",
+			k_leornd_unobtainable = "Unobtainable",
 		}
 	}
 }

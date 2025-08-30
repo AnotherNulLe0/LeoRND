@@ -10,6 +10,7 @@ local config = {
 	ch_pact_debuff = 0.4,
 	placeholder_excluded_rarities = {
 		4,
+		"leornd_unobtainable",
 		"cry_exotic", -- Exotic jokers are more powerful than legendary, so I'll exclude them
 		-- Astronomica's beyond exotic jokers
 		"ast_empyrean",

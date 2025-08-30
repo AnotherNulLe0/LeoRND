@@ -179,6 +179,9 @@ end
 for _, jkr in ipairs(SMODS.load_file("items/jokers/legendary.lua")()) do
 	jokers[#jokers+1] = jkr
 end
+for _, jkr in ipairs(SMODS.load_file("items/jokers/overpowered.lua")()) do
+	jokers[#jokers+1] = jkr
+end
 table.sort(
 	jokers,
 	function (a, b)
