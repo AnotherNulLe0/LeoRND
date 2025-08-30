@@ -410,6 +410,22 @@ return {
                 },
 			},
 		},
+		Edition = {
+			e_leornd_fruity = {
+				name = "Fruity",
+				text = {
+					"{X:dark_edition,C:white}^^#1#{} Mult",
+				}
+			},
+			e_leornd_nostalgic = {
+				name = "Nostalgic",
+				text = {
+					"{C:attention}Fixed{} {C:green}#1# in #2#{} chance",
+					"to decrease {C:attention}ante{}",
+					"when triggered",
+				}
+			},
+		},
 		Other = {
 			leornd_sour = {
 				name = "Sour",
@@ -474,6 +490,8 @@ return {
 			leornd_sour = "Sour",
 			leornd_possessed = "Possessed",
 			leornd_cursed = "Cursed",
+			leornd_fruity = "Fruity",
+			leornd_nostalgic = "Nostalgic",
 		}
 	}
 }
