@@ -401,7 +401,14 @@ return {
                     "{C:inactive,s:0.8}(having too much curse will make game harder)",
                     "{s:0.8}Applies all previous Stakes",
                 },
-			}
+			},
+			stake_leornd_molten = {
+				name = "Molten Stake",
+				text={
+                    "{C:purple}Cursed{} items will give {C:purple}+3{} curse instead",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+			},
 		},
 		Other = {
 			leornd_sour = {
@@ -426,6 +433,15 @@ return {
 					"+{C:purple}#1# curse{} when",
 					"added to deck",
 				}
+			},
+			undiscovered_fruit = {
+				name = "Not Discovered",
+				text = {
+					"Purchase or use",
+					"this card in an",
+					"unseeded run to",
+					"learn what it does",
+				},
 			},
 		}
     },
