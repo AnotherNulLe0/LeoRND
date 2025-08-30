@@ -266,6 +266,17 @@ return {
 					"This joker is unobtainable."
 				}
 			},
+			j_leornd_stopwatch = {
+				name = "High-precision timer",
+				text = {
+					"{C:chips}+1{} chip for each millisecond",
+					"you own this joker",
+					"{C:inactive}(currently {C:chips}+#1#{C:inactive} chips){}"
+				},
+				unlock = {
+					"This joker is unobtainable."
+				}
+			},
         },
 		Fruit = {
 			c_leornd_lemon = {

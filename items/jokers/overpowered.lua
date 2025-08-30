@@ -67,6 +67,7 @@ local hyperjoker = {
         end
 	end
 }
+
 local retrigger = {
     key = 'retrigger',
 	config = { extra = { retriggers = 1, increase = 1 } },
@@ -103,7 +104,37 @@ local retrigger = {
 	end
 }
 
+local stopwatch = {
+    key = 'stopwatch',
+	config = { extra = { start = nil, chips = 0 } },
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.start and math.floor((love.timer.getTime() - card.ability.extra.start) * 1000) or 0 } }
+	end,
+	rarity = "leornd_unobtainable",
+	atlas = 'jokers',
+	pos = { x = 2, y = 4 },
+	soul_pos = { x = 3, y = 4},
+	order = 19,
+	unlocked = false,
+
+	blueprint_compat = true,
+
+	cost = 50,
+	add_to_deck = function (self, card, from_debuff)
+		card.ability.extra.start = love.timer.getTime()
+	end,
+
+	calculate = function(self, card, context)
+		if context.joker_main then
+			return {
+				chips = math.floor((love.timer.getTime() - card.ability.extra.start) * 1000)
+			}
+		end
+	end
+}
+
 return {
     hyperjoker,
-	retrigger
+	retrigger,
+	stopwatch
 }
