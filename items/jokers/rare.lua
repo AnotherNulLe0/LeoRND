@@ -228,9 +228,66 @@ local fruityful = {
 	end
 }
 
+local cursemancer = {
+	key = 'cursemancer',
+	config = {
+		extra = { add_curse = 1, curse = 1, xmult = 3, }
+	},
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.add_curse * G.GAME.curse_rate, card.ability.extra.curse * G.GAME.curse_rate, card.ability.extra.xmult } }
+	end,
+	rarity = 3,
+	atlas = 'jokers',
+	pos = { x = 4, y = 0 },
+	order = 15,
+
+	blueprint_compat = true,
+	unlocked = false,
+
+	cost = 8,
+
+	in_pool = function ()
+		return G.GAME.modifiers.enable_cursed
+	end,
+
+	add_to_deck = function (self, card, from_debuff)
+		if G.GAME.modifiers.enable_cursed then
+			G.E_MANAGER:add_event(Event({
+                func = function ()
+					ease_curse(card.ability.extra.curse * G.GAME.curse_rate)
+					return true
+				end
+            }))
+		else
+			G.E_MANAGER:add_event(Event({
+                func = LeoRND.utils.event_destroy_card(card)
+            }))
+		end
+	end,
+
+	check_for_unlock = function (self, args)
+		local highest_win, lowest_win = get_deck_win_stake(nil)
+		if args.type == "win_stake" and highest_win >= 9 then
+			return true
+		end
+	end,
+
+	calculate = function(self, card, context)
+		if context.setting_blind then
+			ease_curse(card.ability.extra.add_curse * G.GAME.curse_rate)
+		end
+		if context.joker_main then
+			return {
+				xmult = card.ability.extra.xmult
+			}
+		end
+	end
+}
+
 return {
     brimstone,
     sour_glass,
 	grape_juice,
 	fruityful,
+	cursemancer
 }

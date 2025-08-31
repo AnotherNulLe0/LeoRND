@@ -245,6 +245,18 @@ return {
 					"without having any curses"
 				}
 			},
+			j_leornd_cursemancer = {
+				name = "Cursemancer",
+				text = {
+					"+{C:purple}#2# curse{}",
+					"{C:purple}+#1#{} curse at the start of blind",
+					"{X:mult,C:white}X#3#{} mult",
+				},
+				unlock = {
+					"Win a run at least on",
+					"{C:purple}Midnight{} stake",
+				}
+			},
 			j_leornd_circuit_start = {
 				name = "Circuit Start",
 				text = {
