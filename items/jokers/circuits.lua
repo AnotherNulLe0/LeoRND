@@ -9,7 +9,7 @@ local circuit_start = {
 	end,
 	rarity = 1,
 	atlas = 'jokers',
-	pos = { x = 3, y = 0 },
+	pos = { x = 4, y = 1 },
 	order = 16,
 	pools = {
 		["Electric"] = true
@@ -30,7 +30,7 @@ local circuit_filler = {
 	end,
 	rarity = 1,
 	atlas = 'jokers',
-	pos = { x = 3, y = 0 },
+	pos = { x = 4, y = 3 },
 	order = 17,
 	pools = {
 		["Electric"] = true,
@@ -53,7 +53,7 @@ local circuit_lamp = {
 	end,
 	rarity = 1,
 	atlas = 'jokers',
-	pos = { x = 3, y = 0 },
+	pos = { x = 4, y = 4 },
 	order = 18,
 	pools = {
 		["Electric"] = true,
@@ -118,7 +118,7 @@ local circuit_end = {
 	end,
 	rarity = 1,
 	atlas = 'jokers',
-	pos = { x = 3, y = 0 },
+	pos = { x = 4, y = 2 },
 	order = 18,
 	pools = {
 		["Electric"] = true
