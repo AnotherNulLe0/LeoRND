@@ -167,23 +167,10 @@ SMODS.ObjectType {
 
 -- Load jokers
 local jokers = {}
-for _, jkr in ipairs(SMODS.load_file("items/jokers/common.lua")()) do
-	jokers[#jokers+1] = jkr
-end
-for _, jkr in ipairs(SMODS.load_file("items/jokers/uncommon.lua")()) do
-	jokers[#jokers+1] = jkr
-end
-for _, jkr in ipairs(SMODS.load_file("items/jokers/rare.lua")()) do
-	jokers[#jokers+1] = jkr
-end
-for _, jkr in ipairs(SMODS.load_file("items/jokers/legendary.lua")()) do
-	jokers[#jokers+1] = jkr
-end
-for _, jkr in ipairs(SMODS.load_file("items/jokers/overpowered.lua")()) do
-	jokers[#jokers+1] = jkr
-end
-for _, jkr in ipairs(SMODS.load_file("items/jokers/circuits.lua")()) do
-	jokers[#jokers+1] = jkr
+for _, file in ipairs(NFS.getDirectoryItems(LeoRND.path.."/items/jokers/")) do
+	for _, jkr in ipairs(SMODS.load_file("items/jokers/"..file)()) do
+		jokers[#jokers+1] = jkr
+	end
 end
 table.sort(
 	jokers,
