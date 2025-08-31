@@ -216,7 +216,9 @@ utils.check_circuit = function (circuit_start, caller)
         for i = circuit_start, circuit_end do
             if utils.is_in_pool(G.jokers.cards[i], "ElectricUser") then
                 count = count + 1
-            end
+			else
+				return
+			end
         end
 		return count
 	end
