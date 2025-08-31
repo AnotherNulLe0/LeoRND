@@ -32,7 +32,7 @@ local hyperjoker = {
 	atlas = 'jokers',
 	pos = { x = 2, y = 4 },
 	soul_pos = { x = 3, y = 4},
-	order = 17,
+	order = 9001,
 	unlocked = false,
 
 	blueprint_compat = true,
@@ -78,7 +78,7 @@ local retrigger = {
 	atlas = 'jokers',
 	pos = { x = 2, y = 4 },
 	soul_pos = { x = 3, y = 4},
-	order = 18,
+	order = 9002,
 	unlocked = false,
 
 	blueprint_compat = true,
@@ -114,7 +114,7 @@ local stopwatch = {
 	atlas = 'jokers',
 	pos = { x = 2, y = 4 },
 	soul_pos = { x = 3, y = 4},
-	order = 19,
+	order = 9003,
 	unlocked = false,
 
 	blueprint_compat = true,

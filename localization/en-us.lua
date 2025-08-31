@@ -245,6 +245,36 @@ return {
 					"without having any curses"
 				}
 			},
+			j_leornd_circuit_start = {
+				name = "Circuit Start",
+				text = {
+					"Start of your circuit",
+					"Does nothing on it's own",
+				},
+			},
+			j_leornd_circuit_end = {
+				name = "Circuit End",
+				text = {
+					"End of your circuit",
+					"Does nothing on it's own"
+				},
+			},
+			j_leornd_circuit_filler = {
+				name = "Circuit Filler",
+				text = {
+					"Counts as a circuit {C:blue}user{}",
+					"Does nothing on it's own"
+				},
+			},
+			j_leornd_circuit_lamp = {
+				name = "Circuit Lamp",
+				text = {
+					"Gives {C:mult}+#1#{} Mult",
+					"for each circuit {C:blue}user{} joker",
+					"in your circuit",
+					"{C:inactive}(currently {C:mult}+#2#{C:inactive} Mult){}"
+				},
+			},
 			j_leornd_hyperjoker = {
 				name = "Hyperjoker",
 				text = {
@@ -491,6 +521,19 @@ return {
 					"learn what it does",
 				},
 			},
+			circuit_explanation = {
+				name = "Explanation",
+				text = {
+					"Every circuit must contain a",
+					"{C:attention}Circuit Starter{} and a",
+					"{C:attention}Circuit Ender{}.",
+					"They must come in a specific order",
+					"{C:inactive}({C:attention}Starter{C:inactive} -> {C:blue}User{C:inactive} -> {C:attention}Ender{C:inactive}){}",
+					"You can place your circuit {C:blue}Users{} between",
+					"{C:attention}Circuit Starter{} and",
+					"{C:attention}Circuit Ender{}.",
+				}
+			}
 		}
     },
 	misc = {

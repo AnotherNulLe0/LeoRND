@@ -7,7 +7,7 @@ local placeholder = {
 	rarity = 4,
 	atlas = 'jokers',
 	pos = { x = 3, y = 0 },
-	order = 16,
+	order = 101,
 	unlocked = false,
 
 	blueprint_compat = true,
@@ -42,7 +42,7 @@ local unfairer_dice = {
 	atlas = 'jokers',
 	pos = { x = 1, y = 3 },
 	soul_pos = { x = 2, y = 3 },
-	order = 15,
+	order = 100,
 	unlocked = false,
 	pools = {
 		["Demonic"] = true

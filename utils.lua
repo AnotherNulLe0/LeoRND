@@ -187,6 +187,39 @@ end
 utils.count_fruit_themed_items = function (except)
 	return #utils.fruit_themed_jokers(except) + #utils.fruit_themed_consumables(except)
 end
+utils.check_circuit = function (circuit_start, caller)
+        local circuit_end = nil
+        local count = 0
+		local found_caller = false
+
+        if not circuit_start then
+            return
+        end
+
+        for i = circuit_start+1, #G.jokers.cards do
+			if G.jokers.cards[i] == caller then
+				found_caller = true
+			end
+            if G.jokers.cards[i].config.center_key == "j_leornd_circuit_start" then
+                return
+            end
+            if G.jokers.cards[i].config.center_key == "j_leornd_circuit_end" then
+                circuit_end = i
+                break
+            end
+        end
+
+        if not circuit_end or not found_caller then
+            return
+        end
+
+        for i = circuit_start, circuit_end do
+            if utils.is_in_pool(G.jokers.cards[i], "ElectricUser") then
+                count = count + 1
+            end
+        end
+		return count
+	end
 
 -- Global utils
 function ease_curse(mod)
