@@ -176,10 +176,10 @@ times = 2
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
-pattern = 'elseif G.GAME.round_resets.blind == G.P_BLINDS.bl_big'
+pattern = 'elseif G.GAME.round_resets.blind == G.P_BLINDS.bl_big then'
 position = "at"
 payload = '''
-if G.GAME.round_resets.blind.big then
+elseif G.GAME.round_resets.blind.big then
 '''
 match_indent = true
 times = 2
