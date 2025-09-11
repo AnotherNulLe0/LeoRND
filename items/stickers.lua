@@ -82,17 +82,15 @@ local cursed = {
     end,
 
     should_apply = function (self, card, center, area, bypass_roll)
-        local check = pseudorandom((area == G.pack_cards and 'packetper' or 'etperpoll')..G.GAME.round_resets.ante) > 0.7
+        if (area ~= G.shop_jokers) and (area ~= G.pack_cards) then
+            return false
+        end
+
+        local check = pseudorandom('etperpoll'..G.GAME.round_resets.ante) > 0.7
         if check and G.GAME.modifiers.enable_cursed and (card.ability.set == "Joker" or G.GAME.modifiers.all_cursed) then
             return true
         end
     end,
-
-    -- sets = {
-        -- Joker = true
-    -- },
-    -- needs_enable_flag = true,
-    -- rate = 1,
 
     apply = function(self, card, val)
         card.ability[self.key] = val
