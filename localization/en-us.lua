@@ -415,7 +415,7 @@ return {
 						"Gives {C:money}$1{} for each",
 						"{C:hearts}heart{} card",
 						"in your deck",
-						"{C:inactive}(Currently +{C:money}$#1#{C:inactive}){}"
+						"{C:inactive}(Currently {C:money}+$#1#{C:inactive}){}"
 					},
 					{"{C:inactive}(#2# ante left){}"}
 				}
@@ -480,6 +480,13 @@ return {
 				name = "Molten Stake",
 				text={
                     "{C:purple}Cursed{} items will give {C:purple}+3{} curse instead",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+			},
+			stake_leornd_emerald = {
+				name = "Emeralnd Stake",
+				text={
+                    "Anything can become {C:purple}cursed{}",
                     "{s:0.8}Applies all previous Stakes",
                 },
 			},

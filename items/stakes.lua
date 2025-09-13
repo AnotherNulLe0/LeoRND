@@ -43,6 +43,6 @@ local emerald = {
 
 return {
     midnight,
-    -- molten,
-    -- emerald,
+    molten,
+    emerald,
 }
