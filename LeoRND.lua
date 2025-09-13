@@ -12,7 +12,7 @@ SMODS.load_file("lib/blinds.lua")()
 local success, dpAPI = pcall(require, "debugplus-api")
 
 if success and dpAPI.isVersionCompatible(1) then
-    local debugplus = dpAPI.registerID("MyMod")
+    local debugplus = dpAPI.registerID("LeoRND")
 	debugplus.addCommand({
 	    name = "curse",
 	    shortDesc = "Set or add to your curse",
@@ -44,12 +44,45 @@ if success and dpAPI.isVersionCompatible(1) then
 	    end
 	})
 	debugplus.addCommand({
+	    name = "voucher",
+	    shortDesc = "Reedeem a voucher",
+	    desc = "Reedeem a voucher by it's game ID. Usage:\nvoucher reedeem [id] - Reedeem voucher by it's id\nvoucher unreedeem [id] - Unreedeem voucher by it's id.",
+	    exec = function (args, rawArgs, dp)
+	        if G.STAGE ~= G.STAGES.RUN then
+        	    return "This command must be run during a run.", "ERROR"
+        	end
+        	local subCmd = args[1]
+			local id = args[2]
+			if subCmd == "reedeem" and G.P_CENTERS[id] then
+				G.GAME.used_vouchers[id] = true
+        		Card.apply_to_run(nil, G.P_CENTERS[id])
+				return "Reedeemed!"
+			elseif subCmd == "reedeem" and not G.P_CENTERS[id] then
+				return "Unknown key '"..id.."'.", "ERROR"
+			elseif subCmd == "unreedeem" and G.GAME.used_vouchers[id] then
+				G.GAME.used_vouchers[id] = nil
+				return "Unreedeemed!"
+			elseif subCmd == "unreedeem" and not G.P_CENTERS[id] then
+				return "Unknown key '"..id.."'.", "ERROR"
+			elseif subCmd == "unreedeem" and not G.GAME.used_vouchers[id] then
+				return "This voucher is not reedeemed yet.", "ERROR"
+			else
+        	    return "Please choose whether you want to reedeem or unreedeem. For more info, run 'help voucher'"
+			end
+	    end
+	})
+	debugplus.addCommand({
+	    name = "cheat",
+	    shortDesc = "Infinite money",
+	    desc = "Infinite money",
+	    exec = function (args, rawArgs, dp)
+	        ease_dollars(10^10^100) -- Googolplex money (hehe)
+	    end
+	})
+	debugplus.addCommand({
 	    name = "blind",
 	    shortDesc = "Reroll upcoming blinds",
-	    desc = "Reroll upcoming blinds. Usage:\n\
-				blind reroll [kind] - rerolls selected blind kind.\n\
-				blind [kind] set [blind] - replaces [kind]blind with a specified blind.\n\
-				Possible blind kinds: 'small', 'big' and 'boss'",
+	    desc = "Reroll upcoming blinds. Usage:\nblind reroll [kind] - rerolls selected blind kind.\nblind [kind] set [blind] - replaces [kind]blind with a specified blind.\nPossible blind kinds: 'small', 'big' and 'boss'",
 	    exec = function (args, rawArgs, dp)
 			if G.STAGE ~= G.STAGES.RUN then
         	    return "This command must be run during a run.", "ERROR"
@@ -68,12 +101,18 @@ if success and dpAPI.isVersionCompatible(1) then
 					G.from_boss_tag = true
         		    G.FUNCS.reroll_boss()
         		else
-        		    return "Unknown kind of blind: '"..args[2].."'.Possible blind kinds: 'small', 'big' and 'boss'", "ERROR"
+        		    return "Unknown kind of blind: '"..args[2].."' .Possible blind kinds: 'small', 'big' and 'boss'. Also you can reroll all blinds by selecting 'all' blind kind.", "ERROR"
         		end
 				return "Rerolling "..args[2].." blind."
-			elseif args[2] == "set" then
+			elseif args[2] == "set" and args[3] and (args[1] == "boss" or args[1] == "small" or args[1] == "big") and G.P_BLINDS[args[3]] then
 				G.FUNCS.set_blind(args[1], args[3])
-				return "Replacing "..args[1].." with "..args[3].."."
+				return "Replaced "..args[1].." with "..args[3].."."
+			elseif args[2] == "set" and args[3] and (args[1] == "boss" or args[1] == "small" or args[1] == "big") then
+				return "'"..args[3].."' is not a valid blind.", "ERROR"
+			elseif args[2] == "set" and args[3] then
+				return "'"..args[1].."' is not a valid blind.", "ERROR"
+			elseif args[2] == "set" and not args[3] then
+				return "Please specify with what blind you want to replace "..args[1].." blind.", "ERROR"
 			else
 				return "Please choose whether you want to reroll or set. For more info, run 'help blind'"
 			end
