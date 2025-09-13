@@ -20,7 +20,7 @@ local cursed_small = {
     mult = 1.5,
     boss_colour = mix_colours(mix_colours(G.C.BLUE, G.C.BLACK, 0.6), G.C.PURPLE, 0.4),
     in_pool = function (self)
-        return LeoRND.utils.poll_curse_effect("smallblind", 5, G.GAME.curse + 2, 1.2)
+        return LeoRND.utils.poll_curse_effect("smallblind", 10, G.GAME.curse + 2, 0.5)
     end
 }
 
@@ -31,7 +31,7 @@ local cursed_big = {
     mult = 2,
     boss_colour = mix_colours(mix_colours(G.C.ORANGE, G.C.BLACK, 0.6), G.C.PURPLE, 0.4),
     in_pool = function (self)
-        return LeoRND.utils.poll_curse_effect("bigblind", 5, G.GAME.curse + 1, 1.2)
+        return LeoRND.utils.poll_curse_effect("bigblind", 10, G.GAME.curse, 0.5)
     end
 }
 

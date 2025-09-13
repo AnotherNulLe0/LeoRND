@@ -98,7 +98,7 @@ local utils = {
 		mod = mod or G.GAME.curse
 
 		-- Rental cost increase
-		threshold = 3
+		threshold = 5
 		modifier = 1
 
 		if not G.GAME.rental_rate_buffer then
@@ -112,8 +112,8 @@ local utils = {
 		end
 
 		-- Inflation
-		threshold = 5
-		modifier = 2
+		threshold = 10
+		modifier = 1
 
 		if not G.GAME.inflation_buffer then
 			G.GAME.inflation_buffer = 0
@@ -137,7 +137,7 @@ local utils = {
 		end
 
 		-- Reroll cost increase
-		threshold = 2
+		threshold = 3
 		modifier = 1
 
 		if not G.GAME.round_resets.reroll_cost_buffer then
