@@ -501,9 +501,8 @@ return {
 			e_leornd_nostalgic = {
 				name = "Nostalgic",
 				text = {
-					"{C:attention}Fixed{} {C:green}#1# in #2#{} chance",
-					"to decrease {C:attention}ante{}",
-					"when triggered",
+					"-1 {C:attention}ante{}",
+					"when added to deck",
 				}
 			},
 		},

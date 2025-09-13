@@ -31,10 +31,7 @@ local fruity = {
 local nostalgic = {
     key = "nostalgic",
     shader = "nostalgic",
-    config = { extra = {
-        num = 1,
-        den = 7,
-    } },
+    config = { },
 
     extra_cost = 3,
 
@@ -42,20 +39,23 @@ local nostalgic = {
 	weight = 0.6,
 
     loc_vars = function (self, info_queue, card)
-        return { vars = { card.edition.extra.num, card.edition.extra.den } }
+        return { vars = {  } }
     end,
 
-    calculate = function(self, card, context)
-        if context.pre_joker or (context.main_scoring and context.cardarea == G.play) then
-            if pseudorandom('nostalgic') < card.edition.extra.num / card.edition.extra.den then
-                ease_ante(-1)
-                return {
-                    message = "-1 "..localize("k_ante"),
-                    remove_default_message = true,
-                }
+    on_apply = function (card)
+        local ref = card.config.center.add_to_deck
+        card.config.center.add_to_deck = function (_self, _card, from_debuff)
+            if ref then
+                ref(_self, _card, from_debuff)
             end
+            G.E_MANAGER:add_event(Event({
+                func = function ()
+                    ease_ante(-1)
+                    return true
+                end
+            }))
         end
-    end
+    end,
 }
 
 return {
