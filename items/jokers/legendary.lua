@@ -17,7 +17,7 @@ local placeholder = {
 	calculate = function(self, card, context)
 		if context.retrigger_joker_check
 		and not context.retrigger_joker
-		and context.other_card.ability.set == "Joker" -- Placeholder will only retrigger Jokers (huh?)
+		and context.other_card.ability and context.other_card.ability.set == "Joker" -- Placeholder will only retrigger Jokers (huh?)
 		and LeoRND.utils.placeholder_compat(context.other_card) then
 			return {
 				message = localize('k_again_ex'),
